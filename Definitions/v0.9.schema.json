@@ -1,0 +1,191 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://heritagesamples.org/schema/Definitions/v0.9.schema.json",
+    "title": "Definitions",
+    "type": "object",
+    "properties": {
+    },
+    "$defs": {
+        "geoJsonFeature": {
+            "title": "GeoJSON Feature",
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/point"
+                },
+                {
+                    "$ref": "#/definitions/multiPoint"
+                },
+                {
+                    "$ref": "#/definitions/lineString"
+                },
+                {
+                    "$ref": "#/definitions/multiLineString"
+                },
+                {
+                    "$ref": "#/definitions/polygon"
+                },
+                {
+                    "$ref": "#/definitions/multiPolygon"
+                },
+                {
+                    "$ref": "#/definitions/geometryCollection"
+                }
+            ]
+        },
+        "position": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 2
+        },
+        "lineStringCoordinates": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/position"
+            },
+            "minItems": 2
+        },
+        "polygonCoordinates": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/position"
+                },
+                "minItems": 4
+            }
+        },
+        "point": {
+            "title": "GeoJSON Point",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "Point"
+                },
+                "coordinates": {
+                    "$ref": "#/definitions/position"
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "multiPoint": {
+            "title": "GeoJSON MultiPoint",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "MultiPoint"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/position"
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "lineString": {
+            "title": "GeoJSON LineString",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "LineString"
+                },
+                "coordinates": {
+                    "$ref": "#/definitions/lineStringCoordinates"
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "multiLineString": {
+            "title": "GeoJSON MultiLineString",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "MultiLineString"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/lineStringCoordinates"
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "polygon": {
+            "title": "GeoJSON Polygon",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "Polygon"
+                },
+                "coordinates": {
+                    "$ref": "#/definitions/polygonCoordinates"
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "multiPolygon": {
+            "title": "GeoJSON MultiPolygon",
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "const": "MultiPolygon"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/polygonCoordinates"
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        },
+        "geometryCollection": {
+            "title": "GeoJSON GeometryCollection",
+            "type": "object",
+            "required": ["type", "geometries"],
+            "properties": {
+                "type": {
+                    "const": "GeometryCollection"
+                },
+                "geometries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/geoJsonFeature"
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "format": "json"
+                }
+            }
+        }
+    }
+}
