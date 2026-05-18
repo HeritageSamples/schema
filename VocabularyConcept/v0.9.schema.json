@@ -1,7 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://heritagesamples.org/schema/VocabularyConcept/v0.9.schema.json",
-    "title": "VocabularyConcept",
+    "$id": "https://heritagesamples.org/schema/VocabularyConcept/v0.9",
     "type": "object",
     "required": ["id", "prefLabel", "terms"],
     "properties": {

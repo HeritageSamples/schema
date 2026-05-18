@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://heritagesamples.org/schema/HeritageObject/v0.9.schema.json",
+    "$id": "https://heritagesamples.org/schema/HeritageObject/v0.9",
     "title": "HeritageObject",
     "type": "object",
     "required": [
