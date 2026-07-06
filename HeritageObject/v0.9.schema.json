@@ -48,10 +48,14 @@
                 "resourceType": {
                     "title": "Resource Type",
                     "type": "string",
-                    "enum": [
-                        "Heritage Object",
-                        "Heritage Fragment"
-                    ],
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"HeritageObject-resourceType\""]
+                            }
+                        }
+                    },
                     "$comment": "https://support.datacite.org/docs/igsn-id-metadata-recommendations#10-resourcetype"
                 },
                 "resourceTypeGeneral": {
@@ -79,14 +83,15 @@
                     },
                     "titleType": {
                         "type": "string",
-                        "enum": [
-                            "Title",
-                            "AlternativeTitle",
-                            "Subtitle",
-                            "TranslatedTitle",
-                            "Other"
-                        ],
-                        "default": "Title",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-titleType\""]
+                                }
+                            }
+                        },
+                        "default": "HSR/voc.hsr.title",
                         "$comment": "https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/title/#a-titletype"
                     },
                     "lang": {
@@ -130,12 +135,14 @@
                     "descriptionType": {
                         "title": "Description Type",
                         "type": "string",
-                        "enum": [
-                            "Object description",
-                            "Subject description",
-                            "Technical description",
-                            "Other"
-                        ],
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-descriptionType\""]
+                                }
+                            }
+                        },
                         "$comment": "The custom descriptionType values used here map to standard DataCite types as follows: 'Object description' should be treated as 'Abstract'; 'Subject description' maps to 'Other', but we should add a sort of title to the description (e.g. 'Subject description ##'); and 'Technical description' maps to 'TechnicalInfo'. These mappings should be applied when exporting to systems that expect standard DataCite descriptionType values."
                     },
                     "lang": {
@@ -335,11 +342,14 @@
             "title": "Object Type",
             "description": "The type of object.",
             "type": "string",
-            "$comment": "TODO: map to controlled list",
-            "enum": [
-                "Painting",
-                "Archeological artefact"
-            ]
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"],
+                        "filters": ["/queryTerms/_:\"HeritageObject-objectType\""]
+                    }
+                }
+            }
         },
         "subjects": {
             "title": "Subjects, Keywords and Classification codes",
@@ -402,7 +412,14 @@
                     "funderIdentifierType": {
                         "title": "Funder Identifier Type",
                         "type": "string",
-                        "enum": ["ISNI", "GRID", "Crossref Funder ID", "ROR", "Other"]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-funderIdentifierType\""]
+                                }
+                            }
+                        }
                     },
                     "awardNumber": {
                         "title": "Award Number",
@@ -482,70 +499,27 @@
                     "relatedIdentifierType": {
                         "title": "Related Identifier Type",
                         "type": "string",
-                        "enum": [
-                            "ARK",
-                            "arXiv",
-                            "bibcode",
-                            "DOI",
-                            "EAN13",
-                            "EISSN",
-                            "Handle",
-                            "IGSN",
-                            "ISBN",
-                            "ISSN",
-                            "ISTC",
-                            "LISSN",
-                            "LSID",
-                            "PMID",
-                            "PURL",
-                            "UPC",
-                            "URL",
-                            "URN",
-                            "w3id"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-relatedIdentifierType\""]
+                                }
+                            }
+                        }
                     },
                     "relationType": {
                         "title": "Relation Type",
                         "description": "The relatedIdentifier property can be used to make connections that mirror sample hierarchies. Because the parent IGSN ID is a key element in IGSN ID metadata, it is recommended that a child (sub)sample identifies its parent using the relationType 'IsPartOf' or 'IsDerivedFrom'. Vice versa, a parent sample can identify its children using 'HasPart' or 'IsSourceOf'.",
                         "type": "string",
-                        "enum": [
-                            "IsCitedBy",
-                            "Cites",
-                            "IsCollectedBy",
-                            "Collects",
-                            "IsSupplementTo",
-                            "IsSupplementedBy",
-                            "IsContinuedBy",
-                            "Continues",
-                            "IsDescribedBy",
-                            "Describes",
-                            "HasMetadata",
-                            "IsMetadataFor",
-                            "HasVersion",
-                            "IsVersionOf",
-                            "IsNewVersionOf",
-                            "IsPartOf",
-                            "IsPreviousVersionOf",
-                            "IsPublishedIn",
-                            "HasPart",
-                            "IsReferencedBy",
-                            "References",
-                            "IsDocumentedBy",
-                            "Documents",
-                            "IsCompiledBy",
-                            "Compiles",
-                            "IsVariantFormOf",
-                            "IsOriginalFormOf",
-                            "IsIdenticalTo",
-                            "IsReviewedBy",
-                            "Reviews",
-                            "IsDerivedFrom",
-                            "IsSourceOf",
-                            "IsRequiredBy",
-                            "Requires",
-                            "IsObsoletedBy",
-                            "Obsoletes"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-relationType\""]
+                                }
+                            }
+                        }
                     },
                     "relatedMetadataScheme": {
                         "title": "Related Metadata Scheme",
@@ -566,38 +540,14 @@
                     "resourceTypeGeneral": {
                         "title": "Resource Type General",
                         "type": "string",
-                        "enum": [
-                            "Audiovisual",
-                            "Book",
-                            "BookChapter",
-                            "Collection",
-                            "ComputationalNotebook",
-                            "ConferencePaper",
-                            "ConferenceProceeding",
-                            "DataPaper",
-                            "Dataset",
-                            "Dissertation",
-                            "Event",
-                            "Image",
-                            "Instrument",
-                            "InteractiveResource",
-                            "Journal",
-                            "JournalArticle",
-                            "Model",
-                            "OutputManagementPlan",
-                            "PeerReview",
-                            "PhysicalObject",
-                            "Preprint",
-                            "Report",
-                            "Service",
-                            "Software",
-                            "Sound",
-                            "Standard",
-                            "StudyRegistration",
-                            "Text",
-                            "Workflow",
-                            "Other"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"HeritageObject-resourceTypeGeneral\""]
+                                }
+                            }
+                        }
                     }
                 }
             }

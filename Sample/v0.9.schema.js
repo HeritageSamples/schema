@@ -1,29 +1,87 @@
 const cordra = require('cordra');
+const {
+    isConceptHandle,
+    validateVocabularyConceptReferences,
+} = require('../lib/vocabularyConceptRefs');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
+const TITLE_TYPE_DEFAULT_HANDLE = 'HSR/voc.hsr.title';
+const TITLE_TYPE_DEFAULT_TAIL = 'title';
+
+const VOCABULARY_CONCEPT_RULES = [
+    { path: 'titles[].titleType', queryTerm: 'Sample-titleType', label: 'Title type' },
+    { path: 'otherDescriptions[].descriptionType', queryTerm: 'Sample-descriptionType', label: 'Description type' },
+    {
+        path: 'documentationIdentifier.relatedIdentifierType',
+        queryTerm: 'Sample-relatedIdentifierType',
+        label: 'Documentation related identifier type',
+    },
+    {
+        path: 'documentationIdentifier.relationType',
+        queryTerm: 'Sample-relationType',
+        label: 'Documentation relation type',
+    },
+    {
+        path: 'documentationIdentifier.resourceTypeGeneral',
+        queryTerm: 'Sample-resourceTypeGeneral',
+        label: 'Documentation resource type general',
+    },
+    { path: 'sampleType', queryTerm: 'Sample-sampleType', label: 'Sample type' },
+    {
+        path: 'fundingReferences[].funderIdentifierType',
+        queryTerm: 'Sample-funderIdentifierType',
+        label: 'Funder identifier type',
+    },
+    {
+        path: 'relatedIdentifiers[].relatedIdentifierType',
+        queryTerm: 'Sample-relatedIdentifierType',
+        label: 'Related identifier type',
+    },
+    {
+        path: 'relatedIdentifiers[].relationType',
+        queryTerm: 'Sample-relatedIdentifiers-relationType',
+        label: 'Relation type',
+    },
+    {
+        path: 'relatedIdentifiers[].resourceTypeGeneral',
+        queryTerm: 'Sample-relatedIdentifiers-resourceTypeGeneral',
+        label: 'Resource type general',
+    },
+];
+
+
+function isPrimaryTitleType(value) {
+    return value === 'Title'
+        || value === TITLE_TYPE_DEFAULT_HANDLE
+        || isConceptHandle(value, TITLE_TYPE_DEFAULT_TAIL);
+}
+
 
 async function beforeSchemaValidation(object, context) {
-    // generate display title
-    // rule: take the first title with primary custodian identifier, 
-    // if no title with primary custodian identifier, take the first title with titleType "Title"
-    // if no title with titleType "Title", take the first title
-    if (object.content.titles && object.content.titles.length > 0) {
-        const custodianTitle = object.content.titles.find(title => title.isCustodianIdentifier);
-        const mainTitle = object.content.titles.find(title => title.titleType === "Title");
+    const content = object.content;
+
+    if (content.titles && content.titles.length > 0) {
+        const custodianTitle = content.titles.find((title) => title.isCustodianIdentifier);
+        const mainTitle = content.titles.find((title) => isPrimaryTitleType(title.titleType));
         if (custodianTitle) {
-            object.content._displayTitle = custodianTitle.title;
+            content._displayTitle = custodianTitle.title;
         } else if (mainTitle) {
-            object.content._displayTitle = mainTitle.title;
+            content._displayTitle = mainTitle.title;
         } else {
-            object.content._displayTitle = object.content.titles[0].title;
+            content._displayTitle = content.titles[0].title;
         }
     }
 
+    await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
+        cordra,
+        CordraError: cordra.CordraError,
+    });
+
     // validate material terms
     // TODO: queryTerms are not yet set for AAT materials
-    //if (object.content.materialTerms) {
-    //    for (const id of object.content.materialTerms) {
+    //if (content.materialTerms) {
+    //    for (const id of content.materialTerms) {
     //        const concept = await cordra.get(id);
     //        if (!('queryTerms' in concept && concept.queryTerms.includes('materials'))) {
     //            throw new cordra.CordraError(`Material term ${id} is not a valid material term`, 400);

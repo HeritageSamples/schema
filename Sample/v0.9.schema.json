@@ -95,14 +95,15 @@
                     },
                     "titleType": {
                         "type": "string",
-                        "enum": [
-                            "Title",
-                            "AlternativeTitle",
-                            "Subtitle",
-                            "TranslatedTitle",
-                            "Other"
-                        ],
-                        "default": "Title",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-titleType\""]
+                                }
+                            }
+                        },
+                        "default": "HSR/voc.hsr.title",
                         "$comment": "https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/title/#a-titletype"
                     },
                     "lang": {
@@ -162,12 +163,14 @@
                     "descriptionType": {
                         "title": "Description Type",
                         "type": "string",
-                        "enum": [
-                            "Sample description",
-                            "Sampling method",
-                            "Reason for sampling",
-                            "Other"
-                        ],
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-descriptionType\""]
+                                }
+                            }
+                        },
                         "$comment": "The custom descriptionType values used here map to standard DataCite types as follows: 'Sample description' and 'Sample site description' should both be treated as 'Abstract'; 'Sampling method' maps to 'Methods'; and 'Reason for sampling' maps to 'Other'. Note that a 'Sample site description' can be added in the 'sample_source' custom block, so it should not be added in this 'descriptions' array. These mappings should be applied when exporting to systems that expect standard DataCite descriptionType values."
                     },
                     "lang": {
@@ -298,40 +301,41 @@
                 "relatedIdentifierType": {
                     "title": "Related Identifier Type",
                     "type": "string",
-                    "enum": [
-                        "ARK",
-                        "arXiv",
-                        "bibcode",
-                        "DOI",
-                        "EAN13",
-                        "EISSN",
-                        "Handle",
-                        "IGSN",
-                        "ISBN",
-                        "ISSN",
-                        "ISTC",
-                        "LISSN",
-                        "LSID",
-                        "PMID",
-                        "PURL",
-                        "UPC",
-                        "URL",
-                        "URN",
-                        "w3id"
-                    ]
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Sample-relatedIdentifierType\""]
+                            }
+                        }
+                    }
                 },
                 "relationType": {
                     "title": "Relation Type",
                     "description": "The relatedIdentifier property can be used to make connections that mirror sample hierarchies. Because the parent IGSN ID is a key element in IGSN ID metadata, it is recommended that a child (sub)sample identifies its parent using the relationType 'IsPartOf' or 'IsDerivedFrom'. Vice versa, a parent sample can identify its children using 'HasPart' or 'IsSourceOf'.",
                     "type": "string",
-                    "enum": ["IsDocumentedBy"],
-                    "default": "IsDocumentedBy"
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Sample-relationType\""]
+                            }
+                        }
+                    },
+                    "default": "HSR/voc.hsr.isdocumentedby"
                 },
                 "resourceTypeGeneral": {
                     "title": "Resource Type General",
                     "type": "string",
-                    "enum": ["Other"],
-                    "default": "Other"
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Sample-resourceTypeGeneral\""]
+                            }
+                        }
+                    },
+                    "default": "HSR/voc.hsr.other"
                 }
             }
         },
@@ -376,14 +380,14 @@
             "title": "Sample Type",
             "description": "The type of sample.",
             "type": "string",
-            "$comment": "TODO: map to controlled list",
-            "enum": [
-                "Borehole",
-                "Cross section",
-                "Fragment",
-                "Scraping",
-                "Thin section"
-            ]
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"],
+                        "filters": ["/queryTerms/_:\"Sample-sampleType\""]
+                    }
+                }
+            }
         },
         "subjects": {
             "title": "Subjects, Keywords and Classification codes",
@@ -446,13 +450,14 @@
                     "funderIdentifierType": {
                         "title": "Funder Identifier Type",
                         "type": "string",
-                        "enum": [
-                            "ISNI",
-                            "GRID",
-                            "Crossref Funder ID",
-                            "ROR",
-                            "Other"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-funderIdentifierType\""]
+                                }
+                            }
+                        }
                     },
                     "awardNumber": {
                         "title": "Award Number",
@@ -532,70 +537,27 @@
                     "relatedIdentifierType": {
                         "title": "Related Identifier Type",
                         "type": "string",
-                        "enum": [
-                            "ARK",
-                            "arXiv",
-                            "bibcode",
-                            "DOI",
-                            "EAN13",
-                            "EISSN",
-                            "Handle",
-                            "IGSN",
-                            "ISBN",
-                            "ISSN",
-                            "ISTC",
-                            "LISSN",
-                            "LSID",
-                            "PMID",
-                            "PURL",
-                            "UPC",
-                            "URL",
-                            "URN",
-                            "w3id"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-relatedIdentifierType\""]
+                                }
+                            }
+                        }
                     },
                     "relationType": {
                         "title": "Relation Type",
                         "description": "The relatedIdentifier property can be used to make connections that mirror sample hierarchies. Because the parent IGSN ID is a key element in IGSN ID metadata, it is recommended that a child (sub)sample identifies its parent using the relationType 'IsPartOf' or 'IsDerivedFrom'. Vice versa, a parent sample can identify its children using 'HasPart' or 'IsSourceOf'.",
                         "type": "string",
-                        "enum": [
-                            "IsCitedBy",
-                            "Cites",
-                            "IsCollectedBy",
-                            "Collects",
-                            "IsSupplementTo",
-                            "IsSupplementedBy",
-                            "IsContinuedBy",
-                            "Continues",
-                            "IsDescribedBy",
-                            "Describes",
-                            "HasMetadata",
-                            "IsMetadataFor",
-                            "HasVersion",
-                            "IsVersionOf",
-                            "IsNewVersionOf",
-                            "IsPartOf",
-                            "IsPreviousVersionOf",
-                            "IsPublishedIn",
-                            "HasPart",
-                            "IsReferencedBy",
-                            "References",
-                            "IsDocumentedBy",
-                            "Documents",
-                            "IsCompiledBy",
-                            "Compiles",
-                            "IsVariantFormOf",
-                            "IsOriginalFormOf",
-                            "IsIdenticalTo",
-                            "IsReviewedBy",
-                            "Reviews",
-                            "IsDerivedFrom",
-                            "IsSourceOf",
-                            "IsRequiredBy",
-                            "Requires",
-                            "IsObsoletedBy",
-                            "Obsoletes"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-relatedIdentifiers-relationType\""]
+                                }
+                            }
+                        }
                     },
                     "relatedMetadataScheme": {
                         "title": "Related Metadata Scheme",
@@ -616,38 +578,14 @@
                     "resourceTypeGeneral": {
                         "title": "Resource Type General",
                         "type": "string",
-                        "enum": [
-                            "Audiovisual",
-                            "Book",
-                            "BookChapter",
-                            "Collection",
-                            "ComputationalNotebook",
-                            "ConferencePaper",
-                            "ConferenceProceeding",
-                            "DataPaper",
-                            "Dataset",
-                            "Dissertation",
-                            "Event",
-                            "Image",
-                            "Instrument",
-                            "InteractiveResource",
-                            "Journal",
-                            "JournalArticle",
-                            "Model",
-                            "OutputManagementPlan",
-                            "PeerReview",
-                            "PhysicalObject",
-                            "Preprint",
-                            "Report",
-                            "Service",
-                            "Software",
-                            "Sound",
-                            "Standard",
-                            "StudyRegistration",
-                            "Text",
-                            "Workflow",
-                            "Other"
-                        ]
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Sample-relatedIdentifiers-resourceTypeGeneral\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
