@@ -90,7 +90,7 @@ function normalizeVocabulary(content) {
         content.curiePrefix = content.curiePrefix.trim().toLowerCase();
     }
 
-    sanitizeLexicalMaps(content);
+    sanitizeLexicalArrays(content);
     stripLegacyLexicalArrays(content);
     ensureMainTitle(content);
 }
@@ -102,40 +102,80 @@ function stripLegacyLexicalArrays(content) {
 }
 
 
-function sanitizeLexicalMaps(content) {
+function sanitizeLexicalArrays(content) {
     if (!content || typeof content !== 'object') {
         return;
     }
 
-    for (const property of ['prefLabel', 'definition']) {
-        const cleaned = sanitizeLangStringMap(content[property]);
-        if (cleaned) {
-            content[property] = cleaned;
-        } else {
-            delete content[property];
-        }
+    const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
+    if (prefLabel) {
+        content.prefLabel = prefLabel;
+    } else {
+        delete content.prefLabel;
+    }
+
+    const definition = sanitizeTextArray(content.definition, { uniqueLang: true });
+    if (definition) {
+        content.definition = definition;
+    } else {
+        delete content.definition;
     }
 }
 
 
-function sanitizeLangStringMap(block) {
-    if (!block || typeof block !== 'object') {
+function sanitizeLabelArray(entries, options = {}) {
+    if (!Array.isArray(entries)) {
         return undefined;
     }
-    const cleaned = {};
-    for (const language of Object.keys(block)) {
-        if (!isLangKey(language)) {
+    const uniqueLang = options.uniqueLang === true;
+    const cleaned = [];
+    const seenLangs = new Set();
+    for (const entry of entries) {
+        if (!entry || typeof entry !== 'object') {
             continue;
         }
-        const value = block[language];
-        if (typeof value === 'string') {
-            const trimmed = value.trim();
-            if (trimmed) {
-                cleaned[language] = trimmed;
-            }
+        const lang = typeof entry.lang === 'string' ? entry.lang.trim() : '';
+        const label = typeof entry.label === 'string' ? entry.label.trim() : '';
+        if (!isLangKey(lang) || !label) {
+            continue;
         }
+        if (uniqueLang) {
+            if (seenLangs.has(lang)) {
+                continue;
+            }
+            seenLangs.add(lang);
+        }
+        cleaned.push({ label, lang });
     }
-    return Object.keys(cleaned).length > 0 ? cleaned : undefined;
+    return cleaned.length > 0 ? cleaned : undefined;
+}
+
+
+function sanitizeTextArray(entries, options = {}) {
+    if (!Array.isArray(entries)) {
+        return undefined;
+    }
+    const uniqueLang = options.uniqueLang === true;
+    const cleaned = [];
+    const seenLangs = new Set();
+    for (const entry of entries) {
+        if (!entry || typeof entry !== 'object') {
+            continue;
+        }
+        const lang = typeof entry.lang === 'string' ? entry.lang.trim() : '';
+        const text = typeof entry.text === 'string' ? entry.text.trim() : '';
+        if (!isLangKey(lang) || !text) {
+            continue;
+        }
+        if (uniqueLang) {
+            if (seenLangs.has(lang)) {
+                continue;
+            }
+            seenLangs.add(lang);
+        }
+        cleaned.push({ text, lang });
+    }
+    return cleaned.length > 0 ? cleaned : undefined;
 }
 
 
@@ -145,17 +185,16 @@ function isLangKey(key) {
 
 
 function displayLabel(prefLabel) {
-    if (!prefLabel || typeof prefLabel !== 'object') {
+    if (!Array.isArray(prefLabel)) {
         return '';
     }
-    const en = prefLabel[DEFAULT_DISPLAY_LANG];
-    if (typeof en === 'string' && en.trim().length > 0) {
-        return en.trim();
+    const en = prefLabel.find((entry) => entry && entry.lang === DEFAULT_DISPLAY_LANG && typeof entry.label === 'string');
+    if (en && en.label.trim()) {
+        return en.label.trim();
     }
-    for (const language of Object.keys(prefLabel).filter(isLangKey).sort()) {
-        const value = prefLabel[language];
-        if (typeof value === 'string' && value.trim().length > 0) {
-            return value.trim();
+    for (const entry of prefLabel) {
+        if (entry && typeof entry.label === 'string' && entry.label.trim()) {
+            return entry.label.trim();
         }
     }
     return '';

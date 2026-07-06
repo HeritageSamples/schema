@@ -102,7 +102,7 @@ async function beforeSchemaValidationWithId(object, context) {
                     }
                 }
 
-                sanitizeLexicalMaps(content);
+                sanitizeLexicalArrays(content);
                 const existingMaps = contentToLexicalMaps(content);
                 const incomingMaps = contentToLexicalMaps(incomingContent);
                 if (incomingMaps.altLabel && typeof incomingMaps.altLabel === 'object') {
@@ -118,13 +118,21 @@ async function beforeSchemaValidationWithId(object, context) {
                         }
                         const seen = new Set();
                         for (const item of mergedAlt[language]) {
-                            const entry = normalizeAltLabelEntry(item);
+                            const entry = normalizeAltLabelEntry(
+                                item && typeof item === 'object'
+                                    ? { ...item, lang: language }
+                                    : { label: item, lang: language }
+                            );
                             if (entry) {
                                 seen.add(`${entry.label}\0${entry.AxiellId || ''}`);
                             }
                         }
                         for (const item of entries) {
-                            const entry = normalizeAltLabelEntry(item);
+                            const entry = normalizeAltLabelEntry(
+                                item && typeof item === 'object'
+                                    ? { ...item, lang: language }
+                                    : { label: item, lang: language }
+                            );
                             if (!entry) {
                                 continue;
                             }
@@ -199,8 +207,8 @@ async function beforeSchemaValidationWithId(object, context) {
                 }
 
                 const protectedPaths = resetHarvestProtection ? new Set() : protectedPathsFromExisting(existingObject);
-                sanitizeLexicalMaps(existingContent);
-                sanitizeLexicalMaps(incomingContent);
+                sanitizeLexicalArrays(existingContent);
+                sanitizeLexicalArrays(incomingContent);
                 const existingMaps = contentToLexicalMaps(existingContent);
                 const incomingMaps = contentToLexicalMaps(incomingContent);
                 for (const path of protectedPaths) {
@@ -657,7 +665,7 @@ function sanitizeTrackedLexical(content) {
         return;
     }
 
-    sanitizeLexicalMaps(content);
+    sanitizeLexicalArrays(content);
     stripLegacyLexicalArrays(content);
 
     delete content.harvestBaseline;
@@ -671,39 +679,227 @@ function stripLegacyLexicalArrays(content) {
 }
 
 
-function sanitizeLexicalMaps(content) {
+function sanitizeLexicalArrays(content) {
     if (!content || typeof content !== 'object') {
         return;
     }
 
-    for (const property of TRACKED_PROPERTIES) {
-        const cleaned = sanitizeLexicalProperty(property, content[property]);
-        if (cleaned) {
-            content[property] = cleaned;
-        } else {
-            delete content[property];
+    const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
+    if (prefLabel) {
+        content.prefLabel = prefLabel;
+    } else {
+        delete content.prefLabel;
+    }
+
+    const altLabel = sanitizeAltLabelArray(content.altLabel);
+    if (altLabel) {
+        content.altLabel = altLabel;
+    } else {
+        delete content.altLabel;
+    }
+
+    const definition = sanitizeTextArray(content.definition, { uniqueLang: true });
+    if (definition) {
+        content.definition = definition;
+    } else {
+        delete content.definition;
+    }
+
+    const scopeNote = sanitizeTextArray(content.scopeNote, { uniqueLang: true });
+    if (scopeNote) {
+        content.scopeNote = scopeNote;
+    } else {
+        delete content.scopeNote;
+    }
+}
+
+
+function sanitizeLabelArray(entries, options = {}) {
+    if (!Array.isArray(entries)) {
+        return undefined;
+    }
+    const uniqueLang = options.uniqueLang === true;
+    const cleaned = [];
+    const seenLangs = new Set();
+    for (const entry of entries) {
+        if (!entry || typeof entry !== 'object') {
+            continue;
+        }
+        const lang = typeof entry.lang === 'string' ? entry.lang.trim() : '';
+        const label = typeof entry.label === 'string' ? entry.label.trim() : '';
+        if (!isLangKey(lang) || !label) {
+            continue;
+        }
+        if (uniqueLang) {
+            if (seenLangs.has(lang)) {
+                continue;
+            }
+            seenLangs.add(lang);
+        }
+        cleaned.push({ label, lang });
+    }
+    return cleaned.length > 0 ? cleaned : undefined;
+}
+
+
+function sanitizeAltLabelArray(entries) {
+    if (!Array.isArray(entries)) {
+        return undefined;
+    }
+    const cleaned = [];
+    const seen = new Set();
+    for (const entry of entries) {
+        const normalized = normalizeAltLabelEntry(entry);
+        if (!normalized) {
+            continue;
+        }
+        const key = `${normalized.lang}\0${normalized.label}\0${normalized.AxiellId || ''}`;
+        if (seen.has(key)) {
+            continue;
+        }
+        seen.add(key);
+        cleaned.push(normalized);
+    }
+    return cleaned.length > 0 ? cleaned : undefined;
+}
+
+
+function sanitizeTextArray(entries, options = {}) {
+    if (!Array.isArray(entries)) {
+        return undefined;
+    }
+    const uniqueLang = options.uniqueLang === true;
+    const cleaned = [];
+    const seenLangs = new Set();
+    for (const entry of entries) {
+        if (!entry || typeof entry !== 'object') {
+            continue;
+        }
+        const lang = typeof entry.lang === 'string' ? entry.lang.trim() : '';
+        const text = typeof entry.text === 'string' ? entry.text.trim() : '';
+        if (!isLangKey(lang) || !text) {
+            continue;
+        }
+        if (uniqueLang) {
+            if (seenLangs.has(lang)) {
+                continue;
+            }
+            seenLangs.add(lang);
+        }
+        cleaned.push({ text, lang });
+    }
+    return cleaned.length > 0 ? cleaned : undefined;
+}
+
+
+function labelArrayToMap(entries) {
+    const map = {};
+    for (const entry of sanitizeLabelArray(entries, { uniqueLang: true }) || []) {
+        map[entry.lang] = entry.label;
+    }
+    return map;
+}
+
+
+function mapToLabelArray(map) {
+    const entries = [];
+    if (!map || typeof map !== 'object') {
+        return entries;
+    }
+    for (const lang of Object.keys(map).filter(isLangKey).sort()) {
+        const label = typeof map[lang] === 'string' ? map[lang].trim() : '';
+        if (label) {
+            entries.push({ label, lang: lang.trim() });
         }
     }
+    return entries;
+}
+
+
+function altLabelArrayToMap(entries) {
+    const map = {};
+    for (const entry of sanitizeAltLabelArray(entries) || []) {
+        if (!Array.isArray(map[entry.lang])) {
+            map[entry.lang] = [];
+        }
+        if (!map[entry.lang].some((item) => item.label === entry.label && (item.AxiellId || '') === (entry.AxiellId || ''))) {
+            const stored = { label: entry.label };
+            if (entry.AxiellId) {
+                stored.AxiellId = entry.AxiellId;
+            }
+            map[entry.lang].push(stored);
+        }
+    }
+    return map;
+}
+
+
+function mapToAltLabelArray(map) {
+    const entries = [];
+    if (!map || typeof map !== 'object') {
+        return entries;
+    }
+    for (const lang of Object.keys(map).filter(isLangKey).sort()) {
+        const values = Array.isArray(map[lang]) ? map[lang] : [];
+        for (const value of values) {
+            const normalized = normalizeAltLabelEntry(
+                value && typeof value === 'object'
+                    ? { ...value, lang }
+                    : { label: value, lang }
+            );
+            if (normalized) {
+                entries.push(normalized);
+            }
+        }
+    }
+    return sanitizeAltLabelArray(entries) || [];
+}
+
+
+function textArrayToMap(entries) {
+    const map = {};
+    for (const entry of sanitizeTextArray(entries, { uniqueLang: true }) || []) {
+        map[entry.lang] = entry.text;
+    }
+    return map;
+}
+
+
+function mapToTextArray(map) {
+    const entries = [];
+    if (!map || typeof map !== 'object') {
+        return entries;
+    }
+    for (const lang of Object.keys(map).filter(isLangKey).sort()) {
+        const text = typeof map[lang] === 'string' ? map[lang].trim() : '';
+        if (text) {
+            entries.push({ text, lang: lang.trim() });
+        }
+    }
+    return entries;
 }
 
 
 function contentToLexicalMaps(content) {
     const maps = {};
 
-    const prefLabel = sanitizeLexicalProperty('prefLabel', content.prefLabel);
-    if (prefLabel) {
+    const prefLabel = labelArrayToMap(content.prefLabel);
+    if (Object.keys(prefLabel).length > 0) {
         maps.prefLabel = prefLabel;
     }
-    const altLabel = sanitizeLexicalProperty('altLabel', content.altLabel);
-    if (altLabel) {
+
+    const altLabel = altLabelArrayToMap(content.altLabel);
+    if (Object.keys(altLabel).length > 0) {
         maps.altLabel = altLabel;
     }
-    const definition = sanitizeLexicalProperty('definition', content.definition);
-    if (definition) {
+
+    const definition = textArrayToMap(content.definition);
+    if (Object.keys(definition).length > 0) {
         maps.definition = definition;
     }
-    const scopeNote = sanitizeLexicalProperty('scopeNote', content.scopeNote);
-    if (scopeNote) {
+
+    const scopeNote = textArrayToMap(content.scopeNote);
+    if (Object.keys(scopeNote).length > 0) {
         maps.scopeNote = scopeNote;
     }
 
@@ -716,74 +912,33 @@ function applyLexicalMapsToCanonicalContent(content, maps) {
         return;
     }
 
-    for (const property of TRACKED_PROPERTIES) {
-        const cleaned = sanitizeLexicalProperty(property, maps[property]);
-        if (cleaned) {
-            content[property] = cleaned;
-        } else {
-            delete content[property];
-        }
+    const prefLabel = mapToLabelArray(maps.prefLabel);
+    if (prefLabel.length > 0) {
+        content.prefLabel = prefLabel;
+    } else {
+        delete content.prefLabel;
     }
-}
 
+    const altLabel = mapToAltLabelArray(maps.altLabel);
+    if (altLabel.length > 0) {
+        content.altLabel = altLabel;
+    } else {
+        delete content.altLabel;
+    }
 
-function isLangKey(key) {
-    return typeof key === 'string' && key.trim().length > 0;
-}
+    const definition = mapToTextArray(maps.definition);
+    if (definition.length > 0) {
+        content.definition = definition;
+    } else {
+        delete content.definition;
+    }
 
-
-function langKeys(...blocks) {
-    const keys = new Set();
-    for (const block of blocks) {
-        if (!block || typeof block !== 'object') {
-            continue;
-        }
-        for (const key of Object.keys(block)) {
-            if (isLangKey(key)) {
-                keys.add(key);
-            }
-        }
+    const scopeNote = mapToTextArray(maps.scopeNote);
+    if (scopeNote.length > 0) {
+        content.scopeNote = scopeNote;
+    } else {
+        delete content.scopeNote;
     }
-    return keys;
-}
-
-
-function displayLabel(prefLabel) {
-    if (!prefLabel || typeof prefLabel !== 'object') {
-        return '';
-    }
-    const en = prefLabel[DEFAULT_DISPLAY_LANG];
-    if (typeof en === 'string' && en.trim().length > 0) {
-        return en.trim();
-    }
-    for (const language of Object.keys(prefLabel).filter(isLangKey).sort()) {
-        const value = prefLabel[language];
-        if (typeof value === 'string' && value.trim().length > 0) {
-            return value.trim();
-        }
-    }
-    return '';
-}
-
-
-function normalizeAltLabelEntry(value) {
-    if (typeof value === 'string') {
-        const label = value.trim();
-        return label.length > 0 ? { label } : undefined;
-    }
-    if (!value || typeof value !== 'object') {
-        return undefined;
-    }
-    const label = typeof value.label === 'string' ? value.label.trim() : '';
-    if (!label) {
-        return undefined;
-    }
-    const entry = { label };
-    const axiellId = typeof value.AxiellId === 'string' ? value.AxiellId.trim() : '';
-    if (axiellId) {
-        entry.AxiellId = axiellId;
-    }
-    return entry;
 }
 
 
@@ -805,7 +960,11 @@ function sanitizeLexicalProperty(property, block) {
             const labels = [];
             const seen = new Set();
             for (const value of values) {
-                const entry = normalizeAltLabelEntry(value);
+                const entry = normalizeAltLabelEntry(
+                    value && typeof value === 'object'
+                        ? { ...value, lang: language }
+                        : { label: value, lang: language }
+                );
                 if (!entry) {
                     continue;
                 }
@@ -814,7 +973,7 @@ function sanitizeLexicalProperty(property, block) {
                     continue;
                 }
                 seen.add(key);
-                labels.push(entry);
+                labels.push(entry.AxiellId ? { label: entry.label, AxiellId: entry.AxiellId } : { label: entry.label });
             }
             if (labels.length > 0) {
                 cleaned[language] = labels;
@@ -837,6 +996,80 @@ function sanitizeLexicalProperty(property, block) {
         }
     }
     return Object.keys(cleaned).length > 0 ? cleaned : undefined;
+}
+
+
+function normalizeAltLabelEntry(value) {
+    if (typeof value === 'string') {
+        const label = value.trim();
+        return label.length > 0 ? { label, lang: '' } : undefined;
+    }
+    if (!value || typeof value !== 'object') {
+        return undefined;
+    }
+    const label = typeof value.label === 'string' ? value.label.trim() : '';
+    const lang = typeof value.lang === 'string' ? value.lang.trim() : '';
+    if (!label || !isLangKey(lang)) {
+        return undefined;
+    }
+    const entry = { label, lang };
+    const axiellId = typeof value.AxiellId === 'string' ? value.AxiellId.trim() : '';
+    if (axiellId) {
+        entry.AxiellId = axiellId;
+    }
+    return entry;
+}
+
+
+function displayLabel(prefLabel) {
+    if (Array.isArray(prefLabel)) {
+        const en = prefLabel.find((entry) => entry && entry.lang === DEFAULT_DISPLAY_LANG && typeof entry.label === 'string');
+        if (en && en.label.trim()) {
+            return en.label.trim();
+        }
+        for (const entry of prefLabel) {
+            if (entry && typeof entry.label === 'string' && entry.label.trim()) {
+                return entry.label.trim();
+            }
+        }
+        return '';
+    }
+
+    if (!prefLabel || typeof prefLabel !== 'object') {
+        return '';
+    }
+    const en = prefLabel[DEFAULT_DISPLAY_LANG];
+    if (typeof en === 'string' && en.trim().length > 0) {
+        return en.trim();
+    }
+    for (const language of Object.keys(prefLabel).filter(isLangKey).sort()) {
+        const value = prefLabel[language];
+        if (typeof value === 'string' && value.trim().length > 0) {
+            return value.trim();
+        }
+    }
+    return '';
+}
+
+
+function isLangKey(key) {
+    return typeof key === 'string' && key.trim().length > 0;
+}
+
+
+function langKeys(...blocks) {
+    const keys = new Set();
+    for (const block of blocks) {
+        if (!block || typeof block !== 'object') {
+            continue;
+        }
+        for (const key of Object.keys(block)) {
+            if (isLangKey(key)) {
+                keys.add(key);
+            }
+        }
+    }
+    return keys;
 }
 
 

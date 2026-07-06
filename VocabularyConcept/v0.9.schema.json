@@ -58,13 +58,13 @@
         },
         "prefLabel": {
             "title": "Preferred label",
-            "description": "Preferred lexical label per language (skos:prefLabel). At most one label per language.",
-            "$ref": "#/$defs/skosLangString"
+            "description": "Preferred lexical labels (skos:prefLabel). At most one entry per language.",
+            "$ref": "#/$defs/skosLabelArray"
         },
         "altLabel": {
             "title": "Alternative label",
-            "description": "Alternative lexical labels per language (skos:altLabel).",
-            "$ref": "#/$defs/skosLangAltLabelArray"
+            "description": "Alternative lexical labels (skos:altLabel).",
+            "$ref": "#/$defs/skosAltLabelArray"
         },
         "termStatus": {
             "title": "Term status",
@@ -74,13 +74,13 @@
         },
         "definition": {
             "title": "Definition",
-            "description": "Formal definition per language (skos:definition).",
-            "$ref": "#/$defs/skosLangText"
+            "description": "Formal definitions (skos:definition). At most one entry per language.",
+            "$ref": "#/$defs/skosTextArray"
         },
         "scopeNote": {
             "title": "Scope note",
-            "description": "Scope or usage note per language (skos:scopeNote).",
-            "$ref": "#/$defs/skosLangText"
+            "description": "Scope or usage notes (skos:scopeNote). At most one entry per language.",
+            "$ref": "#/$defs/skosTextArray"
         },
         "broader": {
             "title": "Broader concepts",
@@ -172,36 +172,38 @@
             "uniqueItems": true,
             "items": { "$ref": "#/$defs/conceptRef" }
         },
-        "skosLangString": {
+        "skosLabelEntry": {
             "type": "object",
-            "minProperties": 1,
-            "additionalProperties": {
-                "type": "string",
-                "minLength": 1
-            }
-        },
-        "skosLangText": {
-            "type": "object",
-            "minProperties": 1,
-            "additionalProperties": {
-                "type": "string",
-                "format": "textarea"
-            }
-        },
-        "skosLangAltLabelArray": {
-            "type": "object",
-            "minProperties": 1,
-            "additionalProperties": {
-                "$ref": "#/$defs/skosAltLabelArray"
-            }
-        },
-        "skosAltLabelEntry": {
-            "type": "object",
-            "required": ["label"],
-            "additionalProperties": false,
+            "required": ["label", "lang"],
             "properties": {
                 "label": {
                     "title": "Label",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "skosLabelArray": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/skosLabelEntry" }
+        },
+        "skosAltLabelEntry": {
+            "type": "object",
+            "required": ["label", "lang"],
+            "properties": {
+                "label": {
+                    "title": "Label",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lang": {
+                    "title": "Language",
                     "type": "string",
                     "minLength": 1
                 }
@@ -209,8 +211,27 @@
         },
         "skosAltLabelArray": {
             "type": "array",
-            "minItems": 1,
             "items": { "$ref": "#/$defs/skosAltLabelEntry" }
+        },
+        "skosTextEntry": {
+            "type": "object",
+            "required": ["text", "lang"],
+            "properties": {
+                "text": {
+                    "title": "Text",
+                    "type": "string",
+                    "format": "textarea"
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "skosTextArray": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/skosTextEntry" }
         },
         "skosMatch": {
             "type": "object",

@@ -35,13 +35,13 @@
         },
         "prefLabel": {
             "title": "Preferred label",
-            "description": "Preferred labels in different languages (skos:prefLabel). At most one label per language.",
-            "$ref": "#/$defs/skosLangString"
+            "description": "Preferred labels (skos:prefLabel). At most one entry per language.",
+            "$ref": "#/$defs/skosLabelArray"
         },
         "definition": {
             "title": "Definition",
-            "description": "Definitions of the vocabulary in different languages (skos:definition).",
-            "$ref": "#/$defs/skosLangText"
+            "description": "Definitions of the vocabulary (skos:definition). At most one entry per language.",
+            "$ref": "#/$defs/skosTextArray"
         },
         "homepage": {
             "title": "Homepage",
@@ -99,21 +99,46 @@
         }
     },
     "$defs": {
-        "skosLangString": {
+        "skosLabelEntry": {
             "type": "object",
-            "minProperties": 1,
-            "additionalProperties": {
-                "type": "string",
-                "minLength": 1
+            "required": ["label", "lang"],
+            "properties": {
+                "label": {
+                    "title": "Label",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                }
             }
         },
-        "skosLangText": {
+        "skosLabelArray": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/skosLabelEntry" }
+        },
+        "skosTextEntry": {
             "type": "object",
-            "minProperties": 1,
-            "additionalProperties": {
-                "type": "string",
-                "format": "textarea"
+            "required": ["text", "lang"],
+            "properties": {
+                "text": {
+                    "title": "Text",
+                    "type": "string",
+                    "format": "textarea"
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                }
             }
+        },
+        "skosTextArray": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/skosTextEntry" }
         }
     }
 }

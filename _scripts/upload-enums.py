@@ -30,12 +30,17 @@ from dotenv import load_dotenv
 
 from lib import libcordra2
 from lib.skos_lang import (
+    alt_label_array_to_map,
     build_concept_lexical_content,
-    concept_lexical_maps_equal,
-    display_label,
+    concept_lexical_equal,
+    display_label_from_pref_label,
+    label_array_to_map,
+    map_to_label_array,
+    map_to_text_array,
     parse_skos_alt_label,
     parse_skos_lang_text,
     parse_skos_pref_label,
+    text_array_to_map,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -54,22 +59,22 @@ RESET = "\033[0m"
 @dataclass
 class MergedConcept:
     tail: str
-    pref_label: Dict[str, str]
-    alt_label: Dict[str, List[dict]] = field(default_factory=dict)
-    definition: Dict[str, str] = field(default_factory=dict)
-    scope_note: Dict[str, str] = field(default_factory=dict)
+    pref_label: List[dict]
+    alt_label: List[dict] = field(default_factory=list)
+    definition: List[dict] = field(default_factory=list)
+    scope_note: List[dict] = field(default_factory=list)
     query_terms: set[str] = field(default_factory=set)
     source_ids: List[str] = field(default_factory=list)
 
-    def lexical_maps(self) -> Dict[str, object]:
-        maps: Dict[str, object] = {"prefLabel": self.pref_label}
+    def lexical_content(self) -> dict:
+        content: Dict[str, object] = {"prefLabel": self.pref_label}
         if self.alt_label:
-            maps["altLabel"] = self.alt_label
+            content["altLabel"] = self.alt_label
         if self.definition:
-            maps["definition"] = self.definition
+            content["definition"] = self.definition
         if self.scope_note:
-            maps["scopeNote"] = self.scope_note
-        return maps
+            content["scopeNote"] = self.scope_note
+        return content
 
 
 @dataclass
@@ -167,8 +172,8 @@ def parse_concepts(data: dict) -> List[dict]:
     return concepts
 
 
-def lexical_maps_equal(a: Dict[str, object], b: Dict[str, object]) -> bool:
-    return concept_lexical_maps_equal(a, b)
+def lexical_content_equal(a: dict, b: dict) -> bool:
+    return concept_lexical_equal(a, b)
 
 
 def plan_concepts(skos_dir: Path) -> PlanResult:
@@ -191,28 +196,23 @@ def plan_concepts(skos_dir: Path) -> PlanResult:
                 skipped += 1
                 continue
 
-            pref_label = parse_skos_pref_label(concept.get("skos:prefLabel"))
+            pref_label = map_to_label_array(parse_skos_pref_label(concept.get("skos:prefLabel")))
             if not pref_label:
                 print(f"{YELLOW}Skipping concept without skos:prefLabel in {path.name}{RESET}", flush=True)
                 skipped += 1
                 continue
 
             alt_label = parse_skos_alt_label(concept.get("skos:altLabel"))
-            definition = parse_skos_lang_text(concept.get("skos:definition"))
-            scope_note = parse_skos_lang_text(concept.get("skos:scopeNote"))
+            definition = map_to_text_array(parse_skos_lang_text(concept.get("skos:definition")))
+            scope_note = map_to_text_array(parse_skos_lang_text(concept.get("skos:scopeNote")))
 
             tail = concept_tail(concept_id)
             source_records += 1
-            incoming_maps = build_concept_lexical_content(
-                pref_label=pref_label,
-                alt_label={
-                    lang: [entry["label"] for entry in entries]
-                    for lang, entries in alt_label.items()
-                }
-                if alt_label
-                else None,
-                definition=definition or None,
-                scope_note=scope_note or None,
+            incoming_content = build_concept_lexical_content(
+                pref_label=label_array_to_map(pref_label),
+                alt_label=alt_label_array_to_map(alt_label) or None,
+                definition=text_array_to_map(definition) or None,
+                scope_note=text_array_to_map(scope_note) or None,
             )
 
             if tail not in merged:
@@ -230,8 +230,8 @@ def plan_concepts(skos_dir: Path) -> PlanResult:
             record = merged[tail]
             record.query_terms.add(query_term)
             record.source_ids.append(concept_id)
-            if not lexical_maps_equal(record.lexical_maps(), incoming_maps):
-                display = display_label(pref_label) or tail
+            if not lexical_content_equal(record.lexical_content(), incoming_content):
+                display = display_label_from_pref_label(pref_label) or tail
                 label_conflicts.append(
                     f"{tail} ({display}): label mismatch in {path.name} vs earlier occurrence"
                 )
@@ -259,20 +259,14 @@ def build_content(
         "notation": concept_notation(tail),
         "uri": concept_uri(tail),
         "queryTerms": query_terms,
+        "prefLabel": record.pref_label,
     }
-    content.update(
-        build_concept_lexical_content(
-            pref_label=record.pref_label,
-            alt_label={
-                lang: [entry["label"] for entry in entries]
-                for lang, entries in record.alt_label.items()
-            }
-            if record.alt_label
-            else None,
-            definition=record.definition or None,
-            scope_note=record.scope_note or None,
-        )
-    )
+    if record.alt_label:
+        content["altLabel"] = record.alt_label
+    if record.definition:
+        content["definition"] = record.definition
+    if record.scope_note:
+        content["scopeNote"] = record.scope_note
     return content
 
 
