@@ -102,7 +102,7 @@ async function beforeSchemaValidationWithId(object, context) {
                     }
                 }
 
-                normalizeLexicalContent(content);
+                sanitizeLexicalMaps(content);
                 const existingMaps = contentToLexicalMaps(content);
                 const incomingMaps = contentToLexicalMaps(incomingContent);
                 if (incomingMaps.altLabel && typeof incomingMaps.altLabel === 'object') {
@@ -149,7 +149,7 @@ async function beforeSchemaValidationWithId(object, context) {
                         delete existingMaps.altLabel;
                     }
                 }
-                applyLexicalMapsToContent(content, existingMaps);
+                applyLexicalMapsToCanonicalContent(content, existingMaps);
 
                 content.harvestedDate = typeof incomingContent.harvestedDate === 'string' && incomingContent.harvestedDate.trim()
                     ? incomingContent.harvestedDate.trim()
@@ -199,8 +199,8 @@ async function beforeSchemaValidationWithId(object, context) {
                 }
 
                 const protectedPaths = resetHarvestProtection ? new Set() : protectedPathsFromExisting(existingObject);
-                normalizeLexicalContent(existingContent);
-                normalizeLexicalContent(incomingContent);
+                sanitizeLexicalMaps(existingContent);
+                sanitizeLexicalMaps(incomingContent);
                 const existingMaps = contentToLexicalMaps(existingContent);
                 const incomingMaps = contentToLexicalMaps(incomingContent);
                 for (const path of protectedPaths) {
@@ -220,7 +220,7 @@ async function beforeSchemaValidationWithId(object, context) {
                         ? JSON.parse(JSON.stringify(value))
                         : value;
                 }
-                applyLexicalMapsToContent(incomingContent, incomingMaps);
+                applyLexicalMapsToCanonicalContent(incomingContent, incomingMaps);
 
                 delete incomingContent[UM_HARVEST_UPDATE];
                 delete incomingContent[UM_HARVEST_ENRICHMENT_UPDATE];
@@ -657,38 +657,32 @@ function sanitizeTrackedLexical(content) {
         return;
     }
 
-    normalizeLexicalContent(content);
-    sanitizeTerms(content);
-    sanitizeDescriptions(content);
-    removeLegacyLexicalMaps(content);
+    sanitizeLexicalMaps(content);
+    stripLegacyLexicalArrays(content);
 
     delete content.harvestBaseline;
     delete content.localContributions;
 }
 
 
-function removeLegacyLexicalMaps(content) {
-    delete content.prefLabel;
-    delete content.altLabel;
-    delete content.definition;
-    delete content.scopeNote;
+function stripLegacyLexicalArrays(content) {
+    delete content.terms;
+    delete content.descriptions;
 }
 
 
-function normalizeLexicalContent(content) {
+function sanitizeLexicalMaps(content) {
     if (!content || typeof content !== 'object') {
         return;
     }
 
-    const hasTerms = Array.isArray(content.terms) && content.terms.length > 0;
-    const hasDescriptions = Array.isArray(content.descriptions) && content.descriptions.length > 0;
-    const hasLegacyMaps = ['prefLabel', 'altLabel', 'definition', 'scopeNote'].some(
-        (field) => content[field] && typeof content[field] === 'object'
-    );
-
-    if (!hasTerms || !hasDescriptions || hasLegacyMaps) {
-        const maps = contentToLexicalMaps(content);
-        applyLexicalMapsToContent(content, maps);
+    for (const property of TRACKED_PROPERTIES) {
+        const cleaned = sanitizeLexicalProperty(property, content[property]);
+        if (cleaned) {
+            content[property] = cleaned;
+        } else {
+            delete content[property];
+        }
     }
 }
 
@@ -696,222 +690,39 @@ function normalizeLexicalContent(content) {
 function contentToLexicalMaps(content) {
     const maps = {};
 
-    if (Array.isArray(content.terms)) {
-        const { prefLabel, altLabel } = termsToLexicalMaps(content.terms);
-        if (Object.keys(prefLabel).length > 0) {
-            maps.prefLabel = prefLabel;
-        }
-        if (Object.keys(altLabel).length > 0) {
-            maps.altLabel = {};
-            for (const [lang, labels] of Object.entries(altLabel)) {
-                maps.altLabel[lang] = labels.map((label) => ({ label }));
-            }
-        }
-    } else {
-        const prefLabel = sanitizeLexicalProperty('prefLabel', content.prefLabel);
-        if (prefLabel) {
-            maps.prefLabel = prefLabel;
-        }
-        const altLabel = sanitizeLexicalProperty('altLabel', content.altLabel);
-        if (altLabel) {
-            maps.altLabel = altLabel;
-        }
+    const prefLabel = sanitizeLexicalProperty('prefLabel', content.prefLabel);
+    if (prefLabel) {
+        maps.prefLabel = prefLabel;
     }
-
-    if (Array.isArray(content.descriptions)) {
-        const { definition, scopeNote } = descriptionsToMaps(content.descriptions);
-        if (Object.keys(definition).length > 0) {
-            maps.definition = definition;
-        }
-        if (Object.keys(scopeNote).length > 0) {
-            maps.scopeNote = scopeNote;
-        }
-    } else {
-        const definition = sanitizeLexicalProperty('definition', content.definition);
-        if (definition) {
-            maps.definition = definition;
-        }
-        const scopeNote = sanitizeLexicalProperty('scopeNote', content.scopeNote);
-        if (scopeNote) {
-            maps.scopeNote = scopeNote;
-        }
+    const altLabel = sanitizeLexicalProperty('altLabel', content.altLabel);
+    if (altLabel) {
+        maps.altLabel = altLabel;
+    }
+    const definition = sanitizeLexicalProperty('definition', content.definition);
+    if (definition) {
+        maps.definition = definition;
+    }
+    const scopeNote = sanitizeLexicalProperty('scopeNote', content.scopeNote);
+    if (scopeNote) {
+        maps.scopeNote = scopeNote;
     }
 
     return maps;
 }
 
 
-function applyLexicalMapsToContent(content, maps) {
-    const prefLabel = maps.prefLabel || {};
-    const altLabel = {};
-    if (maps.altLabel && typeof maps.altLabel === 'object') {
-        for (const [lang, entries] of Object.entries(maps.altLabel)) {
-            if (!Array.isArray(entries)) {
-                continue;
-            }
-            altLabel[lang] = entries
-                .map((entry) => normalizeAltLabelEntry(entry))
-                .filter(Boolean)
-                .map((entry) => entry.label);
-        }
-    }
-    const definition = maps.definition || {};
-    const scopeNote = maps.scopeNote || {};
-
-    const terms = lexicalMapsToTerms(prefLabel, altLabel);
-    if (terms.length > 0) {
-        content.terms = terms;
-    } else {
-        delete content.terms;
+function applyLexicalMapsToCanonicalContent(content, maps) {
+    if (!content || typeof content !== 'object') {
+        return;
     }
 
-    const descriptions = mapsToDescriptions(definition, scopeNote);
-    if (descriptions.length > 0) {
-        content.descriptions = descriptions;
-    } else {
-        delete content.descriptions;
-    }
-}
-
-
-function termsToLexicalMaps(terms) {
-    const prefLabel = {};
-    const altLabel = {};
-
-    if (!Array.isArray(terms)) {
-        return { prefLabel, altLabel };
-    }
-
-    for (const term of terms) {
-        if (!term || typeof term !== 'object') {
-            continue;
-        }
-        const lang = typeof term.lang === 'string' ? term.lang.trim() : '';
-        const label = typeof term.label === 'string' ? term.label.trim() : '';
-        if (!isLangKey(lang) || !label) {
-            continue;
-        }
-        if (term.isAlternative === true) {
-            if (!Array.isArray(altLabel[lang])) {
-                altLabel[lang] = [];
-            }
-            if (!altLabel[lang].includes(label)) {
-                altLabel[lang].push(label);
-            }
-        } else if (!(lang in prefLabel)) {
-            prefLabel[lang] = label;
-        }
-    }
-
-    return { prefLabel, altLabel };
-}
-
-
-function lexicalMapsToTerms(prefLabel, altLabel) {
-    const terms = [];
-
-    for (const lang of Object.keys(prefLabel || {}).filter(isLangKey).sort()) {
-        const label = typeof prefLabel[lang] === 'string' ? prefLabel[lang].trim() : '';
-        if (label) {
-            terms.push({ label, lang: lang.trim(), isAlternative: false });
-        }
-    }
-
-    for (const lang of Object.keys(altLabel || {}).filter(isLangKey).sort()) {
-        const values = Array.isArray(altLabel[lang]) ? altLabel[lang] : [];
-        const seen = new Set();
-        for (const value of values) {
-            const label = typeof value === 'string' ? value.trim() : '';
-            if (!label || seen.has(label)) {
-                continue;
-            }
-            seen.add(label);
-            terms.push({ label, lang: lang.trim(), isAlternative: true });
-        }
-    }
-
-    return terms;
-}
-
-
-function descriptionsToMaps(descriptions) {
-    const definition = {};
-    const scopeNote = {};
-
-    if (!Array.isArray(descriptions)) {
-        return { definition, scopeNote };
-    }
-
-    for (const item of descriptions) {
-        if (!item || typeof item !== 'object') {
-            continue;
-        }
-        const lang = typeof item.lang === 'string' ? item.lang.trim() : '';
-        const text = typeof item.description === 'string' ? item.description.trim() : '';
-        if (!isLangKey(lang) || !text) {
-            continue;
-        }
-        const kind = typeof item.kind === 'string' ? item.kind.trim() : 'definition';
-        if (kind === 'scopeNote') {
-            scopeNote[lang] = text;
+    for (const property of TRACKED_PROPERTIES) {
+        const cleaned = sanitizeLexicalProperty(property, maps[property]);
+        if (cleaned) {
+            content[property] = cleaned;
         } else {
-            definition[lang] = text;
+            delete content[property];
         }
-    }
-
-    return { definition, scopeNote };
-}
-
-
-function mapsToDescriptions(definition, scopeNote) {
-    const descriptions = [];
-
-    for (const lang of Object.keys(definition || {}).filter(isLangKey).sort()) {
-        const text = typeof definition[lang] === 'string' ? definition[lang].trim() : '';
-        if (text) {
-            descriptions.push({ description: text, lang: lang.trim(), kind: 'definition' });
-        }
-    }
-
-    for (const lang of Object.keys(scopeNote || {}).filter(isLangKey).sort()) {
-        const text = typeof scopeNote[lang] === 'string' ? scopeNote[lang].trim() : '';
-        if (text) {
-            descriptions.push({ description: text, lang: lang.trim(), kind: 'scopeNote' });
-        }
-    }
-
-    return descriptions;
-}
-
-
-function sanitizeTerms(content) {
-    if (!Array.isArray(content.terms)) {
-        delete content.terms;
-        return;
-    }
-
-    const { prefLabel, altLabel } = termsToLexicalMaps(content.terms);
-    const cleaned = lexicalMapsToTerms(prefLabel, altLabel);
-    if (cleaned.length > 0) {
-        content.terms = cleaned;
-    } else {
-        delete content.terms;
-    }
-}
-
-
-function sanitizeDescriptions(content) {
-    if (!Array.isArray(content.descriptions)) {
-        delete content.descriptions;
-        return;
-    }
-
-    const { definition, scopeNote } = descriptionsToMaps(content.descriptions);
-    const cleaned = mapsToDescriptions(definition, scopeNote);
-    if (cleaned.length > 0) {
-        content.descriptions = cleaned;
-    } else {
-        delete content.descriptions;
     }
 }
 
@@ -934,12 +745,6 @@ function langKeys(...blocks) {
         }
     }
     return keys;
-}
-
-
-function displayLabelFromTerms(terms) {
-    const { prefLabel } = termsToLexicalMaps(terms);
-    return displayLabel(prefLabel);
 }
 
 
@@ -1036,7 +841,7 @@ function sanitizeLexicalProperty(property, block) {
 
 
 function ensureMainTitle(content) {
-    let title = displayLabelFromTerms(content.terms);
+    let title = displayLabel(content.prefLabel);
 
     const notation = (content.notation || content.label || '').trim();
     if (notation) {

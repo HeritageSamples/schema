@@ -43,11 +43,10 @@ from dotenv import load_dotenv
 
 from lib import libcordra2
 from lib.skos_lang import (
+    build_concept_lexical_content,
     content_to_lexical_maps,
     is_lang_key,
-    lexical_maps_to_terms,
     main_title_from_content,
-    maps_to_descriptions,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -59,7 +58,7 @@ DEFAULT_BATCH_SIZE = 250
 # -------------------------
 OBJECT_TYPE = "VocabularyConcept"
 HDL_SHOULDER = "voc"
-VOCABULARY_HDL_SHOULDER = "vocab"
+VOCABULARY_HDL_SHOULDER = "voc"
 DEFAULT_VOCABULARY_NOTATION = "aat"
 PUBLIC_WRITER_GROUP = "auth.powerusers"
 
@@ -675,9 +674,9 @@ def _extract_labels(concept: dict, aat_id: str, warnings: dict) -> Tuple[Dict[st
         fallback = _label_from_concept(concept)
         if fallback:
             pref_label = {"en": fallback}
-            _warn(warnings, "terms_fallback_to_label", aat_id, fallback)
+            _warn(warnings, "prefLabel_fallback_to_label", aat_id, fallback)
         else:
-            _warn(warnings, "missing_terms", aat_id, "No prefLabel in any language and no _label fallback")
+            _warn(warnings, "missing_prefLabel", aat_id, "No prefLabel in any language and no _label fallback")
 
     return pref_label, alt_label
 
@@ -955,13 +954,9 @@ def format_aat_concept(
 
         pref_label, alt_label = _extract_labels(concept, aat_id, warning_state)
         if not pref_label:
-            raise ValueError("Missing required terms")
+            raise ValueError("Missing required prefLabel")
 
         exact_uri = _stripped(concept.get("id") or concept.get("@id")) or _concept_uri(aat_base_url, aat_id)
-
-        terms = lexical_maps_to_terms(pref_label, alt_label)
-        if not terms:
-            raise ValueError("Missing required terms")
 
         content = {
             "id": obj_id,
@@ -969,7 +964,6 @@ def format_aat_concept(
             "vocabulary": vocabulary_id,
             "notation": notation,
             "uri": exact_uri,
-            "terms": terms,
             "harvestedSource": "AAT",
             "harvestedDate": HARVESTED_DATE,
             "queryTerms": [QUERY_TERM],
@@ -977,9 +971,14 @@ def format_aat_concept(
         }
 
         definition, scope_note = _extract_subject_of_lexical(concept, aat_id, warning_state)
-        descriptions = maps_to_descriptions(definition, scope_note)
-        if descriptions:
-            content["descriptions"] = descriptions
+        content.update(
+            build_concept_lexical_content(
+                pref_label=pref_label,
+                alt_label=alt_label or None,
+                definition=definition or None,
+                scope_note=scope_note or None,
+            )
+        )
 
         close_match = _extract_close_matches(concept, aat_id, aat_base_url=aat_base_url)
         if close_match:

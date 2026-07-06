@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """
-Upload one SKOS JSON-LD controlled list to Cordra as VocabularyConcept objects.
+Import SKOS JSON-LD controlled lists into Cordra as VocabularyConcept objects.
+
+Scans all *.jsonld files in a directory, merges concepts that share the same
+@id tail across lists, and uploads the result in one batchUpload call.
 
 Uses an existing Vocabulary object (default: {hdl_prefix}/voc.hsr).
 Override with --vocabulary when concepts belong to another scheme.
 
 Usage:
   cd _scripts
-  python upload-enums.py ../skos/Sample-titleType.jsonld titleType titleType
-  python upload-enums.py ../skos/Sample-titleType.jsonld titleType titleType --dry-run
-  python upload-enums.py ../skos/Sample-titleType.jsonld titleType titleType -v HSR/voc.aat
+  python upload-enums.py --dry-run
+  python upload-enums.py --dry-run --output /tmp/vocabulary-concepts.json
+  python upload-enums.py ../skos
+  python upload-enums.py -v HSR/voc.hsr
 """
 
 from __future__ import annotations
@@ -17,25 +21,64 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import re
 import sys
-import time
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
 
 from lib import libcordra2
-from lib.skos_lang import display_label_from_terms, lexical_maps_to_terms, parse_skos_pref_label
+from lib.skos_lang import (
+    build_concept_lexical_content,
+    concept_lexical_maps_equal,
+    display_label,
+    parse_skos_alt_label,
+    parse_skos_lang_text,
+    parse_skos_pref_label,
+)
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_SKOS_DIR = SCRIPT_DIR.parent / "_controlled_lists"
 CONCEPT_TYPE = "VocabularyConcept"
 SCHEMA_CONCEPT = "https://heritagesamples.org/schema/VocabularyConcept/v0.9"
 DEFAULT_VOCABULARY_NOTATION = "hsr"
+CONCEPT_URI_BASE = f"https://heritagesamples.org/vocab/{DEFAULT_VOCABULARY_NOTATION}"
 
 GREEN = "\033[32m"
+YELLOW = "\033[33m"
 RED = "\033[31m"
 RESET = "\033[0m"
+
+
+@dataclass
+class MergedConcept:
+    tail: str
+    pref_label: Dict[str, str]
+    alt_label: Dict[str, List[dict]] = field(default_factory=dict)
+    definition: Dict[str, str] = field(default_factory=dict)
+    scope_note: Dict[str, str] = field(default_factory=dict)
+    query_terms: set[str] = field(default_factory=set)
+    source_ids: List[str] = field(default_factory=list)
+
+    def lexical_maps(self) -> Dict[str, object]:
+        maps: Dict[str, object] = {"prefLabel": self.pref_label}
+        if self.alt_label:
+            maps["altLabel"] = self.alt_label
+        if self.definition:
+            maps["definition"] = self.definition
+        if self.scope_note:
+            maps["scopeNote"] = self.scope_note
+        return maps
+
+
+@dataclass
+class PlanResult:
+    files_scanned: int
+    source_records: int
+    skipped: int
+    merged: Dict[str, MergedConcept]
+    label_conflicts: List[str]
 
 
 def load_config(*, require_cordra: bool = True) -> Dict[str, str]:
@@ -89,18 +132,24 @@ def resolve_vocabulary_id(config: Dict[str, str], cli_handle: Optional[str]) -> 
     return default_vocabulary_handle(config.get("hdl_prefix", ""))
 
 
-def concept_notation(query_term: str, concept_id: Optional[str], pref_label: str) -> str:
-    if concept_id:
-        tail = concept_id.rstrip("/").split("/")[-1]
-        slug = re.sub(r"[^a-z0-9]+", "", tail.lower()) or "term"
-        return f"{query_term.lower()}:{slug}"
-    slug = re.sub(r"[^a-z0-9]+", "", pref_label.lower()) or "term"
-    return f"{query_term.lower()}:{slug}"
+def concept_tail(concept_id: str) -> str:
+    tail = concept_id.rstrip("/").split("/")[-1]
+    if not tail:
+        raise ValueError(f"Cannot derive tail from concept @id: {concept_id!r}")
+    return tail
 
 
-def concept_handle(hdl_prefix: str, notation: str) -> str:
+def concept_notation(tail: str) -> str:
+    return f"{DEFAULT_VOCABULARY_NOTATION}:{tail}"
+
+
+def concept_uri(tail: str) -> str:
+    return f"{CONCEPT_URI_BASE}/{tail}"
+
+
+def concept_handle(hdl_prefix: str, tail: str) -> str:
     prefix = hdl_prefix.rstrip("/")
-    return f"{prefix}/voc.{notation.replace(':', '.')}"
+    return f"{prefix}/voc.{DEFAULT_VOCABULARY_NOTATION}.{tail}"
 
 
 def load_jsonld(path: Path) -> dict:
@@ -111,81 +160,173 @@ def load_jsonld(path: Path) -> dict:
     return data
 
 
-def parse_concepts(data: dict) -> tuple[Optional[str], List[dict]]:
-    scheme_id = data.get("@id")
+def parse_concepts(data: dict) -> List[dict]:
     concepts = data.get("skos:hasTopConcept") or []
     if not isinstance(concepts, list):
         raise ValueError("skos:hasTopConcept must be a list")
-    return scheme_id, concepts
+    return concepts
 
 
-def pref_label_display(terms: List[dict]) -> str:
-    return display_label_from_terms(terms) or "term"
+def lexical_maps_equal(a: Dict[str, object], b: Dict[str, object]) -> bool:
+    return concept_lexical_maps_equal(a, b)
 
 
-def build_top_content(
-    handle: str,
+def plan_concepts(skos_dir: Path) -> PlanResult:
+    if not skos_dir.is_dir():
+        raise FileNotFoundError(f"SKOS directory not found: {skos_dir}")
+
+    jsonld_files = sorted(skos_dir.glob("*.jsonld"))
+    merged: Dict[str, MergedConcept] = {}
+    label_conflicts: List[str] = []
+    source_records = 0
+    skipped = 0
+
+    for path in jsonld_files:
+        query_term = path.stem
+        data = load_jsonld(path)
+        for concept in parse_concepts(data):
+            concept_id = concept.get("@id")
+            if not concept_id or not isinstance(concept_id, str):
+                print(f"{YELLOW}Skipping concept without @id in {path.name}{RESET}", flush=True)
+                skipped += 1
+                continue
+
+            pref_label = parse_skos_pref_label(concept.get("skos:prefLabel"))
+            if not pref_label:
+                print(f"{YELLOW}Skipping concept without skos:prefLabel in {path.name}{RESET}", flush=True)
+                skipped += 1
+                continue
+
+            alt_label = parse_skos_alt_label(concept.get("skos:altLabel"))
+            definition = parse_skos_lang_text(concept.get("skos:definition"))
+            scope_note = parse_skos_lang_text(concept.get("skos:scopeNote"))
+
+            tail = concept_tail(concept_id)
+            source_records += 1
+            incoming_maps = build_concept_lexical_content(
+                pref_label=pref_label,
+                alt_label={
+                    lang: [entry["label"] for entry in entries]
+                    for lang, entries in alt_label.items()
+                }
+                if alt_label
+                else None,
+                definition=definition or None,
+                scope_note=scope_note or None,
+            )
+
+            if tail not in merged:
+                merged[tail] = MergedConcept(
+                    tail=tail,
+                    pref_label=pref_label,
+                    alt_label=alt_label,
+                    definition=definition,
+                    scope_note=scope_note,
+                    query_terms={query_term},
+                    source_ids=[concept_id],
+                )
+                continue
+
+            record = merged[tail]
+            record.query_terms.add(query_term)
+            record.source_ids.append(concept_id)
+            if not lexical_maps_equal(record.lexical_maps(), incoming_maps):
+                display = display_label(pref_label) or tail
+                label_conflicts.append(
+                    f"{tail} ({display}): label mismatch in {path.name} vs earlier occurrence"
+                )
+
+    return PlanResult(
+        files_scanned=len(jsonld_files),
+        source_records=source_records,
+        skipped=skipped,
+        merged=merged,
+        label_conflicts=label_conflicts,
+    )
+
+
+def build_content(
+    tail: str,
     vocabulary_id: str,
-    terms: List[dict],
-    query_term: str,
-    scheme_id: Optional[str],
+    record: MergedConcept,
+    query_terms: List[str],
+    handle: str,
 ) -> dict:
-    notation = f"{query_term.lower()}:top"
-    content: dict = {
+    content = {
         "id": handle,
         "$schema": SCHEMA_CONCEPT,
         "vocabulary": vocabulary_id,
-        "notation": notation,
-        "terms": terms,
-        "broader": [],
-        "queryTerms": [query_term, "TOP_LEVEL"],
+        "notation": concept_notation(tail),
+        "uri": concept_uri(tail),
+        "queryTerms": query_terms,
     }
-    if scheme_id:
-        content["uri"] = f"{scheme_id.rstrip('/')}/top"
-        content["exactMatch"] = [{"uri": scheme_id, "scheme": "HS"}]
+    content.update(
+        build_concept_lexical_content(
+            pref_label=record.pref_label,
+            alt_label={
+                lang: [entry["label"] for entry in entries]
+                for lang, entries in record.alt_label.items()
+            }
+            if record.alt_label
+            else None,
+            definition=record.definition or None,
+            scope_note=record.scope_note or None,
+        )
+    )
     return content
 
 
-def build_term_content(
-    handle: str,
+def build_digital_objects(
+    plan: PlanResult,
     vocabulary_id: str,
-    terms: List[dict],
-    query_term: str,
-    notation: str,
-    top_handle: str,
-    concept_id: Optional[str],
-) -> dict:
-    content: dict = {
-        "id": handle,
-        "$schema": SCHEMA_CONCEPT,
-        "vocabulary": vocabulary_id,
-        "notation": notation,
-        "terms": terms,
-        "broader": [top_handle],
-        "queryTerms": [query_term],
-    }
-    if concept_id:
-        content["uri"] = concept_id
-        content["exactMatch"] = [{"uri": concept_id, "scheme": "HS"}]
-    return content
+    hdl_prefix: str,
+) -> List[dict]:
+    objects: List[dict] = []
+    for tail in sorted(plan.merged):
+        record = plan.merged[tail]
+        handle = concept_handle(hdl_prefix, tail)
+        content = build_content(
+            tail,
+            vocabulary_id,
+            record,
+            sorted(record.query_terms),
+            handle,
+        )
+        objects.append({"id": handle, "type": CONCEPT_TYPE, "content": content})
+    return objects
 
 
-def upload_object(cordra: libcordra2.Cordra, content: dict) -> bool:
-    digital_object = {
-        "id": content["id"],
-        "type": CONCEPT_TYPE,
-        "content": content,
-    }
-    try:
-        result = cordra.batch_upload_detailed([digital_object]).stats
-    except Exception as exc:
-        print(f"{RED}Cordra upload failed: {exc}{RESET}", flush=True)
-        return False
+def print_plan_summary(plan: PlanResult, vocabulary_id: str, digital_objects: List[dict]) -> None:
+    multi_query = [
+        (tail, sorted(record.query_terms))
+        for tail, record in sorted(plan.merged.items())
+        if len(record.query_terms) > 1
+    ]
 
-    if result.get("failed", 0) > 0:
-        print(f"{RED}Cordra rejected upload for {content['id']}{RESET}", flush=True)
-        return False
-    return True
+    print(f"Files scanned: {plan.files_scanned}", flush=True)
+    print(f"Source concept records: {plan.source_records}", flush=True)
+    print(f"Skipped: {plan.skipped}", flush=True)
+    print(f"Unique merged concepts: {len(plan.merged)}", flush=True)
+    print(f"Vocabulary: {vocabulary_id}", flush=True)
+    print(f"Upload count: {len(digital_objects)}", flush=True)
+
+    if multi_query:
+        print(f"\nConcepts with multiple queryTerms ({len(multi_query)}):", flush=True)
+        for tail, query_terms in multi_query:
+            print(f"  {tail}: {', '.join(query_terms)}", flush=True)
+
+    if plan.label_conflicts:
+        print(f"\n{YELLOW}Label conflicts ({len(plan.label_conflicts)}):{RESET}", flush=True)
+        for message in plan.label_conflicts:
+            print(f"  {message}", flush=True)
+
+
+def write_output(path: Path, digital_objects: List[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(digital_objects, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"Wrote {len(digital_objects)} object(s) to {path}", flush=True)
 
 
 def ensure_vocabulary_exists(cordra: libcordra2.Cordra, vocabulary_id: str) -> None:
@@ -198,119 +339,76 @@ def ensure_vocabulary_exists(cordra: libcordra2.Cordra, vocabulary_id: str) -> N
         sys.exit(1)
 
 
+def upload_batch(cordra: libcordra2.Cordra, digital_objects: List[dict]) -> dict:
+    if not digital_objects:
+        print("Nothing to upload.", flush=True)
+        return {"upserted": 0, "conflicts": 0, "failed": 0, "skipped_invalid": 0}
+
+    print(f"Uploading {len(digital_objects)} object(s)...", flush=True)
+    try:
+        result = cordra.batch_upload_detailed(digital_objects).stats
+    except Exception as exc:
+        print(f"{RED}Cordra batch upload failed: {exc}{RESET}", flush=True)
+        sys.exit(1)
+
+    print(
+        f"Batch result: upserted={result.get('upserted', 0)} "
+        f"conflicts={result.get('conflicts', 0)} "
+        f"failed={result.get('failed', 0)} "
+        f"skipped_invalid={result.get('skipped_invalid', 0)}",
+        flush=True,
+    )
+    return result
+
+
 def ingest(
-    jsonld_path: Path,
-    top_level_term: str,
-    query_term: str,
+    skos_dir: Path,
     vocabulary_id: str,
     config: Dict[str, str],
     cordra: Optional[libcordra2.Cordra],
     *,
     dry_run: bool,
-    cordra_sleep: float,
+    output_path: Optional[Path],
 ) -> int:
-    data = load_jsonld(jsonld_path)
-    scheme_id, concepts = parse_concepts(data)
+    plan = plan_concepts(skos_dir)
+    digital_objects = build_digital_objects(plan, vocabulary_id, config["hdl_prefix"])
 
-    top_pref_label = parse_skos_pref_label(top_level_term)
-    top_terms = lexical_maps_to_terms(top_pref_label)
-    if not top_terms:
-        print(f"{RED}Top-level term is empty{RESET}", flush=True)
-        sys.exit(1)
+    print_plan_summary(plan, vocabulary_id, digital_objects)
 
-    top_handle = concept_handle(config["hdl_prefix"], f"{query_term.lower()}:top")
-    top_content = build_top_content(
-        top_handle,
-        vocabulary_id,
-        top_terms,
-        query_term,
-        scheme_id,
-    )
+    if output_path is not None:
+        write_output(output_path, digital_objects)
 
-    top_display = pref_label_display(top_terms)
-    print(f"File: {jsonld_path}", flush=True)
-    print(f"Query term: {query_term}", flush=True)
-    print(f"Vocabulary (existing): {vocabulary_id}", flush=True)
-    print(f"Top-level concept: {top_handle} ({top_display})", flush=True)
-
-    planned: List[tuple[str, str, dict]] = []
-    for concept in concepts:
-        pref_label = parse_skos_pref_label(concept.get("skos:prefLabel"))
-        terms = lexical_maps_to_terms(pref_label)
-        if not terms:
-            print(f"{RED}Skipping concept without skos:prefLabel{RESET}", flush=True)
-            continue
-        concept_id = concept.get("@id")
-        display = pref_label_display(terms)
-        notation = concept_notation(query_term, concept_id, display)
-        handle = concept_handle(config["hdl_prefix"], notation)
-        term_content = build_term_content(
-            handle,
-            vocabulary_id,
-            terms,
-            query_term,
-            notation,
-            top_handle,
-            concept_id,
-        )
-        planned.append((handle, display, term_content))
-
-    for handle, display, _content in planned:
-        print(f"  term: {handle} ({display})", flush=True)
-
-    total = len(planned) + 1
     if dry_run:
-        print(f"Dry run: would upload 1 top + {len(planned)} terms", flush=True)
-        return total
+        print(f"\nDry run: would upload {len(digital_objects)} concept(s)", flush=True)
+        return len(digital_objects)
 
     if cordra is None:
         print(f"{RED}Cordra client not available{RESET}", flush=True)
         sys.exit(1)
 
     ensure_vocabulary_exists(cordra, vocabulary_id)
+    stats = upload_batch(cordra, digital_objects)
 
-    uploaded = 0
-    if upload_object(cordra, top_content):
-        print(f"{GREEN}uploaded top: {top_handle}{RESET}", flush=True)
-        uploaded += 1
-    else:
-        print(f"{RED}failed top: {top_handle}{RESET}", flush=True)
+    if stats.get("failed", 0) > 0:
         sys.exit(1)
-    if cordra_sleep > 0:
-        time.sleep(cordra_sleep)
 
-    for handle, display, term_content in planned:
-        if upload_object(cordra, term_content):
-            print(f"{GREEN}uploaded: {handle} ({display}){RESET}", flush=True)
-            uploaded += 1
-        else:
-            print(f"{RED}failed: {handle} ({display}){RESET}", flush=True)
-        if cordra_sleep > 0:
-            time.sleep(cordra_sleep)
-
-    print(
-        f"\nSummary: query_term={query_term} vocabulary={vocabulary_id} "
-        f"top={top_handle} terms={len(planned)} uploaded={uploaded}",
-        flush=True,
-    )
+    uploaded = stats.get("upserted", 0) + stats.get("conflicts", 0)
+    print(f"\n{GREEN}Uploaded {uploaded} concept(s){RESET}", flush=True)
     return uploaded
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Upload one SKOS JSON-LD controlled list to Cordra as VocabularyConcept objects."
+        description=(
+            "Import SKOS JSON-LD controlled lists from a directory into Cordra "
+            "as VocabularyConcept objects."
+        )
     )
     parser.add_argument(
-        "jsonld_file",
-        help="Path to the SKOS JSON-LD file to ingest",
-    )
-    parser.add_argument(
-        "top_level_term",
-        help="prefLabel for the scheme root concept",
-    )
-    parser.add_argument(
-        "query_term",
-        help="queryTerms value for all uploaded concepts",
+        "skos_dir",
+        nargs="?",
+        default=str(DEFAULT_SKOS_DIR),
+        help=f"Directory containing SKOS JSON-LD files (default: {DEFAULT_SKOS_DIR})",
     )
     parser.add_argument(
         "-v",
@@ -325,23 +423,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Parse and print planned handles; no Cordra writes",
+        help="Parse and print planned objects; no Cordra writes",
     )
     parser.add_argument(
-        "--cordra-sleep",
-        type=float,
-        default=0.2,
-        help="Seconds to sleep between Cordra requests (default: 0.2)",
+        "--output",
+        metavar="FILE",
+        default=None,
+        help="Write generated digital objects to JSON file",
     )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    jsonld_path = Path(args.jsonld_file).resolve()
-    if not jsonld_path.is_file():
-        print(f"File not found: {jsonld_path}", flush=True)
-        sys.exit(1)
+    skos_dir = Path(args.skos_dir).resolve()
+    output_path = Path(args.output).resolve() if args.output else None
 
     config = load_config(require_cordra=not args.dry_run)
     try:
@@ -357,16 +453,19 @@ def main() -> None:
     if not args.dry_run:
         cordra = libcordra2.Cordra.from_config(config, protocol="rest")
 
-    ingest(
-        jsonld_path,
-        args.top_level_term.strip(),
-        args.query_term.strip(),
-        vocabulary_id,
-        config,
-        cordra,
-        dry_run=args.dry_run,
-        cordra_sleep=args.cordra_sleep,
-    )
+    try:
+        ingest(
+            skos_dir,
+            vocabulary_id,
+            config,
+            cordra,
+            dry_run=args.dry_run,
+            output_path=output_path,
+        )
+    except FileNotFoundError as exc:
+        print(f"{RED}{exc}{RESET}", flush=True)
+        sys.exit(1)
+
     print("\nAll done!\n", flush=True)
 
 
