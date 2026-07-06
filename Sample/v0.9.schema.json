@@ -107,7 +107,15 @@
                         "$comment": "https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/title/#a-titletype"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -174,7 +182,15 @@
                         "$comment": "The custom descriptionType values used here map to standard DataCite types as follows: 'Sample description' and 'Sample site description' should both be treated as 'Abstract'; 'Sampling method' maps to 'Methods'; and 'Reason for sampling' maps to 'Other'. Note that a 'Sample site description' can be added in the 'sample_source' custom block, so it should not be added in this 'descriptions' array. These mappings should be applied when exporting to systems that expect standard DataCite descriptionType values."
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -355,7 +371,15 @@
                         "type": "string"
                     },
                     "alternateIdentifierType": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/persistent_identifier"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -420,7 +444,15 @@
                         "type": "string"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 },
                 "required": ["subject"]
@@ -507,7 +539,15 @@
                         "format": "uri"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             },

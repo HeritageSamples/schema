@@ -1,0 +1,108 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Organisation/organisationType",
+  "skos:prefLabel": "Organisation type",
+  "dc:source": "Derived from E-RIHS example_lists.schema.json: organisation_type",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/archive",
+      "skos:prefLabel": "archive",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/charitable-organisation",
+      "skos:prefLabel": "charitable organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/consortium",
+      "skos:prefLabel": "consortium",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/educational-institution",
+      "skos:prefLabel": "educational institution",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/for-profit-organisation",
+      "skos:prefLabel": "for-profit organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/gallery",
+      "skos:prefLabel": "gallery",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/governmental-organisation",
+      "skos:prefLabel": "governmental organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/heritage-organisation",
+      "skos:prefLabel": "heritage organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/library",
+      "skos:prefLabel": "library",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/museum",
+      "skos:prefLabel": "museum",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/non-governmental-organisation-ngo",
+      "skos:prefLabel": "non-governmental organisation (ngo)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/non-profit-organisation",
+      "skos:prefLabel": "non-profit organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/private-body",
+      "skos:prefLabel": "private body",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/public-body",
+      "skos:prefLabel": "public body",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/research-organisation",
+      "skos:prefLabel": "research organisation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Organisation/organisationType/university",
+      "skos:prefLabel": "university",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Organisation/organisationType"
+    }
+  ]
+}

@@ -11,10 +11,23 @@ const TITLE_TYPE_DEFAULT_HANDLE = 'HSR/voc.hsr.title';
 const TITLE_TYPE_DEFAULT_TAIL = 'title';
 
 const VOCABULARY_CONCEPT_RULES = [
+    {
+        path: 'principalIdentifier.identifierType',
+        queryTerm: 'Common-persistentIdentifier',
+        label: 'Principal identifier type',
+    },
     { path: 'types.resourceType', queryTerm: 'HeritageObject-resourceType', label: 'Resource type' },
     { path: 'titles[].titleType', queryTerm: 'HeritageObject-titleType', label: 'Title type' },
+    { path: 'titles[].lang', queryTerm: 'Common-language', label: 'Title language' },
     { path: 'descriptions[].descriptionType', queryTerm: 'HeritageObject-descriptionType', label: 'Description type' },
+    { path: 'descriptions[].lang', queryTerm: 'Common-language', label: 'Description language' },
     { path: 'objectType', queryTerm: 'HeritageObject-objectType', label: 'Object type' },
+    {
+        path: 'alternateIdentifiers[].alternateIdentifierType',
+        queryTerm: 'Common-persistentIdentifier',
+        label: 'Alternate identifier type',
+    },
+    { path: 'subjects[].lang', queryTerm: 'Common-language', label: 'Subject language' },
     {
         path: 'fundingReferences[].funderIdentifierType',
         queryTerm: 'HeritageObject-funderIdentifierType',
@@ -35,6 +48,7 @@ const VOCABULARY_CONCEPT_RULES = [
         queryTerm: 'HeritageObject-resourceTypeGeneral',
         label: 'Resource type general',
     },
+    { path: 'rightsList[].lang', queryTerm: 'Common-language', label: 'Rights language' },
 ];
 
 

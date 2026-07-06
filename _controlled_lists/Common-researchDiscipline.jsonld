@@ -1,0 +1,3516 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline",
+  "skos:prefLabel": "Research discipline",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: research_discipline",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/acoustics",
+      "skos:prefLabel": "acoustics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/adult-education",
+      "skos:prefLabel": "adult education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/advertising",
+      "skos:prefLabel": "advertising",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/advertising-functions",
+      "skos:prefLabel": "advertising functions",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aerobiology",
+      "skos:prefLabel": "aerobiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aerodynamics",
+      "skos:prefLabel": "aerodynamics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aeronautical-engineering",
+      "skos:prefLabel": "aeronautical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aeronautics",
+      "skos:prefLabel": "aeronautics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aerospace-engineering",
+      "skos:prefLabel": "aerospace engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aesthetics",
+      "skos:prefLabel": "aesthetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/african-studies",
+      "skos:prefLabel": "african studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/agriculture-discipline",
+      "skos:prefLabel": "agriculture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/agronomy",
+      "skos:prefLabel": "agronomy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/alchemy",
+      "skos:prefLabel": "alchemy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/algebra",
+      "skos:prefLabel": "algebra",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/analytical-bibliography",
+      "skos:prefLabel": "analytical bibliography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anatomy",
+      "skos:prefLabel": "anatomy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/animal-husbandry-discipline",
+      "skos:prefLabel": "animal husbandry (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthracology",
+      "skos:prefLabel": "anthracology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthropological-linguistics",
+      "skos:prefLabel": "anthropological linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthropology",
+      "skos:prefLabel": "anthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthropology-of-religion",
+      "skos:prefLabel": "anthropology of religion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthropometry",
+      "skos:prefLabel": "anthropometry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/anthroposophy",
+      "skos:prefLabel": "anthroposophy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/applied-linguistics",
+      "skos:prefLabel": "applied linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/applied-mathematics",
+      "skos:prefLabel": "applied mathematics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/applied-physics",
+      "skos:prefLabel": "applied physics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/arboriculture",
+      "skos:prefLabel": "arboriculture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeobotany",
+      "skos:prefLabel": "archaeobotany",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeological-conservation",
+      "skos:prefLabel": "archaeological conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeology",
+      "skos:prefLabel": "archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeometallurgy",
+      "skos:prefLabel": "archaeometallurgy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeometry",
+      "skos:prefLabel": "archaeometry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/archaeozoology",
+      "skos:prefLabel": "archaeozoology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectonics",
+      "skos:prefLabel": "architectonics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectural-conservation",
+      "skos:prefLabel": "architectural conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectural-criticism",
+      "skos:prefLabel": "architectural criticism",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectural-education",
+      "skos:prefLabel": "architectural education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectural-history",
+      "skos:prefLabel": "architectural history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architectural-photography",
+      "skos:prefLabel": "architectural photography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/architecture-discipline",
+      "skos:prefLabel": "architecture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/arithmetic",
+      "skos:prefLabel": "arithmetic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-discipline",
+      "skos:prefLabel": "art (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-appreciation",
+      "skos:prefLabel": "art appreciation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-criticism",
+      "skos:prefLabel": "art criticism",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-education",
+      "skos:prefLabel": "art education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-history",
+      "skos:prefLabel": "art history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/art-therapy",
+      "skos:prefLabel": "art therapy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/artificial-intelligence",
+      "skos:prefLabel": "artificial intelligence",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/artificial-intelligence-2",
+      "skos:prefLabel": "artificial intelligence",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/arts-broad-discipline",
+      "skos:prefLabel": "arts (broad discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/arts-related-disciplines",
+      "skos:prefLabel": "arts-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/assyriology",
+      "skos:prefLabel": "assyriology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/astrology",
+      "skos:prefLabel": "astrology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/astronomy",
+      "skos:prefLabel": "astronomy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/astrophysics",
+      "skos:prefLabel": "astrophysics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/autoethnography",
+      "skos:prefLabel": "autoethnography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/automotive-design",
+      "skos:prefLabel": "automotive design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/aviation",
+      "skos:prefLabel": "aviation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/axiology",
+      "skos:prefLabel": "axiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ayurveda",
+      "skos:prefLabel": "ayurveda",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ballet-discipline",
+      "skos:prefLabel": "ballet (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ballistics",
+      "skos:prefLabel": "ballistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/beautification",
+      "skos:prefLabel": "beautification",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/behavioral-sciences",
+      "skos:prefLabel": "behavioral sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biblical-studies",
+      "skos:prefLabel": "biblical studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/bibliotherapy",
+      "skos:prefLabel": "bibliotherapy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/big-data-analytics",
+      "skos:prefLabel": "big data analytics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biochemistry",
+      "skos:prefLabel": "biochemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/bioengineering",
+      "skos:prefLabel": "bioengineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biological-sciences",
+      "skos:prefLabel": "biological sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biology",
+      "skos:prefLabel": "biology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biomedical-engineering",
+      "skos:prefLabel": "biomedical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biometrics",
+      "skos:prefLabel": "biometrics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/biomimetics",
+      "skos:prefLabel": "biomimetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/body-arts-discipline",
+      "skos:prefLabel": "body arts (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/book-history",
+      "skos:prefLabel": "book history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/botany",
+      "skos:prefLabel": "botany",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/broadcast-advertising",
+      "skos:prefLabel": "broadcast advertising",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/broadcasting",
+      "skos:prefLabel": "broadcasting",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/buildings-archaeology",
+      "skos:prefLabel": "buildings archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/calculus",
+      "skos:prefLabel": "calculus",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/capacity-building",
+      "skos:prefLabel": "capacity building",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cartography-discipline",
+      "skos:prefLabel": "cartography (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ceramic-engineering",
+      "skos:prefLabel": "ceramic engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/chemical-engineering",
+      "skos:prefLabel": "chemical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/chemistry",
+      "skos:prefLabel": "chemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/chemometrics",
+      "skos:prefLabel": "chemometrics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/chiropractic",
+      "skos:prefLabel": "chiropractic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/choreography",
+      "skos:prefLabel": "choreography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/chronology-discipline",
+      "skos:prefLabel": "chronology (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/church-history",
+      "skos:prefLabel": "church history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/civic-improvement",
+      "skos:prefLabel": "civic improvement",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/civil-engineering",
+      "skos:prefLabel": "civil engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/classical-archaeology",
+      "skos:prefLabel": "classical archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/classics-discipline",
+      "skos:prefLabel": "classics (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/climatology",
+      "skos:prefLabel": "climatology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cluster-analysis",
+      "skos:prefLabel": "cluster analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/codicology",
+      "skos:prefLabel": "codicology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/commercial-strips",
+      "skos:prefLabel": "commercial strips",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/communications-discipline",
+      "skos:prefLabel": "communications (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/community-development",
+      "skos:prefLabel": "community development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/comparative-literature",
+      "skos:prefLabel": "comparative literature",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/comparative-politics",
+      "skos:prefLabel": "comparative politics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/comparative-religion",
+      "skos:prefLabel": "comparative religion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/compliance-archeology",
+      "skos:prefLabel": "compliance archeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computational-chemistry",
+      "skos:prefLabel": "computational chemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computational-fluid-dynamics",
+      "skos:prefLabel": "computational fluid dynamics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computational-linguistics",
+      "skos:prefLabel": "computational linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computer-science",
+      "skos:prefLabel": "computer science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computer-vision",
+      "skos:prefLabel": "computer vision",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/computer-aided-engineering",
+      "skos:prefLabel": "computer-aided engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/conflict-archaeology",
+      "skos:prefLabel": "conflict archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/conservation-discipline",
+      "skos:prefLabel": "conservation (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/conservation-science-cultural-heritage-discipline",
+      "skos:prefLabel": "conservation science (cultural heritage discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/construction-discipline",
+      "skos:prefLabel": "construction (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/continuing-education",
+      "skos:prefLabel": "continuing education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cooking",
+      "skos:prefLabel": "cooking",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cosmography",
+      "skos:prefLabel": "cosmography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cosmology",
+      "skos:prefLabel": "cosmology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/costume-design",
+      "skos:prefLabel": "costume design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/criminal-law",
+      "skos:prefLabel": "criminal law",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/criminology",
+      "skos:prefLabel": "criminology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cross-and-interdisciplinary-fields",
+      "skos:prefLabel": "cross- and interdisciplinary fields",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cryptography",
+      "skos:prefLabel": "cryptography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cryptology",
+      "skos:prefLabel": "cryptology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/crystallography",
+      "skos:prefLabel": "crystallography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/culinary-art",
+      "skos:prefLabel": "culinary art",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cultural-disciplines",
+      "skos:prefLabel": "cultural disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/cybernetics",
+      "skos:prefLabel": "cybernetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dactylography",
+      "skos:prefLabel": "dactylography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dance-discipline",
+      "skos:prefLabel": "dance (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-analysis",
+      "skos:prefLabel": "data analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-cleaning",
+      "skos:prefLabel": "data cleaning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-integration",
+      "skos:prefLabel": "data integration",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-mining",
+      "skos:prefLabel": "data mining",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-presentation",
+      "skos:prefLabel": "data presentation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-processing",
+      "skos:prefLabel": "data processing",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-reduction",
+      "skos:prefLabel": "data reduction",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-transformation",
+      "skos:prefLabel": "data transformation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/data-visualization",
+      "skos:prefLabel": "data visualization",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/decorative-arts-discipline",
+      "skos:prefLabel": "decorative arts (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/demography",
+      "skos:prefLabel": "demography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dentistry",
+      "skos:prefLabel": "dentistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/design-discipline",
+      "skos:prefLabel": "design (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/design-review",
+      "skos:prefLabel": "design review",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/developer-funded-archaeology",
+      "skos:prefLabel": "developer-funded archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/development-function",
+      "skos:prefLabel": "development (function)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/digital-mapping",
+      "skos:prefLabel": "digital mapping",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/disability-studies",
+      "skos:prefLabel": "disability studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/discipline-based-art-education",
+      "skos:prefLabel": "discipline-based art education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/discriminant-analysis",
+      "skos:prefLabel": "discriminant analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/divination",
+      "skos:prefLabel": "divination",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dowsing",
+      "skos:prefLabel": "dowsing",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/drama-discipline",
+      "skos:prefLabel": "drama (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dramaturgy",
+      "skos:prefLabel": "dramaturgy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/drapers",
+      "skos:prefLabel": "drapers",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/dynamics-discipline",
+      "skos:prefLabel": "dynamics (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/early-childhood-education",
+      "skos:prefLabel": "early childhood education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/earth-sciences",
+      "skos:prefLabel": "earth sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ecclesiology",
+      "skos:prefLabel": "ecclesiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ecology",
+      "skos:prefLabel": "ecology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/economic-development",
+      "skos:prefLabel": "economic development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/economics",
+      "skos:prefLabel": "economics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/education",
+      "skos:prefLabel": "education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/egyptology",
+      "skos:prefLabel": "egyptology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ekistics",
+      "skos:prefLabel": "ekistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/electrical-engineering",
+      "skos:prefLabel": "electrical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/electrochemistry",
+      "skos:prefLabel": "electrochemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/electronic-engineering",
+      "skos:prefLabel": "electronic engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/electronics-physics",
+      "skos:prefLabel": "electronics (physics)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/elementary-education",
+      "skos:prefLabel": "elementary education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/engineering",
+      "skos:prefLabel": "engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/entomology",
+      "skos:prefLabel": "entomology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-archaeology",
+      "skos:prefLabel": "environmental archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-design",
+      "skos:prefLabel": "environmental design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-engineering",
+      "skos:prefLabel": "environmental engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-law",
+      "skos:prefLabel": "environmental law",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-psychology",
+      "skos:prefLabel": "environmental psychology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/environmental-sciences",
+      "skos:prefLabel": "environmental sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/epidemiology",
+      "skos:prefLabel": "epidemiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/epigraphy",
+      "skos:prefLabel": "epigraphy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/epistemology",
+      "skos:prefLabel": "epistemology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ergonomics",
+      "skos:prefLabel": "ergonomics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/eschatology",
+      "skos:prefLabel": "eschatology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethics-philosophy",
+      "skos:prefLabel": "ethics (philosophy)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnic-studies",
+      "skos:prefLabel": "ethnic studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnoarchaeology",
+      "skos:prefLabel": "ethnoarchaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnobotany",
+      "skos:prefLabel": "ethnobotany",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnographic-conservation",
+      "skos:prefLabel": "ethnographic conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnography",
+      "skos:prefLabel": "ethnography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnohistory",
+      "skos:prefLabel": "ethnohistory",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnology",
+      "skos:prefLabel": "ethnology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnomusicology",
+      "skos:prefLabel": "ethnomusicology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ethnopsychology",
+      "skos:prefLabel": "ethnopsychology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/etymology",
+      "skos:prefLabel": "etymology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/experimental-archaeology",
+      "skos:prefLabel": "experimental archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/experimental-geography",
+      "skos:prefLabel": "experimental geography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/factor-analysis",
+      "skos:prefLabel": "factor analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/faculties-branches-of-knowledge",
+      "skos:prefLabel": "faculties (branches of knowledge)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fashion-design",
+      "skos:prefLabel": "fashion design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fiber-optics",
+      "skos:prefLabel": "fiber optics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/field-archaeology",
+      "skos:prefLabel": "field archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/film-discipline",
+      "skos:prefLabel": "film (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/finance",
+      "skos:prefLabel": "finance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fine-arts-discipline",
+      "skos:prefLabel": "fine arts (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/firefighting-discipline",
+      "skos:prefLabel": "firefighting (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/floriculture",
+      "skos:prefLabel": "floriculture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fluid-mechanics",
+      "skos:prefLabel": "fluid mechanics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/folklore-discipline",
+      "skos:prefLabel": "folklore (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/forbidden-arts",
+      "skos:prefLabel": "forbidden arts",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/forensic-medicine",
+      "skos:prefLabel": "forensic medicine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/forensic-science",
+      "skos:prefLabel": "forensic science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/forest-management",
+      "skos:prefLabel": "forest management",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/forestry",
+      "skos:prefLabel": "forestry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fracture-mechanics",
+      "skos:prefLabel": "fracture mechanics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/furniture-design",
+      "skos:prefLabel": "furniture design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/fuzzy-logic",
+      "skos:prefLabel": "fuzzy logic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/garden-archaeology",
+      "skos:prefLabel": "garden archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/garden-design",
+      "skos:prefLabel": "garden design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/gardening",
+      "skos:prefLabel": "gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/gemology",
+      "skos:prefLabel": "gemology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/genealogy-discipline",
+      "skos:prefLabel": "genealogy (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/genetics",
+      "skos:prefLabel": "genetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/gentrification",
+      "skos:prefLabel": "gentrification",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geoarchaeology",
+      "skos:prefLabel": "geoarchaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geobiology",
+      "skos:prefLabel": "geobiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geochemistry",
+      "skos:prefLabel": "geochemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geodesy",
+      "skos:prefLabel": "geodesy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geography",
+      "skos:prefLabel": "geography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geological-dynamics",
+      "skos:prefLabel": "geological dynamics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geology",
+      "skos:prefLabel": "geology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geomancy",
+      "skos:prefLabel": "geomancy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geometry",
+      "skos:prefLabel": "geometry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geomorphology",
+      "skos:prefLabel": "geomorphology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geophysics",
+      "skos:prefLabel": "geophysics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geopolitics",
+      "skos:prefLabel": "geopolitics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geospatial-data-analysis",
+      "skos:prefLabel": "geospatial data analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/geotechnical-engineering",
+      "skos:prefLabel": "geotechnical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/gerontology",
+      "skos:prefLabel": "gerontology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/golf-course-architecture",
+      "skos:prefLabel": "golf course architecture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/grammar-discipline",
+      "skos:prefLabel": "grammar (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/graphemics",
+      "skos:prefLabel": "graphemics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/graphic-design",
+      "skos:prefLabel": "graphic design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/greenhouse-gardening",
+      "skos:prefLabel": "greenhouse gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/health-sciences",
+      "skos:prefLabel": "health sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/health-sciences-related-disciplines",
+      "skos:prefLabel": "health sciences-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/heliotherapy",
+      "skos:prefLabel": "heliotherapy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/heraldry",
+      "skos:prefLabel": "heraldry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/heritage-science-cultural-heritage-discipline",
+      "skos:prefLabel": "heritage science (cultural heritage discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/herpetology",
+      "skos:prefLabel": "herpetology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/higher-education",
+      "skos:prefLabel": "higher education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/histology",
+      "skos:prefLabel": "histology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/historical-archaeology",
+      "skos:prefLabel": "historical archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/historical-linguistics",
+      "skos:prefLabel": "historical linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/historical-sociology",
+      "skos:prefLabel": "historical sociology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/historiography",
+      "skos:prefLabel": "historiography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-discipline",
+      "skos:prefLabel": "history (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-of-conservation",
+      "skos:prefLabel": "history of conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-of-medicine",
+      "skos:prefLabel": "history of medicine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-of-science",
+      "skos:prefLabel": "history of science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-of-technology",
+      "skos:prefLabel": "history of technology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/history-related-disciplines",
+      "skos:prefLabel": "history-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/home-economics",
+      "skos:prefLabel": "home economics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/horticultural-therapy",
+      "skos:prefLabel": "horticultural therapy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/horticulture",
+      "skos:prefLabel": "horticulture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/human-ecology",
+      "skos:prefLabel": "human ecology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/human-engineering",
+      "skos:prefLabel": "human engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/human-geography",
+      "skos:prefLabel": "human geography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/humanities",
+      "skos:prefLabel": "humanities",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hydraulic-engineering",
+      "skos:prefLabel": "hydraulic engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hydraulics",
+      "skos:prefLabel": "hydraulics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hydrogeology",
+      "skos:prefLabel": "hydrogeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hydrography",
+      "skos:prefLabel": "hydrography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hydrology",
+      "skos:prefLabel": "hydrology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/hypsography",
+      "skos:prefLabel": "hypsography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ichnology",
+      "skos:prefLabel": "ichnology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ichthyology",
+      "skos:prefLabel": "ichthyology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/indoor-gardening",
+      "skos:prefLabel": "indoor gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-archaeology",
+      "skos:prefLabel": "industrial archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-arts-field-of-study",
+      "skos:prefLabel": "industrial arts (field of study)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-design",
+      "skos:prefLabel": "industrial design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-engineering",
+      "skos:prefLabel": "industrial engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-history",
+      "skos:prefLabel": "industrial history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrial-relations",
+      "skos:prefLabel": "industrial relations",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/industrialization",
+      "skos:prefLabel": "industrialization",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/infill-housing",
+      "skos:prefLabel": "infill (housing)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/information-science",
+      "skos:prefLabel": "information science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/inorganic-chemistry",
+      "skos:prefLabel": "inorganic chemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/intellectual-history",
+      "skos:prefLabel": "intellectual history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interior-architecture-discipline",
+      "skos:prefLabel": "interior architecture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interior-decoration",
+      "skos:prefLabel": "interior decoration",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interior-decorators",
+      "skos:prefLabel": "interior decorators",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interior-design",
+      "skos:prefLabel": "interior design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interior-designers",
+      "skos:prefLabel": "interior designers",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/international-law",
+      "skos:prefLabel": "international law",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/international-relations",
+      "skos:prefLabel": "international relations",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/interpretive-divination",
+      "skos:prefLabel": "interpretive divination",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/invertebrate-paleontology",
+      "skos:prefLabel": "invertebrate paleontology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/jewelry-design",
+      "skos:prefLabel": "jewelry design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/journalism",
+      "skos:prefLabel": "journalism",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/kinematics",
+      "skos:prefLabel": "kinematics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/land-management",
+      "skos:prefLabel": "land management",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/land-settlement",
+      "skos:prefLabel": "land settlement",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/land-subdivision",
+      "skos:prefLabel": "land subdivision",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/land-use",
+      "skos:prefLabel": "land use",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/landscape-archaeology",
+      "skos:prefLabel": "landscape archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/landscape-architecture-discipline",
+      "skos:prefLabel": "landscape architecture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/landscape-gardening",
+      "skos:prefLabel": "landscape gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/languages-study-discipline",
+      "skos:prefLabel": "languages (study discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/law-discipline",
+      "skos:prefLabel": "law (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/liberal-arts-cross-disciplinary-studies",
+      "skos:prefLabel": "liberal arts (cross-disciplinary studies)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/liberal-arts-medieval-studies",
+      "skos:prefLabel": "liberal arts (medieval studies)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/library-science",
+      "skos:prefLabel": "library science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/linguistics",
+      "skos:prefLabel": "linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/linguistics-related-disciplines",
+      "skos:prefLabel": "linguistics-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/linkage",
+      "skos:prefLabel": "linkage",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/literary-criticism",
+      "skos:prefLabel": "literary criticism",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/literary-history",
+      "skos:prefLabel": "literary history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/literary-studies",
+      "skos:prefLabel": "literary studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/lithology",
+      "skos:prefLabel": "lithology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/local-history-discipline",
+      "skos:prefLabel": "local history (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/logic",
+      "skos:prefLabel": "logic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/machine-learning",
+      "skos:prefLabel": "machine learning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/magic-occult-science",
+      "skos:prefLabel": "magic (occult science)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/marine-biology",
+      "skos:prefLabel": "marine biology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/marine-engineering",
+      "skos:prefLabel": "marine engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/maritime-history",
+      "skos:prefLabel": "maritime history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/material-culture-discipline",
+      "skos:prefLabel": "material culture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/materials-science",
+      "skos:prefLabel": "materials science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mathematical-physics",
+      "skos:prefLabel": "mathematical physics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mathematics",
+      "skos:prefLabel": "mathematics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mechanical-arts-medieval-discipline",
+      "skos:prefLabel": "mechanical arts (medieval discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mechanical-engineering",
+      "skos:prefLabel": "mechanical engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mechanics-physics",
+      "skos:prefLabel": "mechanics (physics)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/medicine-discipline",
+      "skos:prefLabel": "medicine (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/medieval-disciplines",
+      "skos:prefLabel": "medieval disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/medieval-studies",
+      "skos:prefLabel": "medieval studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/megaric-school-of-philosophy",
+      "skos:prefLabel": "megaric (school of philosophy)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/metalinguistics",
+      "skos:prefLabel": "metalinguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/metallography",
+      "skos:prefLabel": "metallography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/metallurgy",
+      "skos:prefLabel": "metallurgy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/metaphysics",
+      "skos:prefLabel": "metaphysics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/meteorology",
+      "skos:prefLabel": "meteorology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/metrology",
+      "skos:prefLabel": "metrology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/microbiology",
+      "skos:prefLabel": "microbiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/microchemistry",
+      "skos:prefLabel": "microchemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/microelectronics",
+      "skos:prefLabel": "microelectronics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/microfinance",
+      "skos:prefLabel": "microfinance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/micropaleontology",
+      "skos:prefLabel": "micropaleontology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/military-engineering",
+      "skos:prefLabel": "military engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/military-history",
+      "skos:prefLabel": "military history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/mineralogy",
+      "skos:prefLabel": "mineralogy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/molecular-biology",
+      "skos:prefLabel": "molecular biology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/morphology-linguistics",
+      "skos:prefLabel": "morphology (linguistics)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/multidimensional-scaling",
+      "skos:prefLabel": "multidimensional scaling",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/multivariate-analysis",
+      "skos:prefLabel": "multivariate analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/municipal-finance",
+      "skos:prefLabel": "municipal finance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/museography",
+      "skos:prefLabel": "museography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/museology",
+      "skos:prefLabel": "museology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/museum-administration",
+      "skos:prefLabel": "museum administration",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/music-discipline",
+      "skos:prefLabel": "music (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/music-theory",
+      "skos:prefLabel": "music theory",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/musicology",
+      "skos:prefLabel": "musicology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/nanotechnology",
+      "skos:prefLabel": "nanotechnology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/natural-history",
+      "skos:prefLabel": "natural history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/natural-language-processing",
+      "skos:prefLabel": "natural language processing",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/natural-sciences",
+      "skos:prefLabel": "natural sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/naval-architecture",
+      "skos:prefLabel": "naval architecture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/navigation",
+      "skos:prefLabel": "navigation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/nuclear-physics",
+      "skos:prefLabel": "nuclear physics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/numismatics",
+      "skos:prefLabel": "numismatics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/nursing-health-science",
+      "skos:prefLabel": "nursing (health science)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/occult-sciences",
+      "skos:prefLabel": "occult sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/occultism",
+      "skos:prefLabel": "occultism",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/occupational-therapy",
+      "skos:prefLabel": "occupational therapy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/oceanography",
+      "skos:prefLabel": "oceanography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/oenology",
+      "skos:prefLabel": "oenology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ontology-metaphysics",
+      "skos:prefLabel": "ontology (metaphysics)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/optics",
+      "skos:prefLabel": "optics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/oral-history-discipline",
+      "skos:prefLabel": "oral history (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/organic-chemistry",
+      "skos:prefLabel": "organic chemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/organic-gardening",
+      "skos:prefLabel": "organic gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/organology",
+      "skos:prefLabel": "organology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ornamental-horticulture",
+      "skos:prefLabel": "ornamental horticulture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ornithology",
+      "skos:prefLabel": "ornithology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/osteology",
+      "skos:prefLabel": "osteology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/outdoor-advertising",
+      "skos:prefLabel": "outdoor advertising",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleoanthropology",
+      "skos:prefLabel": "paleoanthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleobotany",
+      "skos:prefLabel": "paleobotany",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleoecology",
+      "skos:prefLabel": "paleoecology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleogeography",
+      "skos:prefLabel": "paleogeography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleography",
+      "skos:prefLabel": "paleography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleontology",
+      "skos:prefLabel": "paleontology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paleopathology",
+      "skos:prefLabel": "paleopathology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/palynology",
+      "skos:prefLabel": "palynology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paper-engineering",
+      "skos:prefLabel": "paper engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/paper-history",
+      "skos:prefLabel": "paper history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/papyrology",
+      "skos:prefLabel": "papyrology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/participatory-design",
+      "skos:prefLabel": "participatory design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/particle-physics",
+      "skos:prefLabel": "particle physics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pathology",
+      "skos:prefLabel": "pathology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/performing-arts-discipline",
+      "skos:prefLabel": "performing arts (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/periodization",
+      "skos:prefLabel": "periodization",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/permaculture",
+      "skos:prefLabel": "permaculture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/petrography",
+      "skos:prefLabel": "petrography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/petrology",
+      "skos:prefLabel": "petrology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pharmacology",
+      "skos:prefLabel": "pharmacology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pharmacy-discipline",
+      "skos:prefLabel": "pharmacy (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/phenomenology",
+      "skos:prefLabel": "phenomenology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philately",
+      "skos:prefLabel": "philately",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philology",
+      "skos:prefLabel": "philology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philosophical-anthropology",
+      "skos:prefLabel": "philosophical anthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philosophy",
+      "skos:prefLabel": "philosophy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philosophy-of-art",
+      "skos:prefLabel": "philosophy of art",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/philosophy-of-religion",
+      "skos:prefLabel": "philosophy of religion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/phonetics",
+      "skos:prefLabel": "phonetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/phonology",
+      "skos:prefLabel": "phonology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/photochemistry-discipline",
+      "skos:prefLabel": "photochemistry (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/photography-discipline",
+      "skos:prefLabel": "photography (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/photojournalism-discipline",
+      "skos:prefLabel": "photojournalism (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/photonics",
+      "skos:prefLabel": "photonics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/phrenology",
+      "skos:prefLabel": "phrenology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physical-anthropology",
+      "skos:prefLabel": "physical anthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physical-chemistry",
+      "skos:prefLabel": "physical chemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physical-geography",
+      "skos:prefLabel": "physical geography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physical-sciences",
+      "skos:prefLabel": "physical sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physics",
+      "skos:prefLabel": "physics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physiognomy",
+      "skos:prefLabel": "physiognomy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/physiology",
+      "skos:prefLabel": "physiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pictorial-journalism-discipline",
+      "skos:prefLabel": "pictorial journalism (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/planning",
+      "skos:prefLabel": "planning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/planning-disciplines",
+      "skos:prefLabel": "planning disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/plant-engineering",
+      "skos:prefLabel": "plant engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/plastic-arts",
+      "skos:prefLabel": "plastic arts",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/poetics",
+      "skos:prefLabel": "poetics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/political-science",
+      "skos:prefLabel": "political science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/polycapillary-optics",
+      "skos:prefLabel": "polycapillary optics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/polymer-science",
+      "skos:prefLabel": "polymer science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/population-geography",
+      "skos:prefLabel": "population geography",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/postsecondary-education",
+      "skos:prefLabel": "postsecondary education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/practical-disciplines",
+      "skos:prefLabel": "practical disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pragmatics",
+      "skos:prefLabel": "pragmatics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/prehistory-discipline",
+      "skos:prefLabel": "prehistory (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/preschool-education",
+      "skos:prefLabel": "preschool education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/preservation-engineering",
+      "skos:prefLabel": "preservation engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/preventive-conservation",
+      "skos:prefLabel": "preventive conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/primary-education",
+      "skos:prefLabel": "primary education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/principal-component-analysis",
+      "skos:prefLabel": "principal component analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/print-advertising",
+      "skos:prefLabel": "print advertising",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/process-philosophy",
+      "skos:prefLabel": "process philosophy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/proteomics",
+      "skos:prefLabel": "proteomics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychiatry",
+      "skos:prefLabel": "psychiatry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychoanalysis",
+      "skos:prefLabel": "psychoanalysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychohistory",
+      "skos:prefLabel": "psychohistory",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psycholinguistics",
+      "skos:prefLabel": "psycholinguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychology",
+      "skos:prefLabel": "psychology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychology-of-religion",
+      "skos:prefLabel": "psychology of religion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/psychology-related-disciplines",
+      "skos:prefLabel": "psychology-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/public-administration",
+      "skos:prefLabel": "public administration",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/public-archaeology",
+      "skos:prefLabel": "public archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/public-finance",
+      "skos:prefLabel": "public finance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/public-law",
+      "skos:prefLabel": "public law",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/public-relations",
+      "skos:prefLabel": "public relations",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/pyrometallurgy",
+      "skos:prefLabel": "pyrometallurgy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/quadrivium",
+      "skos:prefLabel": "quadrivium",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/radiology",
+      "skos:prefLabel": "radiology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/real-estate-development",
+      "skos:prefLabel": "real estate development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/regional-planning",
+      "skos:prefLabel": "regional planning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/religion-discipline",
+      "skos:prefLabel": "religion (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/religion-related-disciplines",
+      "skos:prefLabel": "religion-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/religious-ethics",
+      "skos:prefLabel": "religious ethics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/religious-history",
+      "skos:prefLabel": "religious history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/renaissance-studies",
+      "skos:prefLabel": "renaissance studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/reproductive-biology",
+      "skos:prefLabel": "reproductive biology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rescue-archaeology",
+      "skos:prefLabel": "rescue archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/reverse-engineering",
+      "skos:prefLabel": "reverse engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rheology",
+      "skos:prefLabel": "rheology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rhetoric-discipline",
+      "skos:prefLabel": "rhetoric (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/ribbon-development",
+      "skos:prefLabel": "ribbon development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/roadside-improvement",
+      "skos:prefLabel": "roadside improvement",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/robotics",
+      "skos:prefLabel": "robotics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/runology",
+      "skos:prefLabel": "runology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rural-development",
+      "skos:prefLabel": "rural development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rural-land-use",
+      "skos:prefLabel": "rural land use",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rural-planning",
+      "skos:prefLabel": "rural planning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/rural-sociology",
+      "skos:prefLabel": "rural sociology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sanitary-engineering",
+      "skos:prefLabel": "sanitary engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/scenography-discipline",
+      "skos:prefLabel": "scenography (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/science-modern-discipline",
+      "skos:prefLabel": "science (modern discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/science-related-disciplines",
+      "skos:prefLabel": "science-related disciplines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sciences-philosophy",
+      "skos:prefLabel": "sciences (philosophy)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/secondary-education",
+      "skos:prefLabel": "secondary education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sedimentology",
+      "skos:prefLabel": "sedimentology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/seismology",
+      "skos:prefLabel": "seismology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/semantics",
+      "skos:prefLabel": "semantics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/semiotics",
+      "skos:prefLabel": "semiotics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/serology",
+      "skos:prefLabel": "serology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/set-design",
+      "skos:prefLabel": "set design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/silviculture",
+      "skos:prefLabel": "silviculture",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sites-and-services",
+      "skos:prefLabel": "sites and services",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/slum-clearance",
+      "skos:prefLabel": "slum clearance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/smart-growth",
+      "skos:prefLabel": "smart growth",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/social-anthropology",
+      "skos:prefLabel": "social anthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/social-history",
+      "skos:prefLabel": "social history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/social-psychology",
+      "skos:prefLabel": "social psychology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/social-sciences",
+      "skos:prefLabel": "social sciences",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sociolinguistics",
+      "skos:prefLabel": "sociolinguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sociology",
+      "skos:prefLabel": "sociology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sociology-of-knowledge",
+      "skos:prefLabel": "sociology of knowledge",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sociology-of-religion",
+      "skos:prefLabel": "sociology of religion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/soil-science",
+      "skos:prefLabel": "soil science",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/space-planning",
+      "skos:prefLabel": "space planning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/special-education",
+      "skos:prefLabel": "special education",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/statistical-analysis",
+      "skos:prefLabel": "statistical analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/statistics",
+      "skos:prefLabel": "statistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/stereology",
+      "skos:prefLabel": "stereology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/stratigraphy",
+      "skos:prefLabel": "stratigraphy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/structural-anthropology",
+      "skos:prefLabel": "structural anthropology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/structural-dynamics",
+      "skos:prefLabel": "structural dynamics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/structural-engineering",
+      "skos:prefLabel": "structural engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/structural-geology",
+      "skos:prefLabel": "structural geology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/suburban-growth",
+      "skos:prefLabel": "suburban growth",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sustainable-agriculture-discipline",
+      "skos:prefLabel": "sustainable agriculture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sustainable-conservation",
+      "skos:prefLabel": "sustainable conservation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/sustainable-development",
+      "skos:prefLabel": "sustainable development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/syntax",
+      "skos:prefLabel": "syntax",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/synthesis",
+      "skos:prefLabel": "synthesis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/systems-engineering",
+      "skos:prefLabel": "systems engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/taphonomy",
+      "skos:prefLabel": "taphonomy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/taxonomy-discipline",
+      "skos:prefLabel": "taxonomy (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/technical-art-history",
+      "skos:prefLabel": "technical art history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/tectonics-geology",
+      "skos:prefLabel": "tectonics (geology)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/telecommunications",
+      "skos:prefLabel": "telecommunications",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/telematics",
+      "skos:prefLabel": "telematics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/teleology",
+      "skos:prefLabel": "teleology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/tephrochronology",
+      "skos:prefLabel": "tephrochronology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/tetzahuitl",
+      "skos:prefLabel": "tetzahuitl",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/text-analysis",
+      "skos:prefLabel": "text analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/textile-design",
+      "skos:prefLabel": "textile design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/theater-discipline",
+      "skos:prefLabel": "theater (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/theater-arts",
+      "skos:prefLabel": "theater arts",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/theology",
+      "skos:prefLabel": "theology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/theoretical-linguistics",
+      "skos:prefLabel": "theoretical linguistics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/thermochemistry",
+      "skos:prefLabel": "thermochemistry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/time-series-analysis",
+      "skos:prefLabel": "time series analysis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/toponymy",
+      "skos:prefLabel": "toponymy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/toxicology",
+      "skos:prefLabel": "toxicology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/traditional-medicine",
+      "skos:prefLabel": "traditional medicine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/traffic-calming",
+      "skos:prefLabel": "traffic calming",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/traffic-engineering",
+      "skos:prefLabel": "traffic engineering",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/transit-advertising",
+      "skos:prefLabel": "transit advertising",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/transportation-engineering-civil-engineering",
+      "skos:prefLabel": "transportation engineering (civil engineering)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/tribology",
+      "skos:prefLabel": "tribology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/trigonometry",
+      "skos:prefLabel": "trigonometry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/trivium",
+      "skos:prefLabel": "trivium",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/underwater-archaeology",
+      "skos:prefLabel": "underwater archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-archaeology",
+      "skos:prefLabel": "urban archaeology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-beautification",
+      "skos:prefLabel": "urban beautification",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-design",
+      "skos:prefLabel": "urban design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-development",
+      "skos:prefLabel": "urban development",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-forestry",
+      "skos:prefLabel": "urban forestry",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-history",
+      "skos:prefLabel": "urban history",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-homesteading",
+      "skos:prefLabel": "urban homesteading",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-land-use",
+      "skos:prefLabel": "urban land use",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-management",
+      "skos:prefLabel": "urban management",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-planning",
+      "skos:prefLabel": "urban planning",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-renewal",
+      "skos:prefLabel": "urban renewal",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-sociology",
+      "skos:prefLabel": "urban sociology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urban-studies",
+      "skos:prefLabel": "urban studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/urbanization",
+      "skos:prefLabel": "urbanization",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/vertebrate-paleontology",
+      "skos:prefLabel": "vertebrate paleontology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/vertical-gardening",
+      "skos:prefLabel": "vertical gardening",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/veterinary-medicine",
+      "skos:prefLabel": "veterinary medicine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/video-discipline",
+      "skos:prefLabel": "video (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/visual-arts-discipline",
+      "skos:prefLabel": "visual arts (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/viticulture-discipline",
+      "skos:prefLabel": "viticulture (discipline)",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/vocal-arts",
+      "skos:prefLabel": "vocal arts",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/vastuvidya",
+      "skos:prefLabel": "vāstuvidyā",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/web-design",
+      "skos:prefLabel": "web design",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/witchcraft",
+      "skos:prefLabel": "witchcraft",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/womens-studies",
+      "skos:prefLabel": "women's studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/x-ray-optics",
+      "skos:prefLabel": "x-ray optics",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/researchDiscipline/zoology",
+      "skos:prefLabel": "zoology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/researchDiscipline"
+    }
+  ]
+}

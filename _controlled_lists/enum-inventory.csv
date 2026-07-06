@@ -16,3 +16,10 @@ Sample,v0.9,sampleType,5,Sample-sampleType.jsonld
 Sample,v0.9,funderIdentifierType,5,Sample-funderIdentifierType.jsonld
 Sample,v0.9,relatedIdentifiers-relationType,36,Sample-relatedIdentifiers-relationType.jsonld
 Sample,v0.9,relatedIdentifiers-resourceTypeGeneral,30,Sample-relatedIdentifiers-resourceTypeGeneral.jsonld
+Common,v0.9,persistentIdentifier,30,Common-persistentIdentifier.jsonld
+Common,v0.9,language,25,Common-language.jsonld
+Common,v0.9,country,265,Common-country.jsonld
+Common,v0.9,researchDiscipline,584,Common-researchDiscipline.jsonld
+Common,v0.9,referenceRole,20,Common-referenceRole.jsonld
+Person,v0.9,personalTitle,11,Person-personalTitle.jsonld
+Organisation,v0.9,organisationType,16,Organisation-organisationType.jsonld

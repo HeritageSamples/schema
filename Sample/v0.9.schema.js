@@ -11,7 +11,9 @@ const TITLE_TYPE_DEFAULT_TAIL = 'title';
 
 const VOCABULARY_CONCEPT_RULES = [
     { path: 'titles[].titleType', queryTerm: 'Sample-titleType', label: 'Title type' },
+    { path: 'titles[].lang', queryTerm: 'Common-language', label: 'Title language' },
     { path: 'otherDescriptions[].descriptionType', queryTerm: 'Sample-descriptionType', label: 'Description type' },
+    { path: 'otherDescriptions[].lang', queryTerm: 'Common-language', label: 'Description language' },
     {
         path: 'documentationIdentifier.relatedIdentifierType',
         queryTerm: 'Sample-relatedIdentifierType',
@@ -28,6 +30,12 @@ const VOCABULARY_CONCEPT_RULES = [
         label: 'Documentation resource type general',
     },
     { path: 'sampleType', queryTerm: 'Sample-sampleType', label: 'Sample type' },
+    {
+        path: 'alternateIdentifiers[].alternateIdentifierType',
+        queryTerm: 'Common-persistentIdentifier',
+        label: 'Alternate identifier type',
+    },
+    { path: 'subjects[].lang', queryTerm: 'Common-language', label: 'Subject language' },
     {
         path: 'fundingReferences[].funderIdentifierType',
         queryTerm: 'Sample-funderIdentifierType',
@@ -48,6 +56,7 @@ const VOCABULARY_CONCEPT_RULES = [
         queryTerm: 'Sample-relatedIdentifiers-resourceTypeGeneral',
         label: 'Resource type general',
     },
+    { path: 'rightsList[].lang', queryTerm: 'Common-language', label: 'Rights language' },
 ];
 
 

@@ -59,7 +59,15 @@
                 ],
                 "properties": {
                     "pid_type": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/persistent_identifier"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                }
+                            }
+                        }
                     },
                     "pid": {
                         "title": "PID",
@@ -73,14 +81,30 @@
         "based_in": {
             "title": "Country of Operation",
             "description": "The country in which the organisation is based for legal and professional reasons, the value will be used in relation to distribution of organisations and in relation to initial assemesnt of elegability when it is related to location.",
-            "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/country"
+            "type": "string",
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"],
+                        "filters": ["/queryTerms/_:\"Common-country\""]
+                    }
+                }
+            }
         },
         "organisation_type": {
             "title": "Organisation type",
             "description": "Type or legal status of the organisation. This dropdown list gives a few examples, but if required, you can enter a different value here.",
             "type": "array",
             "items": {
-                "$ref": "https://e-rihs.io/schema/example_lists.schema.json#/definitions/organisation_type"
+                "type": "string",
+                "cordra": {
+                    "type": {
+                        "handleReference": {
+                            "types": ["VocabularyConcept"],
+                            "filters": ["/queryTerms/_:\"Organisation-organisationType\""]
+                        }
+                    }
+                }
             }
         },
         "part_of_organisation": {
@@ -157,7 +181,15 @@
             "type": "array",
             "minItems": 1,
             "items": {
-                "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/research_discipline"
+                "type": "string",
+                "cordra": {
+                    "type": {
+                        "handleReference": {
+                            "types": ["VocabularyConcept"],
+                            "filters": ["/queryTerms/_:\"Common-researchDiscipline\""]
+                        }
+                    }
+                }
             }
         },
         "research_disciplines_narrower": {
@@ -193,7 +225,15 @@
                     "reference_role": {
                         "title": "Reference type",
                         "description": "The purpose of the reference; what does it relate to or provide more information for.  This dropdown list gives a few examples, but if required, you can enter a different value here.",
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/reference_role"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-referenceRole\""]
+                                }
+                            }
+                        }
                     }
                 }
             }

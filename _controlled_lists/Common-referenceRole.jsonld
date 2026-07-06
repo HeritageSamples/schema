@@ -1,0 +1,132 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Common/referenceRole",
+  "skos:prefLabel": "Reference role",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: reference_role",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/background-information",
+      "skos:prefLabel": "background information",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/best-practices",
+      "skos:prefLabel": "best practices",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/citation-requirements",
+      "skos:prefLabel": "citation requirements",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/data-provenance",
+      "skos:prefLabel": "data provenance",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/example-data",
+      "skos:prefLabel": "example data",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/example-work",
+      "skos:prefLabel": "example work",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/faq",
+      "skos:prefLabel": "faq",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/further-detail",
+      "skos:prefLabel": "further detail",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/historical-context",
+      "skos:prefLabel": "historical context",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/license-information",
+      "skos:prefLabel": "license information",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/literature-review",
+      "skos:prefLabel": "literature review",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/methodology",
+      "skos:prefLabel": "methodology",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/related-research",
+      "skos:prefLabel": "related research",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/related-services",
+      "skos:prefLabel": "related services",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/review",
+      "skos:prefLabel": "review",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/source-data",
+      "skos:prefLabel": "source data",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/technical-specification",
+      "skos:prefLabel": "technical specification",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/usage-guide",
+      "skos:prefLabel": "usage guide",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/user-testimonials",
+      "skos:prefLabel": "user testimonials",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/referenceRole/validation-studies",
+      "skos:prefLabel": "validation studies",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/referenceRole"
+    }
+  ]
+}

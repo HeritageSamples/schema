@@ -1,0 +1,1602 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Common/country",
+  "skos:prefLabel": "Country",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: country",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/afghanistan",
+      "skos:prefLabel": "afghanistan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/africa",
+      "skos:prefLabel": "africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/africa-south-of-the-sahara",
+      "skos:prefLabel": "africa south of the sahara",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/albania",
+      "skos:prefLabel": "albania",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/algeria",
+      "skos:prefLabel": "algeria",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/american-samoa",
+      "skos:prefLabel": "american samoa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/americas",
+      "skos:prefLabel": "americas",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/andorra",
+      "skos:prefLabel": "andorra",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/angola",
+      "skos:prefLabel": "angola",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/anguilla",
+      "skos:prefLabel": "anguilla",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/antigua-and-barbuda",
+      "skos:prefLabel": "antigua and barbuda",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/argentina",
+      "skos:prefLabel": "argentina",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/armenia",
+      "skos:prefLabel": "armenia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/aruba",
+      "skos:prefLabel": "aruba",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/asia",
+      "skos:prefLabel": "asia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/asia-and-the-pacific",
+      "skos:prefLabel": "asia and the pacific",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/australia",
+      "skos:prefLabel": "australia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/austria",
+      "skos:prefLabel": "austria",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/azerbaijan",
+      "skos:prefLabel": "azerbaijan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bahamas",
+      "skos:prefLabel": "bahamas",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bahrain",
+      "skos:prefLabel": "bahrain",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bangladesh",
+      "skos:prefLabel": "bangladesh",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/barbados",
+      "skos:prefLabel": "barbados",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/belarus",
+      "skos:prefLabel": "belarus",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/belgium",
+      "skos:prefLabel": "belgium",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/belize",
+      "skos:prefLabel": "belize",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/benin",
+      "skos:prefLabel": "benin",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bermuda",
+      "skos:prefLabel": "bermuda",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bhutan",
+      "skos:prefLabel": "bhutan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bolivia",
+      "skos:prefLabel": "bolivia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bosnia-and-herzegovina",
+      "skos:prefLabel": "bosnia and herzegovina",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/botswana",
+      "skos:prefLabel": "botswana",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/brazil",
+      "skos:prefLabel": "brazil",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/british-virgin-islands",
+      "skos:prefLabel": "british virgin islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/brunei-darussalam",
+      "skos:prefLabel": "brunei darussalam",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/bulgaria",
+      "skos:prefLabel": "bulgaria",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/burkina-faso",
+      "skos:prefLabel": "burkina faso",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/burundi",
+      "skos:prefLabel": "burundi",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cabo-verde",
+      "skos:prefLabel": "cabo verde",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cambodia",
+      "skos:prefLabel": "cambodia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cameroon",
+      "skos:prefLabel": "cameroon",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/canada",
+      "skos:prefLabel": "canada",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/caribbean",
+      "skos:prefLabel": "caribbean",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/caucasian-states",
+      "skos:prefLabel": "caucasian states",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cayman-islands",
+      "skos:prefLabel": "cayman islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/central-africa",
+      "skos:prefLabel": "central africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/central-african-republic",
+      "skos:prefLabel": "central african republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/central-america",
+      "skos:prefLabel": "central america",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/central-and-eastern-europe",
+      "skos:prefLabel": "central and eastern europe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/central-asia",
+      "skos:prefLabel": "central asia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/chad",
+      "skos:prefLabel": "chad",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/chile",
+      "skos:prefLabel": "chile",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/china",
+      "skos:prefLabel": "china",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/colombia",
+      "skos:prefLabel": "colombia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/comoros",
+      "skos:prefLabel": "comoros",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/congo",
+      "skos:prefLabel": "congo",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/congo-dr",
+      "skos:prefLabel": "congo dr",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cook-islands",
+      "skos:prefLabel": "cook islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/costa-rica",
+      "skos:prefLabel": "costa rica",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/croatia",
+      "skos:prefLabel": "croatia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cuba",
+      "skos:prefLabel": "cuba",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/curacao",
+      "skos:prefLabel": "curaçao",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cyprus",
+      "skos:prefLabel": "cyprus",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/czech-republic",
+      "skos:prefLabel": "czech republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/cote-divoire",
+      "skos:prefLabel": "côte d'ivoire",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/denmark",
+      "skos:prefLabel": "denmark",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/djibouti",
+      "skos:prefLabel": "djibouti",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/dominica",
+      "skos:prefLabel": "dominica",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/dominican-republic",
+      "skos:prefLabel": "dominican republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/east-africa",
+      "skos:prefLabel": "east africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/east-asia",
+      "skos:prefLabel": "east asia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/ecuador",
+      "skos:prefLabel": "ecuador",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/egypt",
+      "skos:prefLabel": "egypt",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/el-salvador",
+      "skos:prefLabel": "el salvador",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/equatorial-guinea",
+      "skos:prefLabel": "equatorial guinea",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/eritrea",
+      "skos:prefLabel": "eritrea",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/estonia",
+      "skos:prefLabel": "estonia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/eswatini",
+      "skos:prefLabel": "eswatini",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/ethiopia",
+      "skos:prefLabel": "ethiopia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/europe",
+      "skos:prefLabel": "europe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/falkland-islands",
+      "skos:prefLabel": "falkland islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/faroes",
+      "skos:prefLabel": "faroes",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/fiji",
+      "skos:prefLabel": "fiji",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/finland",
+      "skos:prefLabel": "finland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/france",
+      "skos:prefLabel": "france",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/french-guiana",
+      "skos:prefLabel": "french guiana",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/french-polynesia",
+      "skos:prefLabel": "french polynesia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/gabon",
+      "skos:prefLabel": "gabon",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/gambia",
+      "skos:prefLabel": "gambia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/georgia",
+      "skos:prefLabel": "georgia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/germany",
+      "skos:prefLabel": "germany",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/ghana",
+      "skos:prefLabel": "ghana",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/gibraltar",
+      "skos:prefLabel": "gibraltar",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/greece",
+      "skos:prefLabel": "greece",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/greenland",
+      "skos:prefLabel": "greenland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/grenada",
+      "skos:prefLabel": "grenada",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guadeloupe",
+      "skos:prefLabel": "guadeloupe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guam",
+      "skos:prefLabel": "guam",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guatemala",
+      "skos:prefLabel": "guatemala",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guinea",
+      "skos:prefLabel": "guinea",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guinea-bissau",
+      "skos:prefLabel": "guinea-bissau",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/gulf-states",
+      "skos:prefLabel": "gulf states",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/guyana",
+      "skos:prefLabel": "guyana",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/haiti",
+      "skos:prefLabel": "haiti",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/hawaii",
+      "skos:prefLabel": "hawaii",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/honduras",
+      "skos:prefLabel": "honduras",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/hong-kong",
+      "skos:prefLabel": "hong kong",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/hong-kong-china",
+      "skos:prefLabel": "hong kong china",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/hungary",
+      "skos:prefLabel": "hungary",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/iceland",
+      "skos:prefLabel": "iceland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/india",
+      "skos:prefLabel": "india",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/indonesia",
+      "skos:prefLabel": "indonesia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/iran",
+      "skos:prefLabel": "iran",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/iran-islamic-republic",
+      "skos:prefLabel": "iran, islamic republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/iraq",
+      "skos:prefLabel": "iraq",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/ireland",
+      "skos:prefLabel": "ireland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/israel",
+      "skos:prefLabel": "israel",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/italy",
+      "skos:prefLabel": "italy",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/jamaica",
+      "skos:prefLabel": "jamaica",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/japan",
+      "skos:prefLabel": "japan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/jordan",
+      "skos:prefLabel": "jordan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kazakhstan",
+      "skos:prefLabel": "kazakhstan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kenya",
+      "skos:prefLabel": "kenya",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kiribati",
+      "skos:prefLabel": "kiribati",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/korea-dpr",
+      "skos:prefLabel": "korea dpr",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/korea-r",
+      "skos:prefLabel": "korea r",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kosovo",
+      "skos:prefLabel": "kosovo",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kuwait",
+      "skos:prefLabel": "kuwait",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/kyrgyzstan",
+      "skos:prefLabel": "kyrgyzstan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/lao-peoples-democratic-republic",
+      "skos:prefLabel": "lao people's democratic republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/latvia",
+      "skos:prefLabel": "latvia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/lebanon",
+      "skos:prefLabel": "lebanon",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/lesotho",
+      "skos:prefLabel": "lesotho",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/liberia",
+      "skos:prefLabel": "liberia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/libya",
+      "skos:prefLabel": "libya",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/liechtenstein",
+      "skos:prefLabel": "liechtenstein",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/lithuania",
+      "skos:prefLabel": "lithuania",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/luxembourg",
+      "skos:prefLabel": "luxembourg",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/macao",
+      "skos:prefLabel": "macao",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/macao-china",
+      "skos:prefLabel": "macao, china",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/madagascar",
+      "skos:prefLabel": "madagascar",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/malawi",
+      "skos:prefLabel": "malawi",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/malaysia",
+      "skos:prefLabel": "malaysia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/maldives",
+      "skos:prefLabel": "maldives",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mali",
+      "skos:prefLabel": "mali",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/malta",
+      "skos:prefLabel": "malta",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/marshall-islands",
+      "skos:prefLabel": "marshall islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/martinique",
+      "skos:prefLabel": "martinique",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mauritania",
+      "skos:prefLabel": "mauritania",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mauritius",
+      "skos:prefLabel": "mauritius",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mayotte",
+      "skos:prefLabel": "mayotte",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mexico",
+      "skos:prefLabel": "mexico",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/micronesia",
+      "skos:prefLabel": "micronesia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/middle-east",
+      "skos:prefLabel": "middle east",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/moldova-r",
+      "skos:prefLabel": "moldova r",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/monaco",
+      "skos:prefLabel": "monaco",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mongolia",
+      "skos:prefLabel": "mongolia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/montenegro",
+      "skos:prefLabel": "montenegro",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/montserrat",
+      "skos:prefLabel": "montserrat",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/morocco",
+      "skos:prefLabel": "morocco",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/mozambique",
+      "skos:prefLabel": "mozambique",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/myanmar",
+      "skos:prefLabel": "myanmar",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/namibia",
+      "skos:prefLabel": "namibia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/nauru",
+      "skos:prefLabel": "nauru",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/nepal",
+      "skos:prefLabel": "nepal",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/netherlands",
+      "skos:prefLabel": "netherlands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/netherlands-antilles",
+      "skos:prefLabel": "netherlands antilles",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/new-caledonia",
+      "skos:prefLabel": "new caledonia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/new-zealand",
+      "skos:prefLabel": "new zealand",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/nicaragua",
+      "skos:prefLabel": "nicaragua",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/niger",
+      "skos:prefLabel": "niger",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/nigeria",
+      "skos:prefLabel": "nigeria",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/niue",
+      "skos:prefLabel": "niue",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/north-africa",
+      "skos:prefLabel": "north africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/north-america",
+      "skos:prefLabel": "north america",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/north-macedonia",
+      "skos:prefLabel": "north macedonia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/northern-europe",
+      "skos:prefLabel": "northern europe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/norway",
+      "skos:prefLabel": "norway",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/oceania",
+      "skos:prefLabel": "oceania",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/oman",
+      "skos:prefLabel": "oman",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/pakistan",
+      "skos:prefLabel": "pakistan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/palau",
+      "skos:prefLabel": "palau",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/palestine",
+      "skos:prefLabel": "palestine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/panama",
+      "skos:prefLabel": "panama",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/papua-new-guinea",
+      "skos:prefLabel": "papua new guinea",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/paraguay",
+      "skos:prefLabel": "paraguay",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/peru",
+      "skos:prefLabel": "peru",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/philippines",
+      "skos:prefLabel": "philippines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/pitcairn",
+      "skos:prefLabel": "pitcairn",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/poland",
+      "skos:prefLabel": "poland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/portugal",
+      "skos:prefLabel": "portugal",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/puerto-rico",
+      "skos:prefLabel": "puerto rico",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/qatar",
+      "skos:prefLabel": "qatar",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/reunion",
+      "skos:prefLabel": "reunion",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/romania",
+      "skos:prefLabel": "romania",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/russia",
+      "skos:prefLabel": "russia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/russian-federation",
+      "skos:prefLabel": "russian federation",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/rwanda",
+      "skos:prefLabel": "rwanda",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sahara",
+      "skos:prefLabel": "sahara",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saint-helena",
+      "skos:prefLabel": "saint helena",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saint-kitts-and-nevis",
+      "skos:prefLabel": "saint kitts and nevis",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saint-lucia",
+      "skos:prefLabel": "saint lucia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saint-pierre-and-miquelon",
+      "skos:prefLabel": "saint pierre and miquelon",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saint-vincent-and-the-grenadines",
+      "skos:prefLabel": "saint vincent and the grenadines",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/samoa",
+      "skos:prefLabel": "samoa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/san-marino",
+      "skos:prefLabel": "san marino",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sao-tome-and-principe",
+      "skos:prefLabel": "sao tome and principe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/saudi-arabia",
+      "skos:prefLabel": "saudi arabia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/senegal",
+      "skos:prefLabel": "senegal",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/serbia",
+      "skos:prefLabel": "serbia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/seychelles",
+      "skos:prefLabel": "seychelles",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sierra-leone",
+      "skos:prefLabel": "sierra leone",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/singapore",
+      "skos:prefLabel": "singapore",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sint-maarten",
+      "skos:prefLabel": "sint maarten",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/slovakia",
+      "skos:prefLabel": "slovakia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/slovenia",
+      "skos:prefLabel": "slovenia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/solomon-islands",
+      "skos:prefLabel": "solomon islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/somalia",
+      "skos:prefLabel": "somalia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/south-africa",
+      "skos:prefLabel": "south africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/south-america",
+      "skos:prefLabel": "south america",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/south-asia",
+      "skos:prefLabel": "south asia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/south-east-asia",
+      "skos:prefLabel": "south east asia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/south-sudan",
+      "skos:prefLabel": "south sudan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/southern-africa",
+      "skos:prefLabel": "southern africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/spain",
+      "skos:prefLabel": "spain",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sri-lanka",
+      "skos:prefLabel": "sri lanka",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sudan",
+      "skos:prefLabel": "sudan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/suriname",
+      "skos:prefLabel": "suriname",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/sweden",
+      "skos:prefLabel": "sweden",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/switzerland",
+      "skos:prefLabel": "switzerland",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/syrian-arab-republic",
+      "skos:prefLabel": "syrian arab republic",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/taiwan",
+      "skos:prefLabel": "taiwan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tajikistan",
+      "skos:prefLabel": "tajikistan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tanzania-ur",
+      "skos:prefLabel": "tanzania ur",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/thailand",
+      "skos:prefLabel": "thailand",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/timor-leste",
+      "skos:prefLabel": "timor-leste",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/togo",
+      "skos:prefLabel": "togo",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tokelau",
+      "skos:prefLabel": "tokelau",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tonga",
+      "skos:prefLabel": "tonga",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/trinidad-and-tobago",
+      "skos:prefLabel": "trinidad and tobago",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tunisia",
+      "skos:prefLabel": "tunisia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/turkmenistan",
+      "skos:prefLabel": "turkmenistan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/turks-and-caicos-islands",
+      "skos:prefLabel": "turks and caicos islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/tuvalu",
+      "skos:prefLabel": "tuvalu",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/turkiye",
+      "skos:prefLabel": "türkiye",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/uganda",
+      "skos:prefLabel": "uganda",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/uk",
+      "skos:prefLabel": "uk",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/ukraine",
+      "skos:prefLabel": "ukraine",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/united-arab-emirates",
+      "skos:prefLabel": "united arab emirates",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/united-states-virgin-islands",
+      "skos:prefLabel": "united states virgin islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/uruguay",
+      "skos:prefLabel": "uruguay",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/usa",
+      "skos:prefLabel": "usa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/uzbekistan",
+      "skos:prefLabel": "uzbekistan",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/vanuatu",
+      "skos:prefLabel": "vanuatu",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/vatican-city-state",
+      "skos:prefLabel": "vatican city state",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/venezuela",
+      "skos:prefLabel": "venezuela",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/viet-nam",
+      "skos:prefLabel": "viet nam",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/wallis-and-futuna",
+      "skos:prefLabel": "wallis and futuna",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/west-africa",
+      "skos:prefLabel": "west africa",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/western-europe",
+      "skos:prefLabel": "western europe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/western-sahara",
+      "skos:prefLabel": "western sahara",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/yemen",
+      "skos:prefLabel": "yemen",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/zambia",
+      "skos:prefLabel": "zambia",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/zimbabwe",
+      "skos:prefLabel": "zimbabwe",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/country/aland-islands",
+      "skos:prefLabel": "åland islands",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/country"
+    }
+  ]
+}

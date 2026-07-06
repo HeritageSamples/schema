@@ -1,0 +1,162 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Common/language",
+  "skos:prefLabel": "Operating language",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: operating_language",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/bg-bulgarian",
+      "skos:prefLabel": "bg - bulgarian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/cz-czech",
+      "skos:prefLabel": "cz - czech",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/da-danish",
+      "skos:prefLabel": "da - danish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/de-german",
+      "skos:prefLabel": "de - german",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/el-greek",
+      "skos:prefLabel": "el - greek",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/en-english",
+      "skos:prefLabel": "en - english",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/es-spanish",
+      "skos:prefLabel": "es - spanish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/et-estonian",
+      "skos:prefLabel": "et - estonian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/fi-finnish",
+      "skos:prefLabel": "fi - finnish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/fr-french",
+      "skos:prefLabel": "fr - french",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/ga-irish",
+      "skos:prefLabel": "ga - irish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/hr-croatian",
+      "skos:prefLabel": "hr - croatian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/hu-hungarian",
+      "skos:prefLabel": "hu - hungarian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/it-italian",
+      "skos:prefLabel": "it - italian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/lt-lithuanian",
+      "skos:prefLabel": "lt - lithuanian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/lv-latvian",
+      "skos:prefLabel": "lv - latvian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/mt-maltese",
+      "skos:prefLabel": "mt - maltese",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/nl-dutch",
+      "skos:prefLabel": "nl - dutch",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/no-norwegian",
+      "skos:prefLabel": "no - norwegian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/pl-polish",
+      "skos:prefLabel": "pl - polish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/pt-portugese",
+      "skos:prefLabel": "pt - portugese",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/ro-romanian",
+      "skos:prefLabel": "ro - romanian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/sk-slovak",
+      "skos:prefLabel": "sk - slovak",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/sl-slovenian",
+      "skos:prefLabel": "sl - slovenian",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/language/sv-swedish",
+      "skos:prefLabel": "sv - swedish",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/language"
+    }
+  ]
+}

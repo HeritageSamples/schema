@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Person/personalTitle",
+  "skos:prefLabel": "Personal title",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: personal_title",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/dame",
+      "skos:prefLabel": "dame",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/dr",
+      "skos:prefLabel": "dr",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/master",
+      "skos:prefLabel": "master",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/messrs",
+      "skos:prefLabel": "messrs",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/miss",
+      "skos:prefLabel": "miss",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/mr",
+      "skos:prefLabel": "mr",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/mrs",
+      "skos:prefLabel": "mrs",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/ms",
+      "skos:prefLabel": "ms",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/mx",
+      "skos:prefLabel": "mx",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/professor",
+      "skos:prefLabel": "professor",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Person/personalTitle/sir",
+      "skos:prefLabel": "sir",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Person/personalTitle"
+    }
+  ]
+}

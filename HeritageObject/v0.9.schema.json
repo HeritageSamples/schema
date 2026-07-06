@@ -34,7 +34,15 @@
                     "format": "uri"
                 },
                 "identifierType": {
-                    "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/persistent_identifier"
+                    "type": "string",
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -95,7 +103,15 @@
                         "$comment": "https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/title/#a-titletype"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -146,7 +162,15 @@
                         "$comment": "The custom descriptionType values used here map to standard DataCite types as follows: 'Object description' should be treated as 'Abstract'; 'Subject description' maps to 'Other', but we should add a sort of title to the description (e.g. 'Subject description ##'); and 'Technical description' maps to 'TechnicalInfo'. These mappings should be applied when exporting to systems that expect standard DataCite descriptionType values."
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -317,7 +341,15 @@
                         "type": "string"
                     },
                     "alternateIdentifierType": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/persistent_identifier"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -382,7 +414,15 @@
                         "type": "string"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 },
                 "required": ["subject"]
@@ -469,7 +509,15 @@
                         "format": "uri"
                     },
                     "lang": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/operating_language"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-language\""]
+                                }
+                            }
+                        }
                     }
                 }
             },

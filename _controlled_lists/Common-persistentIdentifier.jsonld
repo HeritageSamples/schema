@@ -1,0 +1,192 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier",
+  "skos:prefLabel": "PID type",
+  "dc:source": "Derived from E-RIHS controlled_lists.schema.json: persistent_identifier",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/ark",
+      "skos:prefLabel": "ARK",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/arxiv",
+      "skos:prefLabel": "arXiv",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/bibcode",
+      "skos:prefLabel": "bibcode",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/crossref-funder-id",
+      "skos:prefLabel": "Crossref Funder ID",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/doi",
+      "skos:prefLabel": "DOI",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/ean13",
+      "skos:prefLabel": "EAN13",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/eissn",
+      "skos:prefLabel": "EISSN",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/grid",
+      "skos:prefLabel": "GRID",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/handle",
+      "skos:prefLabel": "Handle",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/igsn",
+      "skos:prefLabel": "IGSN",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/isbn",
+      "skos:prefLabel": "ISBN",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/isni",
+      "skos:prefLabel": "ISNI",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/issn",
+      "skos:prefLabel": "ISSN",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/istc",
+      "skos:prefLabel": "ISTC",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/lissn",
+      "skos:prefLabel": "LISSN",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/lsid",
+      "skos:prefLabel": "LSID",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/orcid",
+      "skos:prefLabel": "orcid",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/other-pid",
+      "skos:prefLabel": "other pid",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/pmid",
+      "skos:prefLabel": "PMID",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/pmid-2",
+      "skos:prefLabel": "PMID",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/purl",
+      "skos:prefLabel": "PURL",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/raid",
+      "skos:prefLabel": "raid",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/ror",
+      "skos:prefLabel": "ROR",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/rrid",
+      "skos:prefLabel": "rrid",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/upc",
+      "skos:prefLabel": "UPC",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/urn-url",
+      "skos:prefLabel": "urn/url",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/uuid-guid",
+      "skos:prefLabel": "uuid/guid",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/viaf",
+      "skos:prefLabel": "viaf",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/w3id",
+      "skos:prefLabel": "w3id",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Common/persistentIdentifier/wikidata",
+      "skos:prefLabel": "wikidata",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Common/persistentIdentifier"
+    }
+  ]
+}

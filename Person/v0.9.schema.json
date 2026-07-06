@@ -26,7 +26,15 @@
         "title": {
             "title": "Title",
             "description": "Personal title",
-            "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/personal_title"
+            "type": "string",
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"],
+                        "filters": ["/queryTerms/_:\"Person-personalTitle\""]
+                    }
+                }
+            }
         },
         "first_name": {
             "title": "First name",
@@ -68,8 +76,16 @@
                 ],
                 "properties": {
                     "pid_type": {
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/persistent_identifier",
-                        "default": "https://hdl.handle.net/21.11158/0001-435g7fgxnl86qx92p8d3tdnhc"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                }
+                            }
+                        },
+                        "default": "HSR/voc.hsr.orcid"
                     },
                     "pid": {
                         "title": "PID",
@@ -83,7 +99,15 @@
         "based_in": {
             "title": "Country of Operation",
             "description": "The country in which the person is based for legal and professional reasons, the value will be used in relation to distribution of people and in relation to initial assemesnt of elegability when it is related to location.",
-            "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/country"
+            "type": "string",
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"],
+                        "filters": ["/queryTerms/_:\"Common-country\""]
+                    }
+                }
+            }
         },
         "research_profile": {
             "title": "Short Biography",
@@ -168,7 +192,15 @@
             "type": "array",
             "minItems": 1,
             "items": {
-                "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/research_discipline"
+                "type": "string",
+                "cordra": {
+                    "type": {
+                        "handleReference": {
+                            "types": ["VocabularyConcept"],
+                            "filters": ["/queryTerms/_:\"Common-researchDiscipline\""]
+                        }
+                    }
+                }
             }
         },
         "research_disciplines_narrower": {
@@ -204,7 +236,15 @@
                     "reference_type": {
                         "title": "Reference type",
                         "description": "The purpose of the reference; what does it relate to or provide more information for.  This dropdown list gives a few examples, but if required, you can enter a different value here.",
-                        "$ref": "https://e-rihs.io/schema/controlled_lists.schema.json#/definitions/reference_role"
+                        "type": "string",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["VocabularyConcept"],
+                                    "filters": ["/queryTerms/_:\"Common-referenceRole\""]
+                                }
+                            }
+                        }
                     }
                 }
             }
