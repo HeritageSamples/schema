@@ -366,7 +366,7 @@
                 "cordra": {
                     "type": {
                         "handleReference": {
-                            "types": ["Material"]
+                            "types": ["VocabularyConcept"]
                         }
                     }
                 }

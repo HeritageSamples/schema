@@ -1,8 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://heritagesamples.org/schema/VocabularyConcept/v0.9",
+    "title": "VocabularyConcept",
     "type": "object",
-    "required": ["id", "prefLabel", "terms"],
+    "required": ["id", "notation", "prefLabel", "vocabulary"],
     "properties": {
         "id": {
             "type": "string",
@@ -12,69 +13,78 @@
                 }
             }
         },
-        "prefLabel": {
-            "title": "Language-neutral label",
-            "description": "Language-neutral label of the concept",
+        "$schema": {
             "type": "string",
-            "minLength": 1,
+            "options": {
+                "hidden": true
+            }
+        },
+        "_mainTitle": {
+            "title": "Main title",
+            "description": "Automatically generated main title based on labels and notation.",
+            "type": "string",
             "cordra": {
                 "preview": {
                     "showInPreview": true,
                     "isPrimary": true
-                }
+                },
+                "disableInUi": true
             }
         },
-        "terms": {
-            "title": "Terms",
-            "description": "Terms in different languages, with one preferred label per language",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-                "type": "object",
-                "required": ["label", "lang", "isAlternative"],
-                "properties": {
-                    "label": {
-                        "title": "Term",
-                        "description": "The term in the specified language",
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "lang": {
-                        "title": "Language",
-                        "description": "The language of the term",
-                        "type": "string"
-                    },
-                    "isAlternative": {
-                        "title": "Alternative label",
-                        "description": "Whether this term is an alternative label for its language",
-                        "type": "boolean",
-                        "default": false
+        "vocabulary": {
+            "title": "Vocabulary",
+            "description": "Cordra Vocabulary object describing the SKOS ConceptScheme this concept belongs to.",
+            "type": "string",
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["Vocabulary"]
                     }
                 }
             }
         },
-        "descriptions":{
-            "title": "Descriptions",
-            "description": "Descriptions of the concept in different languages",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "description": {
-                        "title": "Description",
-                        "type": "string",
-                        "format": "textarea"
-                    },
-                    "lang": {
-                        "title": "Language",
-                        "type": "string"
-                    }
-                }
-            }
+        "uri": {
+            "title": "Concept URI",
+            "description": "Canonical URI of this concept (skos:Concept subject). Distinct from the Cordra handle in id.",
+            "type": "string",
+            "format": "uri"
+        },
+        "notation": {
+            "title": "Notation",
+            "description": "Language-neutral local identifier for this concept (skos:notation), e.g. aat:300011577",
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9_:-]+$"
+        },
+        "prefLabel": {
+            "title": "Preferred label",
+            "description": "Preferred lexical label per language (skos:prefLabel). At most one label per language.",
+            "$ref": "#/$defs/skosLangString"
+        },
+        "termStatus": {
+            "title": "Term status",
+            "description": "Term status value for this concept.",
+            "type": "string",
+            "minLength": 1
+        },
+        "altLabel": {
+            "title": "Alternative label",
+            "description": "Alternative lexical labels per language (skos:altLabel).",
+            "$ref": "#/$defs/skosLangAltLabelArray"
+        },
+        "definition": {
+            "title": "Definition",
+            "description": "Formal definition per language (skos:definition)",
+            "$ref": "#/$defs/skosLangText"
+        },
+        "scopeNote": {
+            "title": "Scope note",
+            "description": "Scope or usage note per language (skos:scopeNote)",
+            "$ref": "#/$defs/skosLangText"
         },
         "broader": {
             "title": "Broader concepts",
-            "description": "Broader concepts of the current concept",
+            "description": "Broader concepts in the same or another scheme (skos:broader). Stored as Cordra handle references.",
             "type": "array",
             "items": {
                 "title": "Broader concept",
@@ -88,55 +98,194 @@
                 }
             }
         },
-        "narrower": {
-            "title": "Narrower concepts",
-            "description": "Narrower concepts of the current concept",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "cordra": {
-                    "type": {
-                        "handleReference": {
-                            "types": ["VocabularyConcept"]
-                        }
-                    }
-                }
-            }
+        "related": {
+            "title": "Related concepts",
+            "description": "Associative related concepts (skos:related). Stored as Cordra handle references.",
+            "$ref": "#/$defs/conceptRefArray"
+        },
+        "equivalent": {
+            "title": "Equivalent concepts",
+            "description": "Equivalent concept links stored as Cordra handle references when resolvable.",
+            "$ref": "#/$defs/conceptRefArray"
+        },
+        "use": {
+            "title": "Use",
+            "description": "Preferred concepts to use instead of this concept. Stored as Cordra handle references when resolvable.",
+            "$ref": "#/$defs/conceptRefArray"
+        },
+        "usedFor": {
+            "title": "Used for",
+            "description": "Non-preferred concepts that use this concept. Stored as Cordra handle references when resolvable.",
+            "$ref": "#/$defs/conceptRefArray"
         },
         "exactMatch": {
             "title": "Exact match",
-            "description": "Exact match to the concept in another vocabulary",
+            "description": "Exact match to an equivalent concept in another vocabulary (skos:exactMatch)",
+            "$ref": "#/$defs/skosMatchArray"
+        },
+        "closeMatch": {
+            "title": "Close match",
+            "description": "Close match to a similar concept in another vocabulary (skos:closeMatch)",
+            "$ref": "#/$defs/skosMatchArray"
+        },
+        "harvestedSource": {
+            "title": "Harvested source",
+            "description": "Source system marker for harvested concepts. Native Cordra-owned concepts omit this field.",
+            "type": "string",
+            "enum": ["AAT"]
+        },
+        "harvestedDate": {
+            "title": "Harvested date",
+            "description": "Date when this record was last harvested (mirrored concepts only).",
+            "type": "string",
+            "format": "date"
+        },
+        "queryTerms": {
+            "title": "Query terms",
+            "description": "Subset tags for harvested lists or enumeration codes.",
             "type": "array",
             "items": {
-                "type": "object",
-                "properties": {
-                    "uri": {
-                        "title": "URI",
-                        "description": "URI of the exact match",
-                        "type": "string",
-                        "format": "uri"
-                    },
-                    "scheme": {
-                        "title": "Scheme",
-                        "description": "Scheme of the exact match",
-                        "type": "string"
-                    },
-                    "primarySource": {
-                        "title": "Primary source",
-                        "description": "Primary source of the exact match",
-                        "type": "boolean"
+                "title": "Name",
+                "description": "Name of the subset or enumeration code",
+                "type": "string"
+            }
+        },
+        "geometry": {
+            "title": "Geometry",
+            "description": "GeoJSON-like geometry for geographical thesaurus concepts. Point coordinates follow GeoJSON order [longitude, latitude] when the CRS is WGS84.",
+            "$ref": "#/$defs/geoJsonPoint"
+        }
+    },
+    "$defs": {
+        "conceptRef": {
+            "type": "string",
+            "cordra": {
+                "type": {
+                    "handleReference": {
+                        "types": ["VocabularyConcept"]
                     }
                 }
             }
         },
-        "queryTerms": {
-            "title": "Query terms",
-            "description": "Query terms that define subsets concepts, to be used as a controlled list",
+        "conceptRefArray": {
             "type": "array",
-            "items": {
-                "title": "Name",
-                "description": "Name of the enumeration",
-                "type": "string"
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/conceptRef" }
+        },
+        "skosLangString": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": {
+                "type": "string",
+                "minLength": 1
+            },
+            "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "skosLangAltLabelArray": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": {
+                "type": "string",
+                "minLength": 1
+            },
+            "additionalProperties": {
+                "$ref": "#/$defs/skosAltLabelArray"
+            }
+        },
+        "skosLangText": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": {
+                "type": "string",
+                "minLength": 1
+            },
+            "additionalProperties": {
+                "type": "string",
+                "format": "textarea"
+            }
+        },
+        "skosAltLabelEntry": {
+            "type": "object",
+            "required": ["label"],
+            "additionalProperties": false,
+            "properties": {
+                "label": {
+                    "title": "Label",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "skosAltLabelArray": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/skosAltLabelEntry" }
+        },
+        "skosMatch": {
+            "type": "object",
+            "required": ["uri"],
+            "properties": {
+                "uri": {
+                    "title": "URI",
+                    "description": "URI of the matched concept",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "scheme": {
+                    "title": "Scheme",
+                    "description": "Short scheme code for harvest and display logic",
+                    "type": "string"
+                }
+            }
+        },
+        "skosMatchArray": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/skosMatch" }
+        },
+        "geoJsonPoint": {
+            "type": "object",
+            "required": ["type", "coordinates"],
+            "properties": {
+                "type": {
+                    "title": "Geometry type",
+                    "type": "string",
+                    "enum": ["Point"]
+                },
+                "coordinates": {
+                    "title": "Coordinates",
+                    "description": "GeoJSON coordinates in [longitude, latitude] order when CRS is WGS84.",
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": { "type": "number" }
+                },
+                "crs": {
+                    "title": "Coordinate reference system",
+                    "description": "Coordinate reference system for the coordinates, e.g. EPSG:4326.",
+                    "type": "string"
+                },
+                "source": {
+                    "title": "Source",
+                    "type": "string"
+                },
+                "gridType": {
+                    "title": "Grid type",
+                    "description": "Cordra handle reference to the source grid type concept when available.",
+                    "type": "string"
+                },
+                "raw": {
+                    "title": "Raw coordinate source values",
+                    "type": "object",
+                    "properties": {
+                        "xReference": { "type": "string" },
+                        "yReference": { "type": "string" },
+                        "gis": { "type": "string" },
+                        "gridType": { "type": "string" }
+                    }
+                }
             }
         }
     }

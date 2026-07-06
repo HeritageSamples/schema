@@ -23,7 +23,7 @@ from typing import Dict, List, Optional, Tuple
 import requests
 from dotenv import load_dotenv
 
-from lib import libcordra, schema_do
+from lib import libcordra2, schema_do
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_SCHEMA_ROOT = SCRIPT_DIR.parent
@@ -124,7 +124,7 @@ def resolve_selected_types(
 
 
 def fetch_cordra_current_and_versions(
-    cordra: Optional[libcordra.Cordra], current_pid: str
+    cordra: Optional[libcordra2.Cordra], current_pid: str
 ) -> Tuple[Optional[Dict], List[Dict]]:
     if cordra is None:
         return None, []
@@ -133,7 +133,7 @@ def fetch_cordra_current_and_versions(
         results = cordra.query(f'id:"{current_pid}"', full=True)
         if isinstance(results, list) and len(results) > 0:
             current_obj = results[0]
-    except SystemExit:
+    except (SystemExit, libcordra2.CordraError):
         current_obj = None
 
     versions_info: List[Dict] = []
@@ -153,7 +153,7 @@ def fetch_cordra_current_and_versions(
                     schema = content.get("schema") or {}
                     schema_id = schema.get("$id")
                 versions_info.append({"id": vid, "$id": schema_id})
-        except SystemExit:
+        except (SystemExit, libcordra2.CordraError):
             versions_info = []
 
     return current_obj, versions_info
@@ -305,7 +305,7 @@ def server_version_index(
 
 
 def upload_version(
-    cordra: libcordra.Cordra,
+    cordra: libcordra2.Cordra,
     identifier: str,
     do_obj: Dict,
     schema_id: str,
@@ -331,7 +331,7 @@ def process_type(
     type_name: str,
     base_path: Path,
     config: Dict[str, str],
-    cordra: Optional[libcordra.Cordra],
+    cordra: Optional[libcordra2.Cordra],
     mode: int,
 ) -> bool:
     """Process one schema type. Returns True on success, False on failure."""
@@ -440,7 +440,7 @@ def process_type(
                 newest_local_schema_id,
                 create=current_obj is None,
             )
-        except SystemExit:
+        except (SystemExit, libcordra2.CordraError):
             return False
         return True
 
@@ -483,7 +483,7 @@ def process_type(
                     schema_id,
                     create=idx == 0,
                 )
-        except SystemExit:
+        except (SystemExit, libcordra2.CordraError):
             return False
         return True
 
@@ -538,14 +538,14 @@ def main() -> None:
         f"{', '.join(selected) if selected else '-'}"
     )
 
-    cordra: Optional[libcordra.Cordra] = None
+    cordra: Optional[libcordra2.Cordra] = None
     try:
-        cordra = libcordra.Cordra(
+        cordra = libcordra2.Cordra(
             config["cordra_api_url"],
             config["cordra_username"],
             config["cordra_password"],
         )
-    except (SystemExit, requests.RequestException) as exc:
+    except (SystemExit, libcordra2.CordraError, requests.RequestException) as exc:
         if mode == 1:
             print(
                 "Warning: Could not connect to Cordra "
