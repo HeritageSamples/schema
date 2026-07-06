@@ -2,7 +2,7 @@
 """
 Upload one SKOS JSON-LD controlled list to Cordra as VocabularyConcept objects.
 
-Uses an existing Vocabulary object (default: {hdl_prefix}/voc.heritagesamples).
+Uses an existing Vocabulary object (default: {hdl_prefix}/voc.hsr).
 Override with --vocabulary when concepts belong to another scheme.
 
 Usage:
@@ -26,12 +26,12 @@ from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
 from lib import libcordra2
-from lib.skos_lang import display_label, parse_skos_pref_label
+from lib.skos_lang import display_label_from_terms, lexical_maps_to_terms, parse_skos_pref_label
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 CONCEPT_TYPE = "VocabularyConcept"
 SCHEMA_CONCEPT = "https://heritagesamples.org/schema/VocabularyConcept/v0.9"
-DEFAULT_VOCABULARY_NOTATION = "heritagesamples"
+DEFAULT_VOCABULARY_NOTATION = "hsr"
 
 GREEN = "\033[32m"
 RED = "\033[31m"
@@ -119,14 +119,14 @@ def parse_concepts(data: dict) -> tuple[Optional[str], List[dict]]:
     return scheme_id, concepts
 
 
-def pref_label_display(pref_label: Dict[str, str]) -> str:
-    return display_label(pref_label) or "term"
+def pref_label_display(terms: List[dict]) -> str:
+    return display_label_from_terms(terms) or "term"
 
 
 def build_top_content(
     handle: str,
     vocabulary_id: str,
-    pref_label: Dict[str, str],
+    terms: List[dict],
     query_term: str,
     scheme_id: Optional[str],
 ) -> dict:
@@ -136,7 +136,7 @@ def build_top_content(
         "$schema": SCHEMA_CONCEPT,
         "vocabulary": vocabulary_id,
         "notation": notation,
-        "prefLabel": pref_label,
+        "terms": terms,
         "broader": [],
         "queryTerms": [query_term, "TOP_LEVEL"],
     }
@@ -149,7 +149,7 @@ def build_top_content(
 def build_term_content(
     handle: str,
     vocabulary_id: str,
-    pref_label: Dict[str, str],
+    terms: List[dict],
     query_term: str,
     notation: str,
     top_handle: str,
@@ -160,7 +160,7 @@ def build_term_content(
         "$schema": SCHEMA_CONCEPT,
         "vocabulary": vocabulary_id,
         "notation": notation,
-        "prefLabel": pref_label,
+        "terms": terms,
         "broader": [top_handle],
         "queryTerms": [query_term],
     }
@@ -213,7 +213,8 @@ def ingest(
     scheme_id, concepts = parse_concepts(data)
 
     top_pref_label = parse_skos_pref_label(top_level_term)
-    if not top_pref_label:
+    top_terms = lexical_maps_to_terms(top_pref_label)
+    if not top_terms:
         print(f"{RED}Top-level term is empty{RESET}", flush=True)
         sys.exit(1)
 
@@ -221,12 +222,12 @@ def ingest(
     top_content = build_top_content(
         top_handle,
         vocabulary_id,
-        top_pref_label,
+        top_terms,
         query_term,
         scheme_id,
     )
 
-    top_display = pref_label_display(top_pref_label)
+    top_display = pref_label_display(top_terms)
     print(f"File: {jsonld_path}", flush=True)
     print(f"Query term: {query_term}", flush=True)
     print(f"Vocabulary (existing): {vocabulary_id}", flush=True)
@@ -235,17 +236,18 @@ def ingest(
     planned: List[tuple[str, str, dict]] = []
     for concept in concepts:
         pref_label = parse_skos_pref_label(concept.get("skos:prefLabel"))
-        if not pref_label:
+        terms = lexical_maps_to_terms(pref_label)
+        if not terms:
             print(f"{RED}Skipping concept without skos:prefLabel{RESET}", flush=True)
             continue
         concept_id = concept.get("@id")
-        display = pref_label_display(pref_label)
+        display = pref_label_display(terms)
         notation = concept_notation(query_term, concept_id, display)
         handle = concept_handle(config["hdl_prefix"], notation)
         term_content = build_term_content(
             handle,
             vocabulary_id,
-            pref_label,
+            terms,
             query_term,
             notation,
             top_handle,

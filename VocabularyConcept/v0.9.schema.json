@@ -3,7 +3,7 @@
     "$id": "https://heritagesamples.org/schema/VocabularyConcept/v0.9",
     "title": "VocabularyConcept",
     "type": "object",
-    "required": ["id", "notation", "prefLabel", "vocabulary"],
+    "required": ["id", "notation", "terms", "vocabulary"],
     "properties": {
         "id": {
             "type": "string",
@@ -56,10 +56,12 @@
             "minLength": 1,
             "pattern": "^[a-z0-9_:-]+$"
         },
-        "prefLabel": {
-            "title": "Preferred label",
-            "description": "Preferred lexical label per language (skos:prefLabel). At most one label per language.",
-            "$ref": "#/$defs/skosLangString"
+        "terms": {
+            "title": "Terms",
+            "description": "Terms in different languages, with one preferred label per language (skos:prefLabel / skos:altLabel).",
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/uiTermEntry" }
         },
         "termStatus": {
             "title": "Term status",
@@ -67,20 +69,11 @@
             "type": "string",
             "minLength": 1
         },
-        "altLabel": {
-            "title": "Alternative label",
-            "description": "Alternative lexical labels per language (skos:altLabel).",
-            "$ref": "#/$defs/skosLangAltLabelArray"
-        },
-        "definition": {
-            "title": "Definition",
-            "description": "Formal definition per language (skos:definition)",
-            "$ref": "#/$defs/skosLangText"
-        },
-        "scopeNote": {
-            "title": "Scope note",
-            "description": "Scope or usage note per language (skos:scopeNote)",
-            "$ref": "#/$defs/skosLangText"
+        "descriptions": {
+            "title": "Descriptions",
+            "description": "Definitions and scope notes of the concept in different languages.",
+            "type": "array",
+            "items": { "$ref": "#/$defs/uiDescriptionEntry" }
         },
         "broader": {
             "title": "Broader concepts",
@@ -172,41 +165,6 @@
             "uniqueItems": true,
             "items": { "$ref": "#/$defs/conceptRef" }
         },
-        "skosLangString": {
-            "type": "object",
-            "minProperties": 1,
-            "propertyNames": {
-                "type": "string",
-                "minLength": 1
-            },
-            "additionalProperties": {
-                "type": "string",
-                "minLength": 1
-            }
-        },
-        "skosLangAltLabelArray": {
-            "type": "object",
-            "minProperties": 1,
-            "propertyNames": {
-                "type": "string",
-                "minLength": 1
-            },
-            "additionalProperties": {
-                "$ref": "#/$defs/skosAltLabelArray"
-            }
-        },
-        "skosLangText": {
-            "type": "object",
-            "minProperties": 1,
-            "propertyNames": {
-                "type": "string",
-                "minLength": 1
-            },
-            "additionalProperties": {
-                "type": "string",
-                "format": "textarea"
-            }
-        },
         "skosAltLabelEntry": {
             "type": "object",
             "required": ["label"],
@@ -223,6 +181,53 @@
             "type": "array",
             "minItems": 1,
             "items": { "$ref": "#/$defs/skosAltLabelEntry" }
+        },
+        "uiTermEntry": {
+            "type": "object",
+            "required": ["label", "lang", "isAlternative"],
+            "properties": {
+                "label": {
+                    "title": "Term",
+                    "description": "The term in the specified language",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lang": {
+                    "title": "Language",
+                    "description": "The language of the term",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "isAlternative": {
+                    "title": "Alternative label",
+                    "description": "Whether this term is an alternative label for its language",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "uiDescriptionEntry": {
+            "type": "object",
+            "required": ["description", "lang"],
+            "properties": {
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "format": "textarea"
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "kind": {
+                    "title": "Kind",
+                    "description": "Whether this is a definition or scope note",
+                    "type": "string",
+                    "enum": ["definition", "scopeNote"],
+                    "default": "definition"
+                }
+            }
         },
         "skosMatch": {
             "type": "object",

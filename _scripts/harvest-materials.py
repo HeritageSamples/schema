@@ -43,10 +43,11 @@ from dotenv import load_dotenv
 
 from lib import libcordra2
 from lib.skos_lang import (
+    content_to_lexical_maps,
     is_lang_key,
-    main_title_from_pref_label,
-    sanitize_lang_alt_label_map,
-    sanitize_lang_string_map,
+    lexical_maps_to_terms,
+    main_title_from_content,
+    maps_to_descriptions,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -76,8 +77,6 @@ UM_HARVEST_ENRICHMENT_UPDATE = "vocabHarvestEnrichmentUpdate"
 UM_RESET_HARVEST_PROTECTION = "vocabResetHarvestProtection"
 
 HARVESTED_DATE = datetime.now().strftime("%Y-%m-%d")
-
-TRACKED_LEXICAL_PROPERTIES = ("prefLabel", "altLabel", "definition", "scopeNote")
 
 WARNING_SAMPLE_LIMIT = None
 DEFAULT_TIMEOUT = 60
@@ -335,9 +334,7 @@ def _language_code(language_value) -> Optional[str]:
 
 
 def _main_title_from_content(content: dict) -> str:
-    pref_label = content.get("prefLabel") if isinstance(content.get("prefLabel"), dict) else {}
-    notation = _stripped(content.get("notation")) or _stripped(content.get("label"))
-    return main_title_from_pref_label(pref_label, notation=notation)
+    return main_title_from_content(content)
 
 
 def _label_from_concept(concept: dict) -> Optional[str]:
@@ -357,24 +354,8 @@ def _normalize_skos_lang(language_value) -> Optional[str]:
     return LANG_ALIASES.get(lang, lang)
 
 
-def _sanitize_lexical_property(prop: str, block: Optional[dict]) -> Optional[dict]:
-    if prop == "altLabel":
-        return sanitize_lang_alt_label_map(block)
-    return sanitize_lang_string_map(block)
-
-
-def _prune_empty_lang_map(prop: str, value: Optional[dict]) -> Optional[dict]:
-    return _sanitize_lexical_property(prop, value)
-
-
 def _lexical_snapshot(content: dict) -> dict:
-    snapshot = {}
-    for prop in TRACKED_LEXICAL_PROPERTIES:
-        block = content.get(prop)
-        cleaned = _sanitize_lexical_property(prop, block if isinstance(block, dict) else None)
-        if cleaned:
-            snapshot[prop] = cleaned
-    return snapshot
+    return content_to_lexical_maps(content)
 
 
 def _initial_user_metadata(incoming: dict) -> dict:
@@ -701,18 +682,6 @@ def _extract_labels(concept: dict, aat_id: str, warnings: dict) -> Tuple[Dict[st
     return pref_label, alt_label
 
 
-def _alt_label_entries(block: Dict[str, List[str]]) -> Dict[str, List[dict]]:
-    converted: Dict[str, List[dict]] = {}
-    for lang, values in (block or {}).items():
-        entries = []
-        for value in values:
-            text = _stripped(value)
-            if text:
-                entries.append({"label": text})
-        if entries:
-            converted[lang] = entries
-    return converted
-
 
 def _values_from_nested_keys(node: Any, keys: Tuple[str, ...]) -> List[str]:
     """Collect string values for selected keys from a nested dict/list structure."""
@@ -986,9 +955,13 @@ def format_aat_concept(
 
         pref_label, alt_label = _extract_labels(concept, aat_id, warning_state)
         if not pref_label:
-            raise ValueError("Missing required prefLabel")
+            raise ValueError("Missing required terms")
 
         exact_uri = _stripped(concept.get("id") or concept.get("@id")) or _concept_uri(aat_base_url, aat_id)
+
+        terms = lexical_maps_to_terms(pref_label, alt_label)
+        if not terms:
+            raise ValueError("Missing required terms")
 
         content = {
             "id": obj_id,
@@ -996,21 +969,17 @@ def format_aat_concept(
             "vocabulary": vocabulary_id,
             "notation": notation,
             "uri": exact_uri,
-            "prefLabel": pref_label,
+            "terms": terms,
             "harvestedSource": "AAT",
             "harvestedDate": HARVESTED_DATE,
             "queryTerms": [QUERY_TERM],
             "exactMatch": [{"uri": exact_uri, "scheme": "AAT"}],
         }
 
-        if alt_label:
-            content["altLabel"] = _alt_label_entries(alt_label)
-
         definition, scope_note = _extract_subject_of_lexical(concept, aat_id, warning_state)
-        if definition:
-            content["definition"] = definition
-        if scope_note:
-            content["scopeNote"] = scope_note
+        descriptions = maps_to_descriptions(definition, scope_note)
+        if descriptions:
+            content["descriptions"] = descriptions
 
         close_match = _extract_close_matches(concept, aat_id, aat_base_url=aat_base_url)
         if close_match:

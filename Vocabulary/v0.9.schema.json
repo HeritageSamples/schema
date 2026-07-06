@@ -4,7 +4,7 @@
     "title": "Vocabulary",
     "description": "SKOS ConceptScheme metadata for VocabularyConcept records.",
     "type": "object",
-    "required": ["id", "notation", "uri", "prefLabel"],
+    "required": ["id", "notation", "uri", "terms"],
     "properties": {
         "id": {
             "type": "string",
@@ -33,15 +33,18 @@
             "type": "string",
             "format": "uri"
         },
-        "prefLabel": {
-            "title": "Preferred label",
-            "description": "Preferred vocabulary label per language (skos:prefLabel).",
-            "$ref": "#/$defs/skosLangString"
+        "terms": {
+            "title": "Terms",
+            "description": "Preferred labels in different languages (skos:prefLabel).",
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/uiTermEntry" }
         },
-        "definition": {
-            "title": "Definition",
-            "description": "Definition or description of the vocabulary (skos:definition).",
-            "$ref": "#/$defs/skosLangText"
+        "descriptions": {
+            "title": "Descriptions",
+            "description": "Definitions of the vocabulary in different languages (skos:definition).",
+            "type": "array",
+            "items": { "$ref": "#/$defs/uiDescriptionEntry" }
         },
         "homepage": {
             "title": "Homepage",
@@ -99,28 +102,51 @@
         }
     },
     "$defs": {
-        "skosLangString": {
+        "uiTermEntry": {
             "type": "object",
-            "minProperties": 1,
-            "propertyNames": {
-                "type": "string",
-                "minLength": 1
-            },
-            "additionalProperties": {
-                "type": "string",
-                "minLength": 1
+            "required": ["label", "lang"],
+            "properties": {
+                "label": {
+                    "title": "Term",
+                    "description": "The term in the specified language",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lang": {
+                    "title": "Language",
+                    "description": "The language of the term",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "isAlternative": {
+                    "title": "Alternative label",
+                    "description": "Whether this term is an alternative label for its language",
+                    "type": "boolean",
+                    "default": false
+                }
             }
         },
-        "skosLangText": {
+        "uiDescriptionEntry": {
             "type": "object",
-            "minProperties": 1,
-            "propertyNames": {
-                "type": "string",
-                "minLength": 1
-            },
-            "additionalProperties": {
-                "type": "string",
-                "format": "textarea"
+            "required": ["description", "lang"],
+            "properties": {
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "format": "textarea"
+                },
+                "lang": {
+                    "title": "Language",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "kind": {
+                    "title": "Kind",
+                    "description": "Whether this is a definition or scope note",
+                    "type": "string",
+                    "enum": ["definition"],
+                    "default": "definition"
+                }
             }
         }
     }
