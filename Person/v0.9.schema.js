@@ -1,5 +1,5 @@
 const cordra = require('cordra');
-const { validateVocabularyConceptReferences } = require('../lib/vocabularyConceptRefs');
+const { validateVocabularyConceptReferences } = require('vocab');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 

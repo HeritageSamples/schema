@@ -3,7 +3,7 @@ const {
     isConceptHandle,
     queryTermsFromConcept,
     validateVocabularyConceptReferences,
-} = require('../lib/vocabularyConceptRefs');
+} = require('vocab');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
