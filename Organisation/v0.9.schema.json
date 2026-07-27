@@ -4,9 +4,7 @@
     "title": "Organisation",
     "type": "object",
     "required": [
-        "acronym",
-        "name",
-        "research_disciplines"
+        "name"
     ],
     "properties": {
         "$schema": {

@@ -87,7 +87,12 @@
                 "additionalProperties": false,
                 "properties": {
                     "title": {
-                        "type": "string"
+                        "type": "string",
+                        "cordra": {
+                            "preview": {
+                                "showInPreview": true
+                            }
+                        }
                     },
                     "titleType": {
                         "type": "string",

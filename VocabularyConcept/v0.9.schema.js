@@ -511,7 +511,6 @@ function clearNativeRecord(object) {
     delete content[UM_RESET_HARVEST_PROTECTION];
     delete content.harvestProtection;
     delete content.harvestedDate;
-    delete content.queryTerms;
     delete content.harvestBaseline;
     delete content.localContributions;
     delete content.harvestedSource;

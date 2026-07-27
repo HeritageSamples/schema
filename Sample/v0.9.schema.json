@@ -35,8 +35,7 @@
                 }
             }
         },
-        "$comment": {
-
+        "types": {
             "title": "Resource types",
             "type": "object",
             "description": "The resourceType property may be populated with resource types from external ontologies or shared vocabularies. In the absence of an agreed vocabulary, the use of the terms “material sample” or “‘feature-of-interest” are strongly recommended to at least distinguish between these sampling concepts. A material sample is a specialization of a larger feature-of-interest, which is typically the collection site. For example, in the Geosciences, a feature-of-interest might be a lake, tree, cross-section, transect, or borehole. ",
