@@ -5,23 +5,23 @@ exports.beforeSchemaValidation = beforeSchemaValidation;
 
 const VOCABULARY_CONCEPT_RULES = [
     {
-        path: 'external_pids[].pid_type',
+        path: 'externalPids[].pidType',
         queryTerm: 'Common-persistentIdentifier',
         label: 'PID type',
     },
-    { path: 'based_in', queryTerm: 'Common-country', label: 'Country of operation' },
+    { path: 'basedIn', queryTerm: 'Common-country', label: 'Country of operation' },
     {
-        path: 'research_disciplines[]',
+        path: 'researchDisciplines[]',
         queryTerm: 'Common-researchDiscipline',
         label: 'Research discipline',
     },
     {
-        path: 'research_references[].reference_role',
+        path: 'researchReferences[].referenceRole',
         queryTerm: 'Common-referenceRole',
         label: 'Reference type',
     },
     {
-        path: 'organisation_type[]',
+        path: 'organisationType[]',
         queryTerm: 'Organisation-organisationType',
         label: 'Organisation type',
     },
@@ -54,8 +54,8 @@ function ensureDisplayName(content) {
     const acronym = typeof content.acronym === 'string' ? content.acronym.trim() : '';
 
     if (name && acronym) {
-        content.display_name = `${name} (${acronym})`;
+        content.displayName = `${name} (${acronym})`;
     } else {
-        content.display_name = name || acronym;
+        content.displayName = name || acronym;
     }
 }

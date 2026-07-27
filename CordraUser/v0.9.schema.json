@@ -30,7 +30,7 @@
                 "auth": "username"
             }
         },
-        "linked_person": {
+        "linkedPerson": {
             "type": "string",
             "title": "Linked person",
             "cordra": {

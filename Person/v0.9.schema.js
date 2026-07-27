@@ -6,18 +6,18 @@ exports.beforeSchemaValidation = beforeSchemaValidation;
 const VOCABULARY_CONCEPT_RULES = [
     { path: 'title', queryTerm: 'Person-personalTitle', label: 'Personal title' },
     {
-        path: 'external_pids[].pid_type',
+        path: 'externalPids[].pidType',
         queryTerm: 'Common-persistentIdentifier',
         label: 'PID type',
     },
-    { path: 'based_in', queryTerm: 'Common-country', label: 'Country of operation' },
+    { path: 'basedIn', queryTerm: 'Common-country', label: 'Country of operation' },
     {
-        path: 'research_disciplines[]',
+        path: 'researchDisciplines[]',
         queryTerm: 'Common-researchDiscipline',
         label: 'Research discipline',
     },
     {
-        path: 'research_reference[].reference_type',
+        path: 'researchReference[].referenceType',
         queryTerm: 'Common-referenceRole',
         label: 'Reference type',
     },
@@ -46,8 +46,8 @@ async function beforeSchemaValidationLegacy(content, context) {
 
 
 function ensureFullName(content) {
-    const parts = [content.first_name, content.last_name]
+    const parts = [content.firstName, content.lastName]
         .map((value) => (typeof value === 'string' ? value.trim() : ''))
         .filter(Boolean);
-    content.full_name = parts.join(' ');
+    content.fullName = parts.join(' ');
 }

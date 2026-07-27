@@ -31,7 +31,7 @@
             "description": "Name",
             "type": "string"
         },
-        "display_name": {
+        "displayName": {
             "title": "Display Name",
             "description": "Display Name, used internally for improved findability of the organisation",
             "type": "string",
@@ -45,24 +45,28 @@
                 }
             }
         },
-        "external_pids": {
+        "externalPids": {
             "title": "External PIDs",
             "description": "External PIDs",
             "type": "array",
             "items": {
                 "type": "object",
                 "required": [
-                    "pid_type",
+                    "pidType",
                     "pid"
                 ],
                 "properties": {
-                    "pid_type": {
+                    "pidType": {
                         "type": "string",
                         "cordra": {
                             "type": {
                                 "handleReference": {
-                                    "types": ["VocabularyConcept"],
-                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                    "types": [
+                                        "VocabularyConcept"
+                                    ],
+                                    "filters": [
+                                        "/queryTerms/_:\"Common-persistentIdentifier\""
+                                    ]
                                 }
                             }
                         }
@@ -76,20 +80,24 @@
                 }
             }
         },
-        "based_in": {
+        "basedIn": {
             "title": "Country of Operation",
             "description": "The country in which the organisation is based for legal and professional reasons, the value will be used in relation to distribution of organisations and in relation to initial assemesnt of elegability when it is related to location.",
             "type": "string",
             "cordra": {
                 "type": {
                     "handleReference": {
-                        "types": ["VocabularyConcept"],
-                        "filters": ["/queryTerms/_:\"Common-country\""]
+                        "types": [
+                            "VocabularyConcept"
+                        ],
+                        "filters": [
+                            "/queryTerms/_:\"Common-country\""
+                        ]
                     }
                 }
             }
         },
-        "organisation_type": {
+        "organisationType": {
             "title": "Organisation type",
             "description": "Type or legal status of the organisation. This dropdown list gives a few examples, but if required, you can enter a different value here.",
             "type": "array",
@@ -98,24 +106,28 @@
                 "cordra": {
                     "type": {
                         "handleReference": {
-                            "types": ["VocabularyConcept"],
-                            "filters": ["/queryTerms/_:\"Organisation-organisationType\""]
+                            "types": [
+                                "VocabularyConcept"
+                            ],
+                            "filters": [
+                                "/queryTerms/_:\"Organisation-organisationType\""
+                            ]
                         }
                     }
                 }
             }
         },
-        "part_of_organisation": {
+        "partOfOrganisation": {
             "title": "Parent organisations",
             "description": "Parent organisations",
             "type": "array",
             "items": {
                 "type": "object",
                 "required": [
-                    "organisation_pid"
+                    "organisationPid"
                 ],
                 "properties": {
-                    "organisation_pid": {
+                    "organisationPid": {
                         "title": "Organisation",
                         "description": "Reference to an organisation",
                         "type": "string",
@@ -129,13 +141,13 @@
                             }
                         }
                     },
-                    "start_date": {
+                    "startDate": {
                         "title": "Start date",
                         "description": "Start date",
                         "type": "string",
                         "format": "date"
                     },
-                    "end_date": {
+                    "endDate": {
                         "title": "End date",
                         "description": "End date",
                         "type": "string",
@@ -156,7 +168,7 @@
             "type": "string",
             "format": "tel"
         },
-        "img_url": {
+        "imgUrl": {
             "title": "Image URL",
             "description": "URL to an image representing the organisation",
             "type": "string",
@@ -173,7 +185,7 @@
                 "format": "uri"
             }
         },
-        "research_disciplines": {
+        "researchDisciplines": {
             "title": "Research Disciplines",
             "description": "Which domains or disciplines has this organisation worked within, has experience within. This field is connected to an extensive controlled list.",
             "type": "array",
@@ -183,14 +195,18 @@
                 "cordra": {
                     "type": {
                         "handleReference": {
-                            "types": ["VocabularyConcept"],
-                            "filters": ["/queryTerms/_:\"Common-researchDiscipline\""]
+                            "types": [
+                                "VocabularyConcept"
+                            ],
+                            "filters": [
+                                "/queryTerms/_:\"Common-researchDiscipline\""
+                            ]
                         }
                     }
                 }
             }
         },
-        "research_disciplines_narrower": {
+        "researchDisciplinesNarrower": {
             "title": "Research Disciplines (narrower/other)",
             "description": "More precise description of the domains or disciplines this organisation has worked within or has experience within (free text).",
             "type": "array",
@@ -199,7 +215,7 @@
                 "type": "string"
             }
         },
-        "research_references": {
+        "researchReferences": {
             "title": "Research References",
             "description": "Research References",
             "type": "array",
@@ -220,15 +236,19 @@
                         "type": "string",
                         "format": "uri"
                     },
-                    "reference_role": {
+                    "referenceRole": {
                         "title": "Reference type",
                         "description": "The purpose of the reference; what does it relate to or provide more information for.  This dropdown list gives a few examples, but if required, you can enter a different value here.",
                         "type": "string",
                         "cordra": {
                             "type": {
                                 "handleReference": {
-                                    "types": ["VocabularyConcept"],
-                                    "filters": ["/queryTerms/_:\"Common-referenceRole\""]
+                                    "types": [
+                                        "VocabularyConcept"
+                                    ],
+                                    "filters": [
+                                        "/queryTerms/_:\"Common-referenceRole\""
+                                    ]
                                 }
                             }
                         }
@@ -236,24 +256,24 @@
                 }
             }
         },
-        "cited_as": {
+        "citedAs": {
             "title": "Cited as",
             "description": "Cited as, funding name, etc.",
             "type": "string"
         },
-        "joined_the_field_date": {
+        "joinedTheFieldDate": {
             "title": "Date of joining the heritage science field",
             "description": "When did this organisation start working in this field?",
             "type": "string",
             "format": "date"
         },
-        "first_active_date": {
+        "firstActiveDate": {
             "title": "First active date",
             "description": "First date this organisation was active in E-RIHS (administrative field which will be automatically filled in)",
             "type": "string",
             "format": "date"
         },
-        "last_active_date": {
+        "lastActiveDate": {
             "title": "Last active date",
             "description": "Last date this organisation was active in E-RIHS (administrative field which will be automatically filled in)",
             "type": "string",

@@ -4,8 +4,8 @@
     "title": "Person",
     "type": "object",
     "required": [
-        "first_name",
-        "last_name"
+        "firstName",
+        "lastName"
     ],
     "properties": {
         "$schema": {
@@ -29,27 +29,31 @@
             "cordra": {
                 "type": {
                     "handleReference": {
-                        "types": ["VocabularyConcept"],
-                        "filters": ["/queryTerms/_:\"Person-personalTitle\""]
+                        "types": [
+                            "VocabularyConcept"
+                        ],
+                        "filters": [
+                            "/queryTerms/_:\"Person-personalTitle\""
+                        ]
                     }
                 }
             }
         },
-        "first_name": {
+        "firstName": {
             "title": "First name",
             "description": "First name",
             "type": "string",
             "minLength": 3,
             "maxLength": 128
         },
-        "last_name": {
+        "lastName": {
             "title": "Last name",
             "description": "Last name",
             "type": "string",
             "minLength": 3,
             "maxLength": 128
         },
-        "full_name": {
+        "fullName": {
             "title": "Full name",
             "description": "Full name, used internally for improved findability of the person",
             "type": "string",
@@ -63,24 +67,28 @@
                 }
             }
         },
-        "external_pids": {
+        "externalPids": {
             "title": "External PIDs",
             "description": "External PIDs",
             "type": "array",
             "items": {
                 "type": "object",
                 "required": [
-                    "pid_type",
+                    "pidType",
                     "pid"
                 ],
                 "properties": {
-                    "pid_type": {
+                    "pidType": {
                         "type": "string",
                         "cordra": {
                             "type": {
                                 "handleReference": {
-                                    "types": ["VocabularyConcept"],
-                                    "filters": ["/queryTerms/_:\"Common-persistentIdentifier\""]
+                                    "types": [
+                                        "VocabularyConcept"
+                                    ],
+                                    "filters": [
+                                        "/queryTerms/_:\"Common-persistentIdentifier\""
+                                    ]
                                 }
                             }
                         },
@@ -95,20 +103,24 @@
                 }
             }
         },
-        "based_in": {
+        "basedIn": {
             "title": "Country of Operation",
             "description": "The country in which the person is based for legal and professional reasons, the value will be used in relation to distribution of people and in relation to initial assemesnt of elegability when it is related to location.",
             "type": "string",
             "cordra": {
                 "type": {
                     "handleReference": {
-                        "types": ["VocabularyConcept"],
-                        "filters": ["/queryTerms/_:\"Common-country\""]
+                        "types": [
+                            "VocabularyConcept"
+                        ],
+                        "filters": [
+                            "/queryTerms/_:\"Common-country\""
+                        ]
                     }
                 }
             }
         },
-        "research_profile": {
+        "researchProfile": {
             "title": "Short Biography",
             "description": "A short bio or profile describing the defined person",
             "type": "string",
@@ -116,7 +128,7 @@
             "maxLength": 1000,
             "format": "textarea"
         },
-        "part_of_organisation": {
+        "partOfOrganisation": {
             "title": "Affiliations",
             "description": "Affiliations",
             "type": "array",
@@ -124,10 +136,10 @@
                 "title": "Affiliation",
                 "type": "object",
                 "required": [
-                    "organisation_pid"
+                    "organisationPid"
                 ],
                 "properties": {
-                    "organisation_pid": {
+                    "organisationPid": {
                         "title": "Organisation",
                         "description": "Reference to the Organisation",
                         "type": "string",
@@ -141,13 +153,13 @@
                             }
                         }
                     },
-                    "start_date": {
+                    "startDate": {
                         "title": "Start date",
                         "description": "Start date",
                         "type": "string",
                         "format": "date"
                     },
-                    "end_date": {
+                    "endDate": {
                         "title": "End date",
                         "description": "End date",
                         "type": "string",
@@ -168,7 +180,7 @@
             "type": "string",
             "format": "tel"
         },
-        "img_url": {
+        "imgUrl": {
             "title": "Image URL",
             "description": "URL to an image representing the person (e.g. portrait or profile photo)",
             "type": "string",
@@ -185,7 +197,7 @@
                 "format": "uri"
             }
         },
-        "research_disciplines": {
+        "researchDisciplines": {
             "title": "Research Disciplines",
             "description": "Which domains or disciplines has this person worked within, has experience within. This field is connected to an extensive controlled list.",
             "type": "array",
@@ -195,14 +207,18 @@
                 "cordra": {
                     "type": {
                         "handleReference": {
-                            "types": ["VocabularyConcept"],
-                            "filters": ["/queryTerms/_:\"Common-researchDiscipline\""]
+                            "types": [
+                                "VocabularyConcept"
+                            ],
+                            "filters": [
+                                "/queryTerms/_:\"Common-researchDiscipline\""
+                            ]
                         }
                     }
                 }
             }
         },
-        "research_disciplines_narrower": {
+        "researchDisciplinesNarrower": {
             "title": "Research Disciplines (narrower/other)",
             "description": "More precise description of the domains or disciplines this person has worked within or has experience within (free text).",
             "type": "array",
@@ -211,7 +227,7 @@
                 "type": "string"
             }
         },
-        "research_reference": {
+        "researchReference": {
             "title": "Research Reference",
             "description": "Research Reference",
             "type": "array",
@@ -232,15 +248,19 @@
                         "type": "string",
                         "format": "uri"
                     },
-                    "reference_type": {
+                    "referenceType": {
                         "title": "Reference type",
                         "description": "The purpose of the reference; what does it relate to or provide more information for.  This dropdown list gives a few examples, but if required, you can enter a different value here.",
                         "type": "string",
                         "cordra": {
                             "type": {
                                 "handleReference": {
-                                    "types": ["VocabularyConcept"],
-                                    "filters": ["/queryTerms/_:\"Common-referenceRole\""]
+                                    "types": [
+                                        "VocabularyConcept"
+                                    ],
+                                    "filters": [
+                                        "/queryTerms/_:\"Common-referenceRole\""
+                                    ]
                                 }
                             }
                         }
@@ -248,13 +268,13 @@
                 }
             }
         },
-        "joined_the_field_date": {
+        "joinedTheFieldDate": {
             "title": "Date of joining the heritage science field",
             "description": "When did you start working in this field?",
             "type": "string",
             "format": "date"
         },
-        "first_active_date": {
+        "firstActiveDate": {
             "title": "First active date",
             "description": "First date this person was active in E-RIHS (administrative field which will be automatically filled in)",
             "type": "string",
@@ -263,7 +283,7 @@
                 "hidden": true
             }
         },
-        "last_active_date": {
+        "lastActiveDate": {
             "title": "Last active date",
             "description": "Last date this person was active in E-RIHS (administrative field which will be automatically filled in)",
             "type": "string",
