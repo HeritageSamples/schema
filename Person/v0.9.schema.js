@@ -35,6 +35,7 @@ async function beforeSchemaValidation(obj, context) {
 
 async function beforeSchemaValidationLegacy(content, context) {
     ensureFullName(content);
+    cleanResearchDisciplines(content);
 
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
         cordra,
@@ -50,4 +51,19 @@ function ensureFullName(content) {
         .map((value) => (typeof value === 'string' ? value.trim() : ''))
         .filter(Boolean);
     content.fullName = parts.join(' ');
+}
+
+
+function cleanResearchDisciplines(content) {
+    if (!Array.isArray(content.researchDisciplines)) {
+        return;
+    }
+    const cleaned = content.researchDisciplines.filter(
+        (value) => typeof value === 'string' && value.trim().length > 0
+    );
+    if (cleaned.length > 0) {
+        content.researchDisciplines = cleaned;
+    } else {
+        delete content.researchDisciplines;
+    }
 }

@@ -39,6 +39,7 @@ async function beforeSchemaValidation(obj, context) {
 
 async function beforeSchemaValidationLegacy(content, context) {
     ensureDisplayName(content);
+    cleanResearchDisciplines(content);
 
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
         cordra,
@@ -57,5 +58,20 @@ function ensureDisplayName(content) {
         content.displayName = `${name} (${acronym})`;
     } else {
         content.displayName = name || acronym;
+    }
+}
+
+
+function cleanResearchDisciplines(content) {
+    if (!Array.isArray(content.researchDisciplines)) {
+        return;
+    }
+    const cleaned = content.researchDisciplines.filter(
+        (value) => typeof value === 'string' && value.trim().length > 0
+    );
+    if (cleaned.length > 0) {
+        content.researchDisciplines = cleaned;
+    } else {
+        delete content.researchDisciplines;
     }
 }
