@@ -69,6 +69,8 @@ async function beforeSchemaValidation(object, context) {
         }
     }
 
+    cleanPrincipalIdentifier(object);
+
     await validateVocabularyConceptReferences(object, VOCABULARY_CONCEPT_RULES, {
         cordra,
         CordraError: cordra.CordraError,
@@ -85,4 +87,21 @@ async function beforeSchemaValidation(object, context) {
     }
 
     return object;
+}
+
+
+function cleanPrincipalIdentifier(content) {
+    const principalIdentifier = content.principalIdentifier;
+    if (principalIdentifier === null || typeof principalIdentifier !== 'object') {
+        return;
+    }
+    const identifier = typeof principalIdentifier.identifier === 'string'
+        ? principalIdentifier.identifier.trim()
+        : '';
+    const identifierType = typeof principalIdentifier.identifierType === 'string'
+        ? principalIdentifier.identifierType.trim()
+        : '';
+    if (!identifier && !identifierType) {
+        delete content.principalIdentifier;
+    }
 }

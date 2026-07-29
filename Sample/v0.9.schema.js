@@ -10,6 +10,12 @@ const TITLE_TYPE_DEFAULT_HANDLE = 'HSR/voc.hsr.title';
 const TITLE_TYPE_DEFAULT_TAIL = 'title';
 
 const VOCABULARY_CONCEPT_RULES = [
+    {
+        path: 'principalIdentifier.identifierType',
+        queryTerm: 'Common-persistentIdentifier',
+        label: 'Principal identifier type',
+    },
+    { path: 'types.resourceType', queryTerm: 'Sample-resourceType', label: 'Resource type' },
     { path: 'titles[].titleType', queryTerm: 'Sample-titleType', label: 'Title type' },
     { path: 'titles[].lang', queryTerm: 'Common-language', label: 'Title language' },
     { path: 'otherDescriptions[].descriptionType', queryTerm: 'Sample-descriptionType', label: 'Description type' },
@@ -26,7 +32,7 @@ const VOCABULARY_CONCEPT_RULES = [
     },
     {
         path: 'documentationIdentifier.resourceTypeGeneral',
-        queryTerm: 'Sample-resourceTypeGeneral',
+        queryTerm: 'Sample-relatedIdentifiers-resourceTypeGeneral',
         label: 'Documentation resource type general',
     },
     { path: 'sampleType', queryTerm: 'Sample-sampleType', label: 'Sample type' },
@@ -82,6 +88,8 @@ async function beforeSchemaValidation(object, context) {
         }
     }
 
+    cleanPrincipalIdentifier(content);
+
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
         cordra,
         CordraError: cordra.CordraError,
@@ -99,4 +107,21 @@ async function beforeSchemaValidation(object, context) {
     //}
 
     return object;
+}
+
+
+function cleanPrincipalIdentifier(content) {
+    const principalIdentifier = content.principalIdentifier;
+    if (principalIdentifier === null || typeof principalIdentifier !== 'object') {
+        return;
+    }
+    const identifier = typeof principalIdentifier.identifier === 'string'
+        ? principalIdentifier.identifier.trim()
+        : '';
+    const identifierType = typeof principalIdentifier.identifierType === 'string'
+        ? principalIdentifier.identifierType.trim()
+        : '';
+    if (!identifier && !identifierType) {
+        delete content.principalIdentifier;
+    }
 }

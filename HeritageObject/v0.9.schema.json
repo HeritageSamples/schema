@@ -26,6 +26,7 @@
         "principalIdentifier": {
             "title": "Principal Identifier",
             "type": "object",
+            "$comment": "maps to datacite alternateIdentifiers type isDocumentedBy",
             "required": ["identifier", "identifierType"],
             "properties": {
                 "identifier": {
@@ -182,64 +183,8 @@
         },
         "geoLocations": {
             "title": "Geo Locations",
-            "description": "For real-world geospatial locations only. The geoLocation property is used to encode information on the origin of the heritage object or fragment.",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "minProperties": 1,
-                "properties": {
-                    "geoLocationPlace": {
-                        "title": "Geo Location Place",
-                        "type": "string"
-                    },
-                    "geoLocationPoint": {
-                        "$ref": "#/$defs/geoLocationPoint"
-                    },
-                    "geoLocationBox": {
-                        "title": "Geo Location Box",
-                        "type": "object",
-                        "additionalProperties": false,
-                        "required": [
-                            "westBoundLongitude",
-                            "eastBoundLongitude",
-                            "southBoundLatitude",
-                            "northBoundLatitude"
-                        ],
-                        "properties": {
-                            "westBoundLongitude": {
-                                "$ref": "#/$defs/longitude"
-                            },
-                            "eastBoundLongitude": {
-                                "$ref": "#/$defs/longitude"
-                            },
-                            "southBoundLatitude": {
-                                "$ref": "#/$defs/latitude"
-                            },
-                            "northBoundLatitude": {
-                                "$ref": "#/$defs/latitude"
-                            }
-                        }
-                    },
-                    "geoLocationPolygon": {
-                        "title": "Geo Location Polygon",
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "polygonPoint": {
-                                    "$ref": "#/$defs/geoLocationPoint"
-                                },
-                                "inPolygonPoint": {
-                                    "$ref": "#/$defs/geoLocationPoint"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            "description": "For real-world geospatial locations only. GeoJSON geometry encoding the origin of the heritage object or fragment. Coordinates follow GeoJSON order [longitude, latitude] when the CRS is WGS84.",
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/geoJsonFeature"
         },
         "sizes": {
             "title": "Sizes",
@@ -612,32 +557,6 @@
             "options": {
                 "hidden": true
             }
-        }
-    },
-    "$defs": {
-        "geoLocationPoint": {
-            "title": "Geo Location Point",
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["pointLongitude", "pointLatitude"],
-            "properties": {
-                "pointLongitude": {
-                    "$ref": "#/$defs/longitude"
-                },
-                "pointLatitude": {
-                    "$ref": "#/$defs/latitude"
-                }
-            }
-        },
-        "latitude": {
-            "type": "number",
-            "maximum": 90,
-            "minimum": -90
-        },
-        "longitude": {
-            "type": "number",
-            "maximum": 180,
-            "minimum": -180
         }
     }
 }
