@@ -556,6 +556,13 @@
             "type": "string",
             "options": {
                 "hidden": true
+            },
+            "cordra": {
+                "preview": {
+                    "showInPreview": true,
+                    "isPrimary": true
+                },
+                "disableInUi": true
             }
         }
     }

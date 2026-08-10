@@ -6,7 +6,6 @@
     "required": [
         "id",
         "types",
-        "custodianIdentifier",
         "sampleSource",
         "creators",
         "custodian",
@@ -638,6 +637,16 @@
                 "preview": {
                     "showInPreview": true
                 }
+            },
+            "options": {
+                "hidden": true
+            }
+        },
+        "_communities": {
+            "title": "Communities",
+            "type": "array",
+            "items": {
+                "type": "string"
             },
             "options": {
                 "hidden": true

@@ -60,24 +60,24 @@ function isPrimaryTitleType(value) {
 
 
 async function beforeSchemaValidation(object, context) {
-    if (object.titles && object.titles.length > 0) {
-        const title = object.titles.find((entry) => isPrimaryTitleType(entry.titleType));
+    if (object.content.titles && object.content.titles.length > 0) {
+        const title = object.content.titles.find((entry) => isPrimaryTitleType(entry.titleType));
         if (title) {
-            object._displayTitle = title.title;
+            object.content._displayTitle = title.title;
         } else {
-            object._displayTitle = object.titles[0].title;
+            object.content._displayTitle = object.content.titles[0].title;
         }
     }
 
-    cleanPrincipalIdentifier(object);
+    cleanPrincipalIdentifier(object.content);
 
-    await validateVocabularyConceptReferences(object, VOCABULARY_CONCEPT_RULES, {
+    await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
         cordra,
         CordraError: cordra.CordraError,
     });
 
-    if (object.materialTerms) {
-        for (const id of object.materialTerms) {
+    if (object.content.materialTerms) {
+        for (const id of object.content.materialTerms) {
             const concept = await cordra.get(id);
             const queryTerms = queryTermsFromConcept(concept);
             if (!queryTerms.includes('materials')) {

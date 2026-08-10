@@ -15,7 +15,6 @@ const VOCABULARY_CONCEPT_RULES = [
         queryTerm: 'Common-persistentIdentifier',
         label: 'Principal identifier type',
     },
-    { path: 'types.resourceType', queryTerm: 'Sample-resourceType', label: 'Resource type' },
     { path: 'titles[].titleType', queryTerm: 'Sample-titleType', label: 'Title type' },
     { path: 'titles[].lang', queryTerm: 'Common-language', label: 'Title language' },
     { path: 'otherDescriptions[].descriptionType', queryTerm: 'Sample-descriptionType', label: 'Description type' },
@@ -74,31 +73,29 @@ function isPrimaryTitleType(value) {
 
 
 async function beforeSchemaValidation(object, context) {
-    const content = object.content;
-
-    if (content.titles && content.titles.length > 0) {
-        const custodianTitle = content.titles.find((title) => title.isCustodianIdentifier);
-        const mainTitle = content.titles.find((title) => isPrimaryTitleType(title.titleType));
+    if (object.content.titles && object.content.titles.length > 0) {
+        const custodianTitle = object.content.titles.find((title) => title.isCustodianIdentifier);
+        const mainTitle = object.content.titles.find((title) => isPrimaryTitleType(title.titleType));
         if (custodianTitle) {
-            content._displayTitle = custodianTitle.title;
+            object.content._displayTitle = custodianTitle.title;
         } else if (mainTitle) {
-            content._displayTitle = mainTitle.title;
+            object.content._displayTitle = mainTitle.title;
         } else {
-            content._displayTitle = content.titles[0].title;
+            object.content._displayTitle = object.content.titles[0].title;
         }
     }
 
-    cleanPrincipalIdentifier(content);
+    cleanPrincipalIdentifier(object.content);
 
-    await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
+    await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
         cordra,
         CordraError: cordra.CordraError,
     });
 
     // validate material terms
     // TODO: queryTerms are not yet set for AAT materials
-    //if (content.materialTerms) {
-    //    for (const id of content.materialTerms) {
+    //if (object.content.materialTerms) {
+    //    for (const id of object.content.materialTerms) {
     //        const concept = await cordra.get(id);
     //        if (!('queryTerms' in concept && concept.queryTerms.includes('materials'))) {
     //            throw new cordra.CordraError(`Material term ${id} is not a valid material term`, 400);
