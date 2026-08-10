@@ -60,6 +60,39 @@
             "cordra": {
                 "auth": "usersList"
             }
+        },
+        "membership": {
+            "type": "array",
+            "title": "Membership",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "periodeStart": {
+                        "type": "string",
+                        "title": "Periode Start",
+                        "format": "date"
+                    },
+                    "periodeEnd": {
+                        "type": "string",
+                        "title": "Periode End",
+                        "format": "date"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "title": "Prefix"
+                    },
+                    "maximumNumberOfIGSNs": {
+                        "type": "string",
+                        "title": "Maximum Number of IGSNs in this period in this prefix (-1 for unlimited)",
+                        "format": "number"
+                    },
+                    "currentNumberOfIGSNs": {
+                        "type": "string",
+                        "title": "Current Number of IGSNs in this period in this prefix",
+                        "format": "number"
+                    }
+                }
+            }
         }
     }
 }
