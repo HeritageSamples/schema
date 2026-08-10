@@ -77,9 +77,16 @@
                         "title": "Periode End",
                         "format": "date"
                     },
-                    "prefix": {
+                    "community": {
                         "type": "string",
-                        "title": "Prefix"
+                        "title": "Community",
+                        "cordra": {
+                            "type": {
+                                "handleReference": {
+                                    "types": ["Community"]
+                                }
+                            }
+                        }
                     },
                     "maximumNumberOfIGSNs": {
                         "type": "string",

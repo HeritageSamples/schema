@@ -105,6 +105,8 @@
                 "additionalProperties": false,
                 "properties": {
                     "title": {
+                        "title": "Title",
+                        "description": "The title of the sample.",
                         "type": "string",
                         "cordra": {
                             "preview": {
@@ -113,6 +115,8 @@
                         }
                     },
                     "titleType": {
+                        "title": "Title Type",
+                        "description": "The type of title.",
                         "type": "string",
                         "cordra": {
                             "type": {
@@ -126,6 +130,8 @@
                         "$comment": "https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/title/#a-titletype"
                     },
                     "lang": {
+                        "title": "Language",
+                        "description": "The language of the title.",
                         "type": "string",
                         "cordra": {
                             "type": {
@@ -592,6 +598,23 @@
                 }
             }
         },
+        "communities": {
+            "title": "Communities",
+            "description": "The communities in which the sample is registered. The first community is the primary community that defines which IGSN prefix is used for the sample. This cannot be changed once the IGSN ID is assigned.",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "cordra": {
+                    "type": {
+                        "handleReference": {
+                            "types": ["Community"]
+                        }
+                    }
+                },
+                "required": ["community"]
+            },
+            "uniqueItems": true
+        },
         "_custodianNames": {
             "title": "Custodian Names",
             "description": "Automatically generated list of custodian names based on the titles array.",
@@ -637,16 +660,6 @@
                 "preview": {
                     "showInPreview": true
                 }
-            },
-            "options": {
-                "hidden": true
-            }
-        },
-        "_communities": {
-            "title": "Communities",
-            "type": "array",
-            "items": {
-                "type": "string"
             },
             "options": {
                 "hidden": true
