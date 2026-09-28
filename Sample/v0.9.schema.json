@@ -68,8 +68,14 @@
                 "resourceType": {
                     "title": "Resource Type",
                     "type": "string",
-                    "const": "Heritage Sample",
-                    "default": "Heritage Sample",
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Sample-resourceType\""]
+                            }
+                        }
+                    },
                     "$comment": "https://support.datacite.org/docs/igsn-id-metadata-recommendations#10-resourcetype"
                 },
                 "resourceTypeGeneral": {
@@ -147,36 +153,84 @@
         },
         "sampleSource": {
             "title": "Sample Source",
-            "type": "object",
-            "description": "The source of the sample",
-            "required": ["sourceId"],
-            "minProperties": 2,
-            "properties": {
-                "sourceId": {
-                    "title": "Source ID",
-                    "type": "string",
-                    "description": "The ID of the heritage object from which the sample was taken",
-                    "cordra": {
-                        "type": {
-                            "handleReference": {
-                                "types": ["HeritageObject", "Sample"]
-                            }
+            "description": "Where the sample was taken from. Use a heritage sample source when the sample comes from a heritage object or another sample. Use a reference sample source when it comes from a reference product.",
+            "oneOf": [
+                {
+                    "title": "Heritage sample source",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["sourceId"],
+                    "minProperties": 2,
+                    "properties": {
+                        "sourceId": {
+                            "title": "Source ID",
+                            "type": "string",
+                            "description": "The ID of the heritage object from which the sample was taken",
+                            "cordra": {
+                                "type": {
+                                    "handleReference": {
+                                        "types": ["HeritageObject", "Sample"]
+                                    }
+                                }
+                            },
+                            "$comment": "(1) not using in-cordra references, (2) maps to relatedIdentifiers type isDerivedFrom"
+                        },
+                        "sampleSiteDescription": {
+                            "title": "Sample Site Description",
+                            "type": "string",
+                            "description": "A description of the location of the sample on the source object"
+                        },
+                        "sampleSiteAnnotationUrl": {
+                            "title": "Sample Site Annotations",
+                            "description": "A URL to document to location of the site relative to an image of the source. It is recommended to use a link to a IIIF manifest, or a PID landing page for further documentation.",
+                            "type": "string",
+                            "format": "uri"
                         }
-                    },
-                    "$comment": "(1) not using in-cordra references, (2)maps to relatedIdentifiers type isDerivedFrom"
+                    }
                 },
-                "sampleSiteDescription": {
-                    "title": "Sample Site Description",
-                    "type": "string",
-                    "description": "A description of the location of the sample on the source object"
-                },
-                "sampleSiteAnnotationUrl": {
-                    "title": "Sample Site Annotations",
-                    "description": "A URL to document to location of the site relative to an image of the source. It is recommended to use a link to a IIIF manifest, or a PID landing page for further documentation.",
-                    "type": "string",
-                    "format": "uri"
+                {
+                    "title": "Reference sample source",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["sourceId", "productName"],
+                    "properties": {
+                        "sourceId": {
+                            "title": "Supplier",
+                            "type": "string",
+                            "description": "The person or organisation that supplied or manufactured the reference product.",
+                            "cordra": {
+                                "type": {
+                                    "handleReference": {
+                                        "types": ["Person", "Organisation"]
+                                    }
+                                }
+                            }
+                        },
+                        "productName": {
+                            "title": "Product name",
+                            "type": "string",
+                            "minLength": 1,
+                            "description": "The name of the reference product that was sampled."
+                        },
+                        "productReference": {
+                            "title": "Product reference",
+                            "type": "string",
+                            "description": "Catalogue or product code assigned by the supplier."
+                        },
+                        "batchNumber": {
+                            "title": "Batch number",
+                            "type": "string",
+                            "description": "Batch or lot number of the reference product."
+                        },
+                        "productDescriptionUrl": {
+                            "title": "Product description",
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Datasheet, certificate, or other description of the sampled product."
+                        }
+                    }
                 }
-            }
+            ]
         },
         "otherDescriptions": {
             "title": "Other Descriptions",
