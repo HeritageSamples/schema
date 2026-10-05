@@ -10,6 +10,7 @@ const VOCABULARY_CONCEPT_RULES = [
         queryTerm: 'Common-persistentIdentifier',
         label: 'Principal identifier type',
     },
+    { path: 'types.resourceType', queryTerm: 'Sample-resourceType', label: 'Resource type' },
     { path: 'titles[].titleType', queryTerm: 'Sample-titleType', label: 'Title type' },
     { path: 'titles[].lang', queryTerm: 'Common-language', label: 'Title language' },
     { path: 'otherDescriptions[].descriptionType', queryTerm: 'Sample-descriptionType', label: 'Description type' },

@@ -5,21 +5,11 @@ const { assignLabels, labelsFromText } = require('labels');
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
 const VOCABULARY_CONCEPT_RULES = [
+    { path: 'names[].lang', queryTerm: 'Common-language', label: 'Name language' },
     {
         path: 'externalPids[].pidType',
         queryTerm: 'Common-persistentIdentifier',
         label: 'PID type',
-    },
-    { path: 'basedIn', queryTerm: 'Common-country', label: 'Country of operation' },
-    {
-        path: 'researchDisciplines[]',
-        queryTerm: 'Common-researchDiscipline',
-        label: 'Research discipline',
-    },
-    {
-        path: 'researchReferences[].referenceRole',
-        queryTerm: 'Common-referenceRole',
-        label: 'Reference type',
     },
     {
         path: 'organisationType[]',
@@ -39,9 +29,12 @@ async function beforeSchemaValidation(obj, context) {
 
 
 async function beforeSchemaValidationLegacy(content, context) {
+<<<<<<< HEAD
     ensureLabels(content);
     cleanResearchDisciplines(content);
 
+=======
+>>>>>>> 23c5725abd29c727929952e7b409bfa0791216ac
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
         cordra,
         CordraError: cordra.CordraError,
@@ -49,6 +42,7 @@ async function beforeSchemaValidationLegacy(content, context) {
 
     return content;
 }
+<<<<<<< HEAD
 
 
 function ensureLabels(content) {
@@ -73,3 +67,5 @@ function cleanResearchDisciplines(content) {
         delete content.researchDisciplines;
     }
 }
+=======
+>>>>>>> 23c5725abd29c727929952e7b409bfa0791216ac

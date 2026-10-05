@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@type": "skos:ConceptScheme",
+  "@id": "https://heritagesamples.org/vocab/Sample/resourceType",
+  "skos:prefLabel": "Resource Type",
+  "dc:source": "Derived from HeritageSamples JSON Schema: Sample v0.9",
+  "skos:hasTopConcept": [
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Sample/resourceType/heritage-sample",
+      "skos:prefLabel": "Heritage Sample",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Sample/resourceType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Sample/resourceType/reference-sample",
+      "skos:prefLabel": "Reference Sample",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Sample/resourceType"
+    },
+    {
+      "@type": "skos:Concept",
+      "@id": "https://heritagesamples.org/vocab/Sample/resourceType/test-sample",
+      "skos:prefLabel": "Test Sample",
+      "skos:inScheme": "https://heritagesamples.org/vocab/Sample/resourceType"
+    }
+  ]
+}
