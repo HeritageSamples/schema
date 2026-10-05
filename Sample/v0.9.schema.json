@@ -615,21 +615,8 @@
             },
             "uniqueItems": true
         },
-        "_custodianNames": {
-            "title": "Custodian Names",
-            "description": "Automatically generated list of custodian names based on the titles array.",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "cordra": {
-                    "preview": {
-                        "showInPreview": true
-                    }
-                }
-            },
-            "options": {
-                "hidden": true
-            }
+        "_labels": {
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
         },
         "_sourceObject": {
             "title": "Source Object",

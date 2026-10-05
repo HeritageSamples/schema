@@ -10,7 +10,8 @@
         "creators",
         "custodian",
         "publisher",
-        "dates"
+        "dates",
+        "_labels"
     ],
     "properties": {
         "id": {
@@ -550,19 +551,21 @@
                 }
             }
         },
-        "_displayTitle": {
-            "title": "Display Title",
-            "description": "Automatically generated title based on the titles array.",
-            "type": "string",
-            "options": {
-                "hidden": true
-            },
-            "cordra": {
-                "preview": {
-                    "showInPreview": true,
-                    "isPrimary": true
-                },
-                "disableInUi": true
+        "_labels": {
+            "allOf": [
+                {
+                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+                }
+            ],
+            "properties": {
+                "default": {
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true,
+                            "isPrimary": true
+                        }
+                    }
+                }
             }
         }
     }

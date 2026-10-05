@@ -3,13 +3,162 @@
 from __future__ import annotations
 
 import json
+import re
 from typing import Any, Dict, List, Optional, Tuple
 
 DEFAULT_DISPLAY_LANG = "en"
+DEFAULT_VOCABULARY_NOTATION = "hsr"
+HANDLE_TAIL_RE = re.compile(rf"/voc\.{re.escape(DEFAULT_VOCABULARY_NOTATION)}\.([^/]+)$")
+ENGLISH_TAIL = "en-english"
+
+LANGUAGE_TAILS = {
+    "bg": "bg-bulgarian",
+    "bulgarian": "bg-bulgarian",
+    "bg-bulgarian": "bg-bulgarian",
+    "cz": "cz-czech",
+    "cs": "cz-czech",
+    "czech": "cz-czech",
+    "cz-czech": "cz-czech",
+    "da": "da-danish",
+    "danish": "da-danish",
+    "da-danish": "da-danish",
+    "de": "de-german",
+    "ger": "de-german",
+    "deu": "de-german",
+    "german": "de-german",
+    "de-german": "de-german",
+    "el": "el-greek",
+    "gre": "el-greek",
+    "ell": "el-greek",
+    "greek": "el-greek",
+    "el-greek": "el-greek",
+    "en": "en-english",
+    "eng": "en-english",
+    "english": "en-english",
+    "en-english": "en-english",
+    "es": "es-spanish",
+    "spa": "es-spanish",
+    "spanish": "es-spanish",
+    "es-spanish": "es-spanish",
+    "et": "et-estonian",
+    "estonian": "et-estonian",
+    "et-estonian": "et-estonian",
+    "fi": "fi-finnish",
+    "finnish": "fi-finnish",
+    "fi-finnish": "fi-finnish",
+    "fr": "fr-french",
+    "fre": "fr-french",
+    "fra": "fr-french",
+    "french": "fr-french",
+    "fr-french": "fr-french",
+    "ga": "ga-irish",
+    "irish": "ga-irish",
+    "ga-irish": "ga-irish",
+    "hr": "hr-croatian",
+    "croatian": "hr-croatian",
+    "hr-croatian": "hr-croatian",
+    "hu": "hu-hungarian",
+    "hungarian": "hu-hungarian",
+    "hu-hungarian": "hu-hungarian",
+    "it": "it-italian",
+    "ita": "it-italian",
+    "italian": "it-italian",
+    "it-italian": "it-italian",
+    "lt": "lt-lithuanian",
+    "lithuanian": "lt-lithuanian",
+    "lt-lithuanian": "lt-lithuanian",
+    "lv": "lv-latvian",
+    "latvian": "lv-latvian",
+    "lv-latvian": "lv-latvian",
+    "mt": "mt-maltese",
+    "maltese": "mt-maltese",
+    "mt-maltese": "mt-maltese",
+    "nl": "nl-dutch",
+    "dut": "nl-dutch",
+    "nld": "nl-dutch",
+    "dutch": "nl-dutch",
+    "flemish": "nl-dutch",
+    "nl-dutch": "nl-dutch",
+    "no": "no-norwegian",
+    "norwegian": "no-norwegian",
+    "no-norwegian": "no-norwegian",
+    "pl": "pl-polish",
+    "polish": "pl-polish",
+    "pl-polish": "pl-polish",
+    "pt": "pt-portugese",
+    "por": "pt-portugese",
+    "portuguese": "pt-portugese",
+    "portugese": "pt-portugese",
+    "pt-portugese": "pt-portugese",
+    "ro": "ro-romanian",
+    "romanian": "ro-romanian",
+    "ro-romanian": "ro-romanian",
+    "sk": "sk-slovak",
+    "slovak": "sk-slovak",
+    "sk-slovak": "sk-slovak",
+    "sl": "sl-slovenian",
+    "slovenian": "sl-slovenian",
+    "sl-slovenian": "sl-slovenian",
+    "sv": "sv-swedish",
+    "swedish": "sv-swedish",
+    "sv-swedish": "sv-swedish",
+}
 
 
 def is_lang_key(tag: Any) -> bool:
     return isinstance(tag, str) and tag.strip() != ""
+
+
+def language_tail(value: Any) -> Optional[str]:
+    text = _stripped(value)
+    if not text:
+        return None
+    match = HANDLE_TAIL_RE.search(text)
+    key = (match.group(1) if match else text).lower()
+    if key in LANGUAGE_TAILS:
+        return LANGUAGE_TAILS[key]
+    primary = key.split("-", 1)[0]
+    return LANGUAGE_TAILS.get(primary)
+
+
+def language_to_handle(hdl_prefix: str, value: Any) -> str:
+    text = _stripped(value) or ""
+    tail = language_tail(text)
+    prefix = (_stripped(hdl_prefix) or "").rstrip("/")
+    if tail and prefix:
+        return f"{prefix}/voc.{DEFAULT_VOCABULARY_NOTATION}.{tail}"
+    return text
+
+
+def pref_label_entries_to_handles(entries: Optional[List[dict]], hdl_prefix: str) -> List[dict]:
+    converted: List[dict] = []
+    seen = set()
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        lang = language_to_handle(hdl_prefix, entry.get("lang"))
+        label = _stripped(entry.get("label"))
+        if not lang or not label or lang in seen:
+            continue
+        seen.add(lang)
+        converted.append({**entry, "lang": lang, "label": label})
+    return converted
+
+
+def pref_label_map_to_handles(mapping: Optional[Dict[str, str]], hdl_prefix: str) -> Dict[str, str]:
+    converted: Dict[str, str] = {}
+    if not isinstance(mapping, dict):
+        return converted
+    for lang, text in mapping.items():
+        key = language_to_handle(hdl_prefix, lang)
+        label = _stripped(text)
+        if key and label and key not in converted:
+            converted[key] = label
+    return converted
+
+
+def is_english_lang(lang: Any) -> bool:
+    return language_tail(lang) == ENGLISH_TAIL
 
 
 def _stripped(value: Any) -> Optional[str]:
@@ -347,7 +496,7 @@ def sanitize_lexical_arrays(content: dict) -> None:
 def display_label_from_pref_label(pref_label: Any) -> str:
     if isinstance(pref_label, list):
         for entry in pref_label:
-            if isinstance(entry, dict) and entry.get("lang") == DEFAULT_DISPLAY_LANG:
+            if isinstance(entry, dict) and is_english_lang(entry.get("lang")):
                 text = _stripped(entry.get("label"))
                 if text:
                     return text
@@ -359,6 +508,11 @@ def display_label_from_pref_label(pref_label: Any) -> str:
         return ""
 
     if isinstance(pref_label, dict):
+        for lang, value in pref_label.items():
+            if is_english_lang(lang):
+                text = _stripped(value)
+                if text:
+                    return text
         en = _stripped(pref_label.get(DEFAULT_DISPLAY_LANG))
         if en:
             return en

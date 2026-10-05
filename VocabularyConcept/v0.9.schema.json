@@ -3,7 +3,7 @@
     "$id": "https://heritagesamples.org/schema/VocabularyConcept/v0.9",
     "title": "VocabularyConcept",
     "type": "object",
-    "required": ["id", "notation", "prefLabel", "vocabulary"],
+    "required": ["id", "notation", "prefLabel", "vocabulary", "_labels"],
     "properties": {
         "id": {
             "type": "string",
@@ -19,16 +19,21 @@
                 "hidden": true
             }
         },
-        "_mainTitle": {
-            "title": "Main title",
-            "description": "Automatically generated main title based on labels and notation.",
-            "type": "string",
-            "cordra": {
-                "preview": {
-                    "showInPreview": true,
-                    "isPrimary": true
-                },
-                "disableInUi": true
+        "_labels": {
+            "allOf": [
+                {
+                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+                }
+            ],
+            "properties": {
+                "default": {
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true,
+                            "isPrimary": true
+                        }
+                    }
+                }
             }
         },
         "vocabulary": {
@@ -184,7 +189,14 @@
                 "lang": {
                     "title": "Language",
                     "type": "string",
-                    "minLength": 1
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Common-language\""]
+                            }
+                        }
+                    }
                 }
             }
         },

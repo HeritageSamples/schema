@@ -1,14 +1,11 @@
 const cordra = require('cordra');
 const {
-    isConceptHandle,
     queryTermsFromConcept,
     validateVocabularyConceptReferences,
 } = require('vocab');
+const { assignLabels, labelsFromTitles } = require('labels');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
-
-const TITLE_TYPE_DEFAULT_HANDLE = 'HSR/voc.hsr.title';
-const TITLE_TYPE_DEFAULT_TAIL = 'title';
 
 const VOCABULARY_CONCEPT_RULES = [
     {
@@ -52,22 +49,8 @@ const VOCABULARY_CONCEPT_RULES = [
 ];
 
 
-function isPrimaryTitleType(value) {
-    return value === 'Title'
-        || value === TITLE_TYPE_DEFAULT_HANDLE
-        || isConceptHandle(value, TITLE_TYPE_DEFAULT_TAIL);
-}
-
-
 async function beforeSchemaValidation(object, context) {
-    if (object.content.titles && object.content.titles.length > 0) {
-        const title = object.content.titles.find((entry) => isPrimaryTitleType(entry.titleType));
-        if (title) {
-            object.content._displayTitle = title.title;
-        } else {
-            object.content._displayTitle = object.content.titles[0].title;
-        }
-    }
+    assignLabels(object.content, labelsFromTitles(object.content.titles, { priority: 'heritageObject' }));
 
     cleanPrincipalIdentifier(object.content);
 

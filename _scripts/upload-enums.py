@@ -40,6 +40,7 @@ from lib.skos_lang import (
     parse_skos_alt_label,
     parse_skos_lang_text,
     parse_skos_pref_label,
+    pref_label_entries_to_handles,
     text_array_to_map,
 )
 
@@ -251,6 +252,7 @@ def build_content(
     record: MergedConcept,
     query_terms: List[str],
     handle: str,
+    hdl_prefix: str,
 ) -> dict:
     content = {
         "id": handle,
@@ -259,7 +261,7 @@ def build_content(
         "notation": concept_notation(tail),
         "uri": concept_uri(tail),
         "queryTerms": query_terms,
-        "prefLabel": record.pref_label,
+        "prefLabel": pref_label_entries_to_handles(record.pref_label, hdl_prefix),
     }
     if record.alt_label:
         content["altLabel"] = record.alt_label
@@ -285,6 +287,7 @@ def build_digital_objects(
             record,
             sorted(record.query_terms),
             handle,
+            hdl_prefix,
         )
         objects.append({"id": handle, "type": CONCEPT_TYPE, "content": content})
     return objects

@@ -4,7 +4,8 @@
     "title": "Organisation",
     "type": "object",
     "required": [
-        "name"
+        "name",
+        "_labels"
     ],
     "properties": {
         "$schema": {
@@ -31,17 +32,20 @@
             "description": "Name",
             "type": "string"
         },
-        "displayName": {
-            "title": "Display Name",
-            "description": "Display Name, used internally for improved findability of the organisation",
-            "type": "string",
-            "options": {
-                "hidden": true
-            },
-            "cordra": {
-                "preview": {
-                    "showInPreview": true,
-                    "isPrimary": true
+        "_labels": {
+            "allOf": [
+                {
+                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+                }
+            ],
+            "properties": {
+                "default": {
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true,
+                            "isPrimary": true
+                        }
+                    }
                 }
             }
         },

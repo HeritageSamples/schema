@@ -5,7 +5,8 @@
     "type": "object",
     "required": [
         "firstName",
-        "lastName"
+        "lastName",
+        "_labels"
     ],
     "properties": {
         "$schema": {
@@ -53,17 +54,20 @@
             "minLength": 3,
             "maxLength": 128
         },
-        "fullName": {
-            "title": "Full name",
-            "description": "Full name, used internally for improved findability of the person",
-            "type": "string",
-            "options": {
-                "hidden": true
-            },
-            "cordra": {
-                "preview": {
-                    "showInPreview": true,
-                    "isPrimary": true
+        "_labels": {
+            "allOf": [
+                {
+                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+                }
+            ],
+            "properties": {
+                "default": {
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true,
+                            "isPrimary": true
+                        }
+                    }
                 }
             }
         },

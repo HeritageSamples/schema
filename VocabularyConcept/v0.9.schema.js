@@ -1,5 +1,12 @@
 const cordra = require('cordra');
 const schema = require('/cordra/schemas/VocabularyConcept.schema.json');
+const { validateVocabularyConceptReferences } = require('vocab');
+const {
+    assignLabels,
+    bcp47FromLang,
+    labelsFromPrefLabels,
+    rewritePrefLabelLangs,
+} = require('labels');
 
 const hdlShoulder = 'voc';
 
@@ -7,7 +14,6 @@ const SKOS = 'http://www.w3.org/2004/02/skos/core#';
 const GEOJSON = 'https://purl.org/geojson/vocab#';
 const TRACKED_PROPERTIES = ['prefLabel', 'altLabel', 'definition', 'scopeNote'];
 const RELATIONSHIP_FIELDS = ['broader', 'related', 'equivalent', 'use', 'usedFor'];
-const DEFAULT_DISPLAY_LANG = 'en';
 const PROTECTED_STATUSES = new Set(['pending', 'submitted', 'rejected']);
 const UM_SNAPSHOT = 'vocabHarvestSnapshot';
 const UM_SNAPSHOT_AT = 'vocabSnapshotAt';
@@ -15,6 +21,10 @@ const UM_EDITS = 'vocabEdits';
 const UM_HARVEST_UPDATE = 'vocabHarvestUpdate';
 const UM_HARVEST_ENRICHMENT_UPDATE = 'vocabHarvestEnrichmentUpdate';
 const UM_RESET_HARVEST_PROTECTION = 'vocabResetHarvestProtection';
+
+const VOCABULARY_CONCEPT_RULES = [
+    { path: 'prefLabel[].lang', queryTerm: 'Common-language', label: 'Preferred label language' },
+];
 
 
 /**************************************************
@@ -34,7 +44,7 @@ async function beforeSchemaValidation(object, context) {
 
         sanitizeTrackedLexical(object.content);
         await filterExistingRelationshipRefs(object.content);
-        ensureMainTitle(object.content);
+        assignVocabularyConceptLabels(object.content);
         removeContentInternals(object.content);
 
         if (isMirroredConcept(object.content)) {
@@ -46,6 +56,11 @@ async function beforeSchemaValidation(object, context) {
         } else {
             clearNativeRecord(object);
         }
+
+        await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
+            cordra,
+            CordraError: cordra.CordraError,
+        });
 
         return object;
     } catch (error) {
@@ -98,7 +113,7 @@ async function beforeSchemaValidationWithId(object, context) {
                 const protectedAltLangs = new Set();
                 for (const path of protectedPaths) {
                     if (String(path).startsWith('altLabel.')) {
-                        protectedAltLangs.add(String(path).split('.', 2)[1]);
+                        protectedAltLangs.add(propertyLanguageFromPath(path)[1]);
                     }
                 }
 
@@ -212,7 +227,7 @@ async function beforeSchemaValidationWithId(object, context) {
                 const existingMaps = contentToLexicalMaps(existingContent);
                 const incomingMaps = contentToLexicalMaps(incomingContent);
                 for (const path of protectedPaths) {
-                    const [property, language] = String(path).split('.', 2);
+                    const [property, language] = propertyLanguageFromPath(path);
                     if (!TRACKED_PROPERTIES.includes(property) || !isLangKey(language)) {
                         continue;
                     }
@@ -304,15 +319,20 @@ async function beforeSchemaValidationWithId(object, context) {
                 }
             }
             await filterExistingRelationshipRefs(object.content);
-            ensureMainTitle(object.content);
+            assignVocabularyConceptLabels(object.content);
             removeContentInternals(object.content);
             clearHarvestUpdateMarker(object);
         } else {
             await filterExistingRelationshipRefs(object.content);
-            ensureMainTitle(object.content);
+            assignVocabularyConceptLabels(object.content);
             removeContentInternals(object.content);
             clearNativeRecord(object);
         }
+
+        await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
+            cordra,
+            CordraError: cordra.CordraError,
+        });
 
         return object;
     } catch (error) {
@@ -386,7 +406,7 @@ async function asSkosJsonLd(object, context) {
 
         if (c.notation) concept['skos:notation'] = c.notation;
         const lexicalMaps = contentToLexicalMaps(c);
-        addLangMap(concept, 'skos:prefLabel', lexicalMaps.prefLabel);
+        addLangMap(concept, 'skos:prefLabel', lexicalMaps.prefLabel, { toBcp47: true });
         addLangMap(concept, 'skos:definition', lexicalMaps.definition);
         addLangMap(concept, 'skos:scopeNote', lexicalMaps.scopeNote);
 
@@ -433,7 +453,7 @@ async function asSkosJsonLd(object, context) {
             };
             if (vocabularyContent && typeof vocabularyContent === 'object') {
                 const vocabularyMaps = contentToLexicalMaps(vocabularyContent);
-                addLangMap(scheme, 'skos:prefLabel', vocabularyMaps.prefLabel);
+                addLangMap(scheme, 'skos:prefLabel', vocabularyMaps.prefLabel, { toBcp47: true });
                 addLangMap(scheme, 'skos:definition', vocabularyMaps.definition);
             }
             graph.push(scheme);
@@ -683,6 +703,7 @@ function sanitizeLexicalArrays(content) {
         return;
     }
 
+    rewritePrefLabelLangs(content, handlePrefix());
     const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
     if (prefLabel) {
         content.prefLabel = prefLabel;
@@ -1020,37 +1041,6 @@ function normalizeAltLabelEntry(value) {
 }
 
 
-function displayLabel(prefLabel) {
-    if (Array.isArray(prefLabel)) {
-        const en = prefLabel.find((entry) => entry && entry.lang === DEFAULT_DISPLAY_LANG && typeof entry.label === 'string');
-        if (en && en.label.trim()) {
-            return en.label.trim();
-        }
-        for (const entry of prefLabel) {
-            if (entry && typeof entry.label === 'string' && entry.label.trim()) {
-                return entry.label.trim();
-            }
-        }
-        return '';
-    }
-
-    if (!prefLabel || typeof prefLabel !== 'object') {
-        return '';
-    }
-    const en = prefLabel[DEFAULT_DISPLAY_LANG];
-    if (typeof en === 'string' && en.trim().length > 0) {
-        return en.trim();
-    }
-    for (const language of Object.keys(prefLabel).filter(isLangKey).sort()) {
-        const value = prefLabel[language];
-        if (typeof value === 'string' && value.trim().length > 0) {
-            return value.trim();
-        }
-    }
-    return '';
-}
-
-
 function isLangKey(key) {
     return typeof key === 'string' && key.trim().length > 0;
 }
@@ -1072,14 +1062,29 @@ function langKeys(...blocks) {
 }
 
 
-function ensureMainTitle(content) {
-    let title = displayLabel(content.prefLabel);
-
-    const notation = (content.notation || content.label || '').trim();
-    if (notation) {
-        title = title ? `${title} (${notation})` : `(${notation})`;
+function propertyLanguageFromPath(path) {
+    const text = String(path);
+    const index = text.indexOf('.');
+    if (index < 0) {
+        return [text, ''];
     }
-    content._mainTitle = title;
+    return [text.slice(0, index), text.slice(index + 1)];
+}
+
+
+function handlePrefix() {
+    try {
+        return cordra.get('design').content.handleMintingConfig.prefix;
+    } catch (error) {
+        return '';
+    }
+}
+
+
+function assignVocabularyConceptLabels(content) {
+    assignLabels(content, labelsFromPrefLabels(content.prefLabel, {
+        notation: content.notation || content.label || '',
+    }));
 }
 
 
@@ -1091,14 +1096,16 @@ function handleToUri(handle) {
 }
 
 
-function addLangMap(target, property, block) {
+function addLangMap(target, property, block, options = {}) {
     if (!block || typeof block !== 'object') {
         return;
     }
     for (const [lang, value] of Object.entries(block)) {
         if (!value) continue;
+        const language = options.toBcp47 ? bcp47FromLang(lang) : lang;
+        if (!language) continue;
         if (!target[property]) target[property] = [];
-        target[property].push({ '@language': lang, '@value': value });
+        target[property].push({ '@language': language, '@value': value });
     }
 }
 

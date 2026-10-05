@@ -1,5 +1,6 @@
 const cordra = require('cordra');
 const { validateVocabularyConceptReferences } = require('vocab');
+const { assignLabels, labelsFromTitles } = require('labels');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
@@ -9,9 +10,7 @@ const VOCABULARY_CONCEPT_RULES = [
 
 
 async function beforeSchemaValidation(object, context) {
-    if (object.content.titles && object.content.titles.length > 0) {
-        object.content._displayTitle = object.content.titles[0].title;
-    }
+    assignLabels(object.content, labelsFromTitles(object.content.titles));
 
     await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
         cordra,

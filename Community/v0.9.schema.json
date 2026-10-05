@@ -6,7 +6,8 @@
     "required": [
         "id",
         "titles",
-        "igsnPrefix"
+        "igsnPrefix",
+        "_labels"
     ],
     "properties": {
         "id": {
@@ -59,11 +60,8 @@
             "description": "The IGSN prefix used for the community.",
             "format": "uri"
         },
-        "_displayTitle": {
-            "type": "string",
-            "title": "Display Title",
-            "description": "The display title of the community.",
-            "readOnly": true
+        "_labels": {
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
         }
     },
     "additionalProperties": false

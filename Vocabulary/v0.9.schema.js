@@ -1,9 +1,14 @@
 // BEGIN CONFIDENTIAL SECTION
 const cordra = require('cordra');
 const schema = require('/cordra/schemas/Vocabulary.schema.json');
+const { validateVocabularyConceptReferences } = require('vocab');
+const { assignLabels, labelsFromPrefLabels, rewritePrefLabelLangs } = require('labels');
 
 const hdlShoulder = 'voc';
-const DEFAULT_DISPLAY_LANG = 'en';
+
+const VOCABULARY_CONCEPT_RULES = [
+    { path: 'prefLabel[].lang', queryTerm: 'Common-language', label: 'Preferred label language' },
+];
 
 
 /**************************************************
@@ -17,9 +22,13 @@ exports.isGenerateIdLoopable = false;
 exports.objectForIndexing = objectForIndexing;
 
 
-function beforeSchemaValidation(object, context) {
+async function beforeSchemaValidation(object, context) {
     try {
         normalizeVocabulary(object.content || {});
+        await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
+            cordra,
+            CordraError: cordra.CordraError,
+        });
         return object;
     } catch (error) {
         throw new cordra.CordraError(
@@ -30,9 +39,13 @@ function beforeSchemaValidation(object, context) {
 }
 
 
-function beforeSchemaValidationWithId(object, context) {
+async function beforeSchemaValidationWithId(object, context) {
     try {
         normalizeVocabulary(object.content || {});
+        await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {
+            cordra,
+            CordraError: cordra.CordraError,
+        });
         return object;
     } catch (error) {
         throw new cordra.CordraError(
@@ -92,7 +105,10 @@ function normalizeVocabulary(content) {
 
     sanitizeLexicalArrays(content);
     stripLegacyLexicalArrays(content);
-    ensureMainTitle(content);
+    assignLabels(content, labelsFromPrefLabels(content.prefLabel, {
+        fallback: (typeof content.sourceName === 'string' ? content.sourceName.trim() : '')
+            || (typeof content.notation === 'string' ? content.notation.trim() : ''),
+    }));
 }
 
 
@@ -107,6 +123,7 @@ function sanitizeLexicalArrays(content) {
         return;
     }
 
+    rewritePrefLabelLangs(content, handlePrefix());
     const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
     if (prefLabel) {
         content.prefLabel = prefLabel;
@@ -184,28 +201,11 @@ function isLangKey(key) {
 }
 
 
-function displayLabel(prefLabel) {
-    if (!Array.isArray(prefLabel)) {
+function handlePrefix() {
+    try {
+        return cordra.get('design').content.handleMintingConfig.prefix;
+    } catch (error) {
         return '';
     }
-    const en = prefLabel.find((entry) => entry && entry.lang === DEFAULT_DISPLAY_LANG && typeof entry.label === 'string');
-    if (en && en.label.trim()) {
-        return en.label.trim();
-    }
-    for (const entry of prefLabel) {
-        if (entry && typeof entry.label === 'string' && entry.label.trim()) {
-            return entry.label.trim();
-        }
-    }
-    return '';
-}
-
-
-function ensureMainTitle(content) {
-    const title = displayLabel(content.prefLabel)
-        || content.sourceName
-        || content.notation
-        || '';
-    content._mainTitle = title;
 }
 // END CONFIDENTIAL SECTION

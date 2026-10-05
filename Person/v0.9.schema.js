@@ -1,5 +1,6 @@
 const cordra = require('cordra');
 const { validateVocabularyConceptReferences } = require('vocab');
+const { assignLabels, labelsFromText } = require('labels');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
@@ -34,7 +35,7 @@ async function beforeSchemaValidation(obj, context) {
 
 
 async function beforeSchemaValidationLegacy(content, context) {
-    ensureFullName(content);
+    ensureLabels(content);
     cleanResearchDisciplines(content);
 
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
@@ -46,11 +47,11 @@ async function beforeSchemaValidationLegacy(content, context) {
 }
 
 
-function ensureFullName(content) {
+function ensureLabels(content) {
     const parts = [content.firstName, content.lastName]
         .map((value) => (typeof value === 'string' ? value.trim() : ''))
         .filter(Boolean);
-    content.fullName = parts.join(' ');
+    assignLabels(content, labelsFromText(parts.join(' ')));
 }
 
 

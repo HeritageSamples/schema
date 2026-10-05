@@ -1,5 +1,6 @@
 const cordra = require('cordra');
 const { validateVocabularyConceptReferences } = require('vocab');
+const { assignLabels, labelsFromText } = require('labels');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
@@ -38,7 +39,7 @@ async function beforeSchemaValidation(obj, context) {
 
 
 async function beforeSchemaValidationLegacy(content, context) {
-    ensureDisplayName(content);
+    ensureLabels(content);
     cleanResearchDisciplines(content);
 
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
@@ -50,15 +51,12 @@ async function beforeSchemaValidationLegacy(content, context) {
 }
 
 
-function ensureDisplayName(content) {
+function ensureLabels(content) {
     const name = typeof content.name === 'string' ? content.name.trim() : '';
     const acronym = typeof content.acronym === 'string' ? content.acronym.trim() : '';
 
-    if (name && acronym) {
-        content.displayName = `${name} (${acronym})`;
-    } else {
-        content.displayName = name || acronym;
-    }
+    const displayName = name && acronym ? `${name} (${acronym})` : (name || acronym);
+    assignLabels(content, labelsFromText(displayName));
 }
 
 

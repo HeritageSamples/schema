@@ -6,6 +6,45 @@
     "properties": {
     },
     "$defs": {
+        "labels": {
+            "title": "Labels",
+            "description": "Automatically generated display labels. default is always present; language keys are set only when a label exists in that language.",
+            "type": "object",
+            "required": ["default"],
+            "additionalProperties": false,
+            "options": {
+                "hidden": true
+            },
+            "cordra": {
+                "disableInUi": true
+            },
+            "properties": {
+                "default": {
+                    "title": "Default",
+                    "type": "string"
+                },
+                "eng": {
+                    "title": "English",
+                    "type": "string"
+                },
+                "fre": {
+                    "title": "French",
+                    "type": "string"
+                },
+                "ger": {
+                    "title": "German",
+                    "type": "string"
+                },
+                "dut": {
+                    "title": "Dutch",
+                    "type": "string"
+                },
+                "gre": {
+                    "title": "Greek",
+                    "type": "string"
+                }
+            }
+        },
         "geoJsonFeature": {
             "title": "GeoJSON Feature",
             "oneOf": [

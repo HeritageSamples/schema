@@ -46,7 +46,7 @@ from lib.skos_lang import (
     build_concept_lexical_content,
     content_to_lexical_maps,
     is_lang_key,
-    main_title_from_content,
+    pref_label_map_to_handles,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -332,10 +332,6 @@ def _language_code(language_value) -> Optional[str]:
     return lang
 
 
-def _main_title_from_content(content: dict) -> str:
-    return main_title_from_content(content)
-
-
 def _label_from_concept(concept: dict) -> Optional[str]:
     label = concept.get("_label") or concept.get("label")
     if isinstance(label, list):
@@ -412,7 +408,6 @@ def _format_aat_enrichment_payload(obj: dict) -> Optional[dict]:
             has_rel = True
     if not has_rel:
         return None
-    rel_content["_mainTitle"] = _main_title_from_content(rel_content)
     return {
         "id": obj.get("id"),
         "type": OBJECT_TYPE,
@@ -973,7 +968,7 @@ def format_aat_concept(
         definition, scope_note = _extract_subject_of_lexical(concept, aat_id, warning_state)
         content.update(
             build_concept_lexical_content(
-                pref_label=pref_label,
+                pref_label=pref_label_map_to_handles(pref_label, hdl_prefix),
                 alt_label=alt_label or None,
                 definition=definition or None,
                 scope_note=scope_note or None,
@@ -983,8 +978,6 @@ def format_aat_concept(
         close_match = _extract_close_matches(concept, aat_id, aat_base_url=aat_base_url)
         if close_match:
             content["closeMatch"] = close_match
-
-        content["_mainTitle"] = _main_title_from_content(content)
 
         broader = _extract_broader_handles(
             concept,
