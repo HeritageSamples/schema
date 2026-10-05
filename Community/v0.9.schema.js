@@ -1,4 +1,5 @@
 const cordra = require('cordra');
+const schema = require('/cordra/schemas/Community.schema.json');
 const { validateVocabularyConceptReferences } = require('vocab');
 const { assignLabels, labelsFromTitles } = require('labels');
 
@@ -10,6 +11,7 @@ const VOCABULARY_CONCEPT_RULES = [
 
 
 async function beforeSchemaValidation(object, context) {
+    object.content.$schema = schema.$id;
     assignLabels(object.content, labelsFromTitles(object.content.titles));
 
     await validateVocabularyConceptReferences(object.content, VOCABULARY_CONCEPT_RULES, {

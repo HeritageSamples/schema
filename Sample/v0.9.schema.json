@@ -13,6 +13,12 @@
         "dates"
     ],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
         "id": {
             "title": "Sample identifier",
             "description": "The identifier property will be automatically populated with a DOI upon the creation of an IGSN ID. The system will assign a random DOI suffix unless a specific suffix is supplied using Fabrica or DataCite APIs.",
@@ -93,8 +99,7 @@
             "description": "The primary name, code or label assigned by the organisation responsible for the sample.",
             "cordra": {
                 "preview": {
-                    "showInPreview": true,
-                    "isPrimary": true
+                    "showInPreview": true
                 }
             }
         },
@@ -280,7 +285,7 @@
             "options": {
                 "hidden": true
             },
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/geoJsonFeature"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/geoJsonFeature"
         },
         "sizes": {
             "title": "Sizes",
@@ -670,7 +675,7 @@
             "uniqueItems": true
         },
         "_labels": {
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/_labels"
         },
         "_sourceObject": {
             "title": "Source Object",

@@ -5,7 +5,7 @@ const {
     assignLabels,
     bcp47FromLang,
     labelsFromPrefLabels,
-    rewritePrefLabelLangs,
+    rewriteLexicalLangs,
 } = require('labels');
 
 const hdlShoulder = 'voc';
@@ -24,6 +24,9 @@ const UM_RESET_HARVEST_PROTECTION = 'vocabResetHarvestProtection';
 
 const VOCABULARY_CONCEPT_RULES = [
     { path: 'prefLabel[].lang', queryTerm: 'Common-language', label: 'Preferred label language' },
+    { path: 'altLabel[].lang', queryTerm: 'Common-language', label: 'Alternative label language' },
+    { path: 'definition[].lang', queryTerm: 'Common-language', label: 'Definition language' },
+    { path: 'scopeNote[].lang', queryTerm: 'Common-language', label: 'Scope note language' },
 ];
 
 
@@ -407,8 +410,8 @@ async function asSkosJsonLd(object, context) {
         if (c.notation) concept['skos:notation'] = c.notation;
         const lexicalMaps = contentToLexicalMaps(c);
         addLangMap(concept, 'skos:prefLabel', lexicalMaps.prefLabel, { toBcp47: true });
-        addLangMap(concept, 'skos:definition', lexicalMaps.definition);
-        addLangMap(concept, 'skos:scopeNote', lexicalMaps.scopeNote);
+        addLangMap(concept, 'skos:definition', lexicalMaps.definition, { toBcp47: true });
+        addLangMap(concept, 'skos:scopeNote', lexicalMaps.scopeNote, { toBcp47: true });
 
         if (lexicalMaps.altLabel && typeof lexicalMaps.altLabel === 'object') {
             for (const [lang, values] of Object.entries(lexicalMaps.altLabel)) {
@@ -420,8 +423,10 @@ async function asSkosJsonLd(object, context) {
                         literal = value.label.trim() || undefined;
                     }
                     if (!literal) continue;
+                    const language = bcp47FromLang(lang);
+                    if (!language) continue;
                     if (!concept['skos:altLabel']) concept['skos:altLabel'] = [];
-                    concept['skos:altLabel'].push({ '@language': lang, '@value': literal });
+                    concept['skos:altLabel'].push({ '@language': language, '@value': literal });
                 }
             }
         }
@@ -454,7 +459,7 @@ async function asSkosJsonLd(object, context) {
             if (vocabularyContent && typeof vocabularyContent === 'object') {
                 const vocabularyMaps = contentToLexicalMaps(vocabularyContent);
                 addLangMap(scheme, 'skos:prefLabel', vocabularyMaps.prefLabel, { toBcp47: true });
-                addLangMap(scheme, 'skos:definition', vocabularyMaps.definition);
+                addLangMap(scheme, 'skos:definition', vocabularyMaps.definition, { toBcp47: true });
             }
             graph.push(scheme);
         }
@@ -703,7 +708,7 @@ function sanitizeLexicalArrays(content) {
         return;
     }
 
-    rewritePrefLabelLangs(content, handlePrefix());
+    rewriteLexicalLangs(content, handlePrefix());
     const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
     if (prefLabel) {
         content.prefLabel = prefLabel;

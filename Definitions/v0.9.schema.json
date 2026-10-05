@@ -4,9 +4,15 @@
     "title": "Definitions",
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        }
     },
     "$defs": {
-        "labels": {
+        "_labels": {
             "title": "Labels",
             "description": "Automatically generated display labels. default is always present; language keys are set only when a label exists in that language.",
             "type": "object",
@@ -21,27 +27,58 @@
             "properties": {
                 "default": {
                     "title": "Default",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true,
+                            "isPrimary": true
+                        }
+                    }
                 },
                 "eng": {
                     "title": "English",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true
+                        }
+                    }
                 },
                 "fre": {
                     "title": "French",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true
+                        }
+                    }
                 },
                 "ger": {
                     "title": "German",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true
+                        }
+                    }
                 },
                 "dut": {
                     "title": "Dutch",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true
+                        }
+                    }
                 },
                 "gre": {
                     "title": "Greek",
-                    "type": "string"
+                    "type": "string",
+                    "cordra": {
+                        "preview": {
+                            "showInPreview": true
+                        }
+                    }
                 }
             }
         },
@@ -49,25 +86,25 @@
             "title": "GeoJSON Feature",
             "oneOf": [
                 {
-                    "$ref": "#/definitions/point"
+                    "$ref": "#/$defs/point"
                 },
                 {
-                    "$ref": "#/definitions/multiPoint"
+                    "$ref": "#/$defs/multiPoint"
                 },
                 {
-                    "$ref": "#/definitions/lineString"
+                    "$ref": "#/$defs/lineString"
                 },
                 {
-                    "$ref": "#/definitions/multiLineString"
+                    "$ref": "#/$defs/multiLineString"
                 },
                 {
-                    "$ref": "#/definitions/polygon"
+                    "$ref": "#/$defs/polygon"
                 },
                 {
-                    "$ref": "#/definitions/multiPolygon"
+                    "$ref": "#/$defs/multiPolygon"
                 },
                 {
-                    "$ref": "#/definitions/geometryCollection"
+                    "$ref": "#/$defs/geometryCollection"
                 }
             ]
         },
@@ -81,7 +118,7 @@
         "lineStringCoordinates": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/position"
+                "$ref": "#/$defs/position"
             },
             "minItems": 2
         },
@@ -90,7 +127,7 @@
             "items": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/$defs/position"
                 },
                 "minItems": 4
             }
@@ -104,7 +141,7 @@
                     "const": "Point"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/$defs/position"
                 },
                 "properties": {
                     "type": "object",
@@ -123,7 +160,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/$defs/position"
                     }
                 },
                 "properties": {
@@ -141,7 +178,7 @@
                     "const": "LineString"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/lineStringCoordinates"
+                    "$ref": "#/$defs/lineStringCoordinates"
                 },
                 "properties": {
                     "type": "object",
@@ -160,7 +197,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/lineStringCoordinates"
+                        "$ref": "#/$defs/lineStringCoordinates"
                     }
                 },
                 "properties": {
@@ -178,7 +215,7 @@
                     "const": "Polygon"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/polygonCoordinates"
+                    "$ref": "#/$defs/polygonCoordinates"
                 },
                 "properties": {
                     "type": "object",
@@ -197,7 +234,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/polygonCoordinates"
+                        "$ref": "#/$defs/polygonCoordinates"
                     }
                 },
                 "properties": {
@@ -217,7 +254,7 @@
                 "geometries": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/geoJsonFeature"
+                        "$ref": "#/$defs/geoJsonFeature"
                     }
                 },
                 "properties": {

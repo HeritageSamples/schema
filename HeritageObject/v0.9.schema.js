@@ -1,4 +1,5 @@
 const cordra = require('cordra');
+const schema = require('/cordra/schemas/HeritageObject.schema.json');
 const {
     queryTermsFromConcept,
     validateVocabularyConceptReferences,
@@ -50,6 +51,7 @@ const VOCABULARY_CONCEPT_RULES = [
 
 
 async function beforeSchemaValidation(object, context) {
+    object.content.$schema = schema.$id;
     assignLabels(object.content, labelsFromTitles(object.content.titles, { priority: 'heritageObject' }));
 
     cleanPrincipalIdentifier(object.content);

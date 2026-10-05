@@ -31,6 +31,7 @@ from dotenv import load_dotenv
 from lib import libcordra2
 from lib.skos_lang import (
     alt_label_array_to_map,
+    alt_label_entries_to_handles,
     build_concept_lexical_content,
     concept_lexical_equal,
     display_label_from_pref_label,
@@ -42,6 +43,7 @@ from lib.skos_lang import (
     parse_skos_pref_label,
     pref_label_entries_to_handles,
     text_array_to_map,
+    text_entries_to_handles,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -263,12 +265,15 @@ def build_content(
         "queryTerms": query_terms,
         "prefLabel": pref_label_entries_to_handles(record.pref_label, hdl_prefix),
     }
-    if record.alt_label:
-        content["altLabel"] = record.alt_label
-    if record.definition:
-        content["definition"] = record.definition
-    if record.scope_note:
-        content["scopeNote"] = record.scope_note
+    alt_label = alt_label_entries_to_handles(record.alt_label, hdl_prefix)
+    if alt_label:
+        content["altLabel"] = alt_label
+    definition = text_entries_to_handles(record.definition, hdl_prefix)
+    if definition:
+        content["definition"] = definition
+    scope_note = text_entries_to_handles(record.scope_note, hdl_prefix)
+    if scope_note:
+        content["scopeNote"] = scope_note
     return content
 
 

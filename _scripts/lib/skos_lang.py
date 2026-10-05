@@ -145,6 +145,39 @@ def pref_label_entries_to_handles(entries: Optional[List[dict]], hdl_prefix: str
     return converted
 
 
+def alt_label_entries_to_handles(entries: Optional[List[dict]], hdl_prefix: str) -> List[dict]:
+    converted: List[dict] = []
+    seen = set()
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        lang = language_to_handle(hdl_prefix, entry.get("lang"))
+        label = _stripped(entry.get("label"))
+        if not lang or not label:
+            continue
+        key = f"{lang}\0{label}"
+        if key in seen:
+            continue
+        seen.add(key)
+        converted.append({**entry, "lang": lang, "label": label})
+    return converted
+
+
+def text_entries_to_handles(entries: Optional[List[dict]], hdl_prefix: str) -> List[dict]:
+    converted: List[dict] = []
+    seen = set()
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        lang = language_to_handle(hdl_prefix, entry.get("lang"))
+        text = _stripped(entry.get("text"))
+        if not lang or not text or lang in seen:
+            continue
+        seen.add(lang)
+        converted.append({**entry, "lang": lang, "text": text})
+    return converted
+
+
 def pref_label_map_to_handles(mapping: Optional[Dict[str, str]], hdl_prefix: str) -> Dict[str, str]:
     converted: Dict[str, str] = {}
     if not isinstance(mapping, dict):
@@ -155,6 +188,29 @@ def pref_label_map_to_handles(mapping: Optional[Dict[str, str]], hdl_prefix: str
         if key and label and key not in converted:
             converted[key] = label
     return converted
+
+
+def alt_label_map_to_handles(
+    mapping: Optional[Dict[str, List[str]]],
+    hdl_prefix: str,
+) -> Dict[str, List[str]]:
+    converted: Dict[str, List[str]] = {}
+    if not isinstance(mapping, dict):
+        return converted
+    for lang, values in mapping.items():
+        key = language_to_handle(hdl_prefix, lang)
+        if not key:
+            continue
+        converted.setdefault(key, [])
+        items = values if isinstance(values, list) else [values]
+        for value in items:
+            if isinstance(value, dict):
+                label = _stripped(value.get("label"))
+            else:
+                label = _stripped(value)
+            if label and label not in converted[key]:
+                converted[key].append(label)
+    return {lang: labels for lang, labels in converted.items() if labels}
 
 
 def is_english_lang(lang: Any) -> bool:

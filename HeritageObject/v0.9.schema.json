@@ -14,6 +14,12 @@
         "_labels"
     ],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
         "id": {
             "title": "Heritage object identifier",
             "description": "The identifier property will be automatically populated with a DOI upon the creation of an IGSN ID. The system will assign a random DOI suffix unless a specific suffix is supplied using Fabrica or DataCite APIs.",
@@ -185,7 +191,7 @@
         "geoLocations": {
             "title": "Geo Locations",
             "description": "For real-world geospatial locations only. GeoJSON geometry encoding the origin of the heritage object or fragment. Coordinates follow GeoJSON order [longitude, latitude] when the CRS is WGS84.",
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/geoJsonFeature"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/geoJsonFeature"
         },
         "sizes": {
             "title": "Sizes",
@@ -552,21 +558,7 @@
             }
         },
         "_labels": {
-            "allOf": [
-                {
-                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
-                }
-            ],
-            "properties": {
-                "default": {
-                    "cordra": {
-                        "preview": {
-                            "showInPreview": true,
-                            "isPrimary": true
-                        }
-                    }
-                }
-            }
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/_labels"
         }
     }
 }

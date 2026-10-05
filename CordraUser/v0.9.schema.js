@@ -1,3 +1,5 @@
+const schema = require('/cordra/schemas/CordraUser.schema.json');
+
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
 function beforeSchemaValidation(obj, context) {
@@ -10,6 +12,7 @@ function beforeSchemaValidation(obj, context) {
 }
 
 function beforeSchemaValidationLegacy(obj, context) {
+    obj.$schema = schema.$id;
     if (!obj.id) obj.id = "";
     if (!obj.password) obj.password = "";
     var password = obj.password;

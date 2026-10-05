@@ -43,6 +43,7 @@ from dotenv import load_dotenv
 
 from lib import libcordra2
 from lib.skos_lang import (
+    alt_label_map_to_handles,
     build_concept_lexical_content,
     content_to_lexical_maps,
     is_lang_key,
@@ -969,9 +970,9 @@ def format_aat_concept(
         content.update(
             build_concept_lexical_content(
                 pref_label=pref_label_map_to_handles(pref_label, hdl_prefix),
-                alt_label=alt_label or None,
-                definition=definition or None,
-                scope_note=scope_note or None,
+                alt_label=alt_label_map_to_handles(alt_label, hdl_prefix) or None,
+                definition=pref_label_map_to_handles(definition, hdl_prefix) or None,
+                scope_note=pref_label_map_to_handles(scope_note, hdl_prefix) or None,
             )
         )
 

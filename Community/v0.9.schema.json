@@ -10,6 +10,12 @@
         "_labels"
     ],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
         "id": {
             "type": "string",
             "cordra": {
@@ -61,7 +67,7 @@
             "format": "uri"
         },
         "_labels": {
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/_labels"
         }
     },
     "additionalProperties": false

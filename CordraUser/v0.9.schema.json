@@ -10,6 +10,12 @@
         "accountActive"
     ],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
         "id": {
             "type": "string",
             "cordra": {

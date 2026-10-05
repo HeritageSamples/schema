@@ -5,6 +5,12 @@
     "type": "object",
     "required": ["id", "notation", "prefLabel", "vocabulary", "_labels"],
     "properties": {
+        "$schema": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
         "id": {
             "type": "string",
             "cordra": {
@@ -13,28 +19,8 @@
                 }
             }
         },
-        "$schema": {
-            "type": "string",
-            "options": {
-                "hidden": true
-            }
-        },
         "_labels": {
-            "allOf": [
-                {
-                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
-                }
-            ],
-            "properties": {
-                "default": {
-                    "cordra": {
-                        "preview": {
-                            "showInPreview": true,
-                            "isPrimary": true
-                        }
-                    }
-                }
-            }
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/_labels"
         },
         "vocabulary": {
             "title": "Vocabulary",
@@ -217,7 +203,14 @@
                 "lang": {
                     "title": "Language",
                     "type": "string",
-                    "minLength": 1
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Common-language\""]
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -237,7 +230,14 @@
                 "lang": {
                     "title": "Language",
                     "type": "string",
-                    "minLength": 1
+                    "cordra": {
+                        "type": {
+                            "handleReference": {
+                                "types": ["VocabularyConcept"],
+                                "filters": ["/queryTerms/_:\"Common-language\""]
+                            }
+                        }
+                    }
                 }
             }
         },

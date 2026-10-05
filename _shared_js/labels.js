@@ -261,6 +261,45 @@ function labelsFromText(text) {
     return { default: value };
 }
 
+function nameEntries(names, options = {}) {
+    if (!Array.isArray(names)) {
+        return [];
+    }
+    const fields = options.fields && options.fields.length > 0 ? options.fields : ['name'];
+    const entries = [];
+    for (const entry of names) {
+        if (!entry || typeof entry !== 'object') {
+            continue;
+        }
+        const title = fields
+            .map((field) => trimmedString(entry[field]))
+            .filter(Boolean)
+            .join(' ');
+        if (!title) {
+            continue;
+        }
+        entries.push({ title, lang: entry.lang });
+    }
+    return entries;
+}
+
+function labelsFromNames(names, options = {}) {
+    const entries = nameEntries(names, options);
+    const suffix = trimmedString(options.suffix);
+    if (entries.length === 0) {
+        return suffix ? { default: suffix } : undefined;
+    }
+
+    let defaultTitle = entries[0].title;
+    if (suffix) {
+        defaultTitle = `${defaultTitle} (${suffix})`;
+    }
+
+    const labels = { default: defaultTitle };
+    addLanguageLabels(labels, entries);
+    return labels;
+}
+
 function assignLabels(content, labels) {
     if (!content || typeof content !== 'object') {
         return;
@@ -287,20 +326,41 @@ function assignLabels(content, labels) {
     content._labels = next;
 }
 
-function rewritePrefLabelLangs(content, hdlPrefix) {
-    if (!content || !Array.isArray(content.prefLabel)) {
+function rewriteEntryLang(entry, hdlPrefix) {
+    if (!entry || typeof entry !== 'object') {
         return;
     }
-    for (const entry of content.prefLabel) {
-        if (!entry || typeof entry !== 'object') {
-            continue;
-        }
-        const lang = trimmedString(entry.lang);
-        if (!lang) {
-            continue;
-        }
-        entry.lang = canonicalLanguageHandle(lang, hdlPrefix);
+    const lang = trimmedString(entry.lang);
+    if (!lang) {
+        return;
     }
+    entry.lang = canonicalLanguageHandle(lang, hdlPrefix);
+}
+
+function rewriteLangArray(entries, hdlPrefix) {
+    if (!Array.isArray(entries)) {
+        return;
+    }
+    for (const entry of entries) {
+        rewriteEntryLang(entry, hdlPrefix);
+    }
+}
+
+function rewritePrefLabelLangs(content, hdlPrefix) {
+    if (!content) {
+        return;
+    }
+    rewriteLangArray(content.prefLabel, hdlPrefix);
+}
+
+function rewriteLexicalLangs(content, hdlPrefix) {
+    if (!content || typeof content !== 'object') {
+        return;
+    }
+    rewriteLangArray(content.prefLabel, hdlPrefix);
+    rewriteLangArray(content.altLabel, hdlPrefix);
+    rewriteLangArray(content.definition, hdlPrefix);
+    rewriteLangArray(content.scopeNote, hdlPrefix);
 }
 
 module.exports = {
@@ -310,9 +370,11 @@ module.exports = {
     bcp47FromLang,
     canonicalLanguageHandle,
     isPrimaryTitleType,
+    labelsFromNames,
     labelsFromPrefLabels,
     labelsFromText,
     labelsFromTitles,
     languageTail,
+    rewriteLexicalLangs,
     rewritePrefLabelLangs,
 };

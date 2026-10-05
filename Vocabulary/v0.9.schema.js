@@ -2,12 +2,13 @@
 const cordra = require('cordra');
 const schema = require('/cordra/schemas/Vocabulary.schema.json');
 const { validateVocabularyConceptReferences } = require('vocab');
-const { assignLabels, labelsFromPrefLabels, rewritePrefLabelLangs } = require('labels');
+const { assignLabels, labelsFromPrefLabels, rewriteLexicalLangs } = require('labels');
 
 const hdlShoulder = 'voc';
 
 const VOCABULARY_CONCEPT_RULES = [
     { path: 'prefLabel[].lang', queryTerm: 'Common-language', label: 'Preferred label language' },
+    { path: 'definition[].lang', queryTerm: 'Common-language', label: 'Definition language' },
 ];
 
 
@@ -123,7 +124,7 @@ function sanitizeLexicalArrays(content) {
         return;
     }
 
-    rewritePrefLabelLangs(content, handlePrefix());
+    rewriteLexicalLangs(content, handlePrefix());
     const prefLabel = sanitizeLabelArray(content.prefLabel, { uniqueLang: true });
     if (prefLabel) {
         content.prefLabel = prefLabel;

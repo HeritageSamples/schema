@@ -230,8 +230,11 @@ def print_comparison_table(
             status = "-"
         rows.append([status, sid, local_cell, server_cell])
 
-    cols = list(zip(*([header] + rows))) if rows else [header]
-    widths = [max(len(str(cell)) for cell in col) for col in cols]
+    if rows:
+        cols = list(zip(*([header] + rows)))
+        widths = [max(len(str(cell)) for cell in col) for col in cols]
+    else:
+        widths = [len(h) for h in header]
 
     print(f"\nType: {type_name}")
     print(f"Path: {schema_path}")
@@ -337,6 +340,12 @@ def process_type(
     """Process one schema type. Returns True on success, False on failure."""
     schema_dir = base_path / type_name
     identifier = schema_do.default_identifier(config["hdl_prefix"], type_name)
+
+    if not schema_do.has_schema_files(schema_dir):
+        print(f"\nType: {type_name}")
+        print(f"Path: {schema_dir}")
+        print(f"- {type_name}: no local schema files; skipping")
+        return True
 
     local_versions = schema_do.collect_schema_versions(schema_dir)
     current_obj: Optional[Dict] = None

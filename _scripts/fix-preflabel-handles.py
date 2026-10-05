@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Rewrite existing Vocabulary and VocabularyConcept prefLabel languages to
+Rewrite existing Vocabulary and VocabularyConcept lexical languages to
 Common-language concept handles, drop _mainTitle, and set _labels.
 
-Harvest snapshots and pending prefLabel edits are rewritten so AAT harvest
+Converts prefLabel, altLabel, definition, and scopeNote language fields.
+Harvest snapshots and pending lexical edits are rewritten so AAT harvest
 protection does not treat the language-handle migration as a user edit.
 
 Languages that cannot be mapped to a Common-language concept are dropped by
@@ -32,10 +33,12 @@ from dotenv import load_dotenv
 from lib import libcordra2
 from lib.skos_lang import (
     HANDLE_TAIL_RE,
+    alt_label_entries_to_handles,
     display_label_from_pref_label,
     language_tail,
     language_to_handle,
     pref_label_entries_to_handles,
+    text_entries_to_handles,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -45,6 +48,7 @@ CONCEPT_TYPE = "VocabularyConcept"
 DEFAULT_TYPES = (VOCABULARY_TYPE, CONCEPT_TYPE)
 DEFAULT_BATCH_SIZE = 250
 DEFAULT_PAGE_SIZE = 200
+TRACKED_PROPERTIES = ("prefLabel", "altLabel", "definition", "scopeNote")
 
 UM_SNAPSHOT = "vocabHarvestSnapshot"
 UM_EDITS = "vocabEdits"
@@ -107,6 +111,13 @@ def is_language_handle(value: Any) -> bool:
     return bool(text and HANDLE_TAIL_RE.search(text))
 
 
+def property_language_from_path(path: str) -> Tuple[str, str]:
+    index = path.find(".")
+    if index < 0:
+        return path, ""
+    return path[:index], path[index + 1 :]
+
+
 def flatten_user_metadata(raw: Any) -> Dict[str, Any]:
     if not isinstance(raw, dict):
         return {}
@@ -165,11 +176,61 @@ def migrate_pref_label(
     *,
     drop_unmapped: bool,
 ) -> Tuple[Optional[List[dict]], List[str], List[str]]:
-    normalized = as_pref_label_entries(entries)
-    if not isinstance(normalized, list):
+    return migrate_lang_entries(
+        as_pref_label_entries(entries),
+        hdl_prefix,
+        converter=pref_label_entries_to_handles,
+        drop_unmapped=drop_unmapped,
+        unique_lang=True,
+    )
+
+
+def migrate_alt_label(
+    entries: Any,
+    hdl_prefix: str,
+    *,
+    drop_unmapped: bool,
+) -> Tuple[Optional[List[dict]], List[str], List[str]]:
+    if not isinstance(entries, list):
+        return None, [], []
+    return migrate_lang_entries(
+        entries,
+        hdl_prefix,
+        converter=alt_label_entries_to_handles,
+        drop_unmapped=drop_unmapped,
+        unique_lang=False,
+    )
+
+
+def migrate_text_array(
+    entries: Any,
+    hdl_prefix: str,
+    *,
+    drop_unmapped: bool,
+) -> Tuple[Optional[List[dict]], List[str], List[str]]:
+    if not isinstance(entries, list):
+        return None, [], []
+    return migrate_lang_entries(
+        entries,
+        hdl_prefix,
+        converter=text_entries_to_handles,
+        drop_unmapped=drop_unmapped,
+        unique_lang=True,
+    )
+
+
+def migrate_lang_entries(
+    entries: Any,
+    hdl_prefix: str,
+    *,
+    converter,
+    drop_unmapped: bool,
+    unique_lang: bool,
+) -> Tuple[Optional[List[dict]], List[str], List[str]]:
+    if not isinstance(entries, list):
         return None, [], []
 
-    converted = pref_label_entries_to_handles(normalized, hdl_prefix)
+    converted = converter(entries, hdl_prefix)
     mapped: List[dict] = []
     dropped: List[str] = []
     kept_unmapped: List[str] = []
@@ -177,16 +238,22 @@ def migrate_pref_label(
 
     for entry in converted:
         lang = stripped(entry.get("lang")) or ""
-        if lang in seen:
+        identity: Any = lang if unique_lang else (
+            lang,
+            stripped(entry.get("label")),
+            stripped(entry.get("text")),
+            stripped(entry.get("AxiellId")),
+        )
+        if identity in seen:
             continue
         if is_language_handle(lang):
-            seen.add(lang)
+            seen.add(identity)
             mapped.append(entry)
             continue
         if drop_unmapped:
             dropped.append(lang)
             continue
-        seen.add(lang)
+        seen.add(identity)
         kept_unmapped.append(lang)
         mapped.append(entry)
 
@@ -201,37 +268,62 @@ def migrate_snapshot_pref_label(
 ) -> Tuple[Any, bool, List[str]]:
     if not isinstance(snapshot, dict):
         return snapshot, False, []
-    pref = snapshot.get("prefLabel")
-    if not isinstance(pref, dict):
-        return snapshot, False, []
 
-    next_pref: Dict[str, Any] = {}
+    next_snapshot = dict(snapshot)
     dropped: List[str] = []
     changed = False
-    for lang, value in pref.items():
+
+    for property_name in TRACKED_PROPERTIES:
+        block = snapshot.get(property_name)
+        if not isinstance(block, dict):
+            continue
+        next_block, block_changed, block_dropped = migrate_lang_map(
+            block,
+            hdl_prefix,
+            drop_unmapped=drop_unmapped,
+        )
+        dropped.extend(f"{property_name}.{lang}" for lang in block_dropped)
+        if not block_changed and next_block == block:
+            continue
+        changed = True
+        if next_block:
+            next_snapshot[property_name] = next_block
+        else:
+            next_snapshot.pop(property_name, None)
+
+    return next_snapshot, changed, dropped
+
+
+def migrate_lang_map(
+    block: dict,
+    hdl_prefix: str,
+    *,
+    drop_unmapped: bool,
+) -> Tuple[dict, bool, List[str]]:
+    next_block: Dict[str, Any] = {}
+    dropped: List[str] = []
+    changed = False
+
+    for lang, value in block.items():
         handle = language_to_handle(hdl_prefix, lang)
         if handle != lang:
             changed = True
         if is_language_handle(handle):
-            if handle not in next_pref:
-                next_pref[handle] = value
+            if handle not in next_block:
+                next_block[handle] = value
+            elif isinstance(next_block[handle], list) and isinstance(value, list):
+                next_block[handle] = next_block[handle] + [
+                    item for item in value if item not in next_block[handle]
+                ]
             continue
         if drop_unmapped:
             dropped.append(str(lang))
             changed = True
             continue
-        if handle not in next_pref:
-            next_pref[handle] = value
+        if handle not in next_block:
+            next_block[handle] = value
 
-    if not changed and next_pref == pref:
-        return snapshot, False, dropped
-
-    next_snapshot = dict(snapshot)
-    if next_pref:
-        next_snapshot["prefLabel"] = next_pref
-    else:
-        next_snapshot.pop("prefLabel", None)
-    return next_snapshot, True, dropped
+    return next_block, changed, dropped
 
 
 def migrate_pref_label_edits(
@@ -247,15 +339,15 @@ def migrate_pref_label_edits(
     dropped: List[str] = []
     changed = False
     for path, edit in edits.items():
-        if not str(path).startswith("prefLabel."):
+        property_name, language = property_language_from_path(str(path))
+        if property_name not in TRACKED_PROPERTIES or not language:
             next_edits[path] = edit
             continue
-        lang = str(path)[len("prefLabel.") :]
-        handle = language_to_handle(hdl_prefix, lang)
-        if handle != lang:
+        handle = language_to_handle(hdl_prefix, language)
+        if handle != language:
             changed = True
         if is_language_handle(handle):
-            next_path = f"prefLabel.{handle}"
+            next_path = f"{property_name}.{handle}"
             if next_path not in next_edits:
                 next_edits[next_path] = edit
             continue
@@ -263,7 +355,7 @@ def migrate_pref_label_edits(
             dropped.append(str(path))
             changed = True
             continue
-        next_edits[path if handle == lang else f"prefLabel.{handle}"] = edit
+        next_edits[path if handle == language else f"{property_name}.{handle}"] = edit
 
     if not changed and next_edits == edits:
         return edits, False, dropped
@@ -301,6 +393,35 @@ def migrate_object(
         next_content["prefLabel"] = pref
         reasons.append("prefLabel.lang")
 
+    for field, migrator in (
+        ("altLabel", migrate_alt_label),
+        ("definition", migrate_text_array),
+        ("scopeNote", migrate_text_array),
+    ):
+        if field not in next_content:
+            continue
+        migrated, dropped_field_langs, kept_field_unmapped = migrator(
+            next_content.get(field),
+            hdl_prefix,
+            drop_unmapped=drop_unmapped,
+        )
+        if dropped_field_langs:
+            warnings.append(
+                f"dropped unmapped {field} lang(s): {', '.join(dropped_field_langs)}"
+            )
+        if kept_field_unmapped:
+            warnings.append(
+                f"kept unmapped {field} lang(s): {', '.join(kept_field_unmapped)}"
+            )
+        if migrated is None:
+            if next_content.get(field):
+                del next_content[field]
+                reasons.append(f"{field}.lang")
+            continue
+        if migrated != content.get(field):
+            next_content[field] = migrated
+            reasons.append(f"{field}.lang")
+
     if "_mainTitle" in next_content:
         del next_content["_mainTitle"]
         reasons.append("_mainTitle")
@@ -334,7 +455,7 @@ def migrate_object(
             reasons.append("vocabHarvestSnapshot")
         if dropped_snapshot:
             warnings.append(
-                f"dropped unmapped snapshot prefLabel lang(s): {', '.join(dropped_snapshot)}"
+                f"dropped unmapped snapshot lang(s): {', '.join(dropped_snapshot)}"
             )
 
         edits, edits_changed, dropped_edits = migrate_pref_label_edits(
@@ -405,7 +526,7 @@ def write_output(path: Path, digital_objects: List[dict]) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Rewrite Vocabulary and VocabularyConcept prefLabel languages to "
+            "Rewrite Vocabulary and VocabularyConcept lexical languages to "
             "Common-language handles and generate _labels."
         )
     )
@@ -419,7 +540,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--keep-unmapped",
         action="store_true",
-        help="Keep prefLabel languages that cannot be mapped to a Common-language handle.",
+        help="Keep lexical languages that cannot be mapped to a Common-language handle.",
     )
     parser.add_argument(
         "--dry-run",

@@ -1,4 +1,5 @@
 const cordra = require('cordra');
+const schema = require('/cordra/schemas/JavaScriptDirectory.schema.json');
 
 const hdlShoulder = "jsdir";
 
@@ -7,8 +8,19 @@ const hdlShoulder = "jsdir";
                 LIFECYCLE HOOKS
  **************************************************/
 
+exports.beforeSchemaValidation = beforeSchemaValidation;
 exports.generateId = generateId;
 exports.isGenerateIdLoopable = false;
+
+
+function beforeSchemaValidation(object, context) {
+    if (!context.useLegacyContentOnlyJavaScriptHooks) {
+        object.content.$schema = schema.$id;
+        return object;
+    }
+    object.$schema = schema.$id;
+    return object;
+}
 
 
 function generateId(object, context) {

@@ -71,8 +71,15 @@ def list_type_directories(base_path: str | Path) -> List[str]:
             continue
         if entry.name.startswith(("_", ".")):
             continue
+        if not has_schema_files(entry):
+            continue
         type_dirs.append(entry.name)
     return type_dirs
+
+
+def has_schema_files(schema_dir: str | Path) -> bool:
+    """True when the type folder contains at least one v*.schema.json file."""
+    return any(Path(schema_dir).glob("v*.schema.json"))
 
 
 def collect_schema_versions(schema_dir: str | Path) -> List[Dict[str, Any]]:
