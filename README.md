@@ -47,6 +47,17 @@ Organisation ──► part_of_organisation ──► Organisation
 CordraGroup ──► CordraUser / CordraGroup
 ```
 
+## Search enrichment (`_relatedIds`, `_index`)
+
+Sample, HeritageObject, Person, Organisation and Community implement the `objectForIndexing` hook with `enrichForIndexing` from `_shared_js/enrich.js`. The hook follows every `handleReference` field declared in the schema, up to 3 hops, and adds two fields to the **indexed** form of the object. They are never stored and are not returned on retrieval:
+
+- `_relatedIds`: every handle reachable through references. Example: `/_relatedIds/_:"HSR/rubens"` finds all samples linked to Rubens by any path.
+- `_index`: copies of the referenced content, nested along the reference path. Keys are field paths with `[]` removed and `.` replaced by `_`. Example: `/_index/sampleSource_sourceId/_/_index/creators/_/content/names/_/lastName:Rubens` finds samples taken from works created by Rubens.
+
+Copied content leaves out `_*` fields. VocabularyConcept targets contribute only their labels and are not followed further. CordraUser, CordraGroup and JavaScriptDirectory are never copied.
+
+These fields are search aids, not authoritative data. When a referenced object changes, records that point to it update only after a reindex.
+
 ## Identifiers
 
 The registry aims to implement **IGSNs** (International Generic Sample Numbers) as persistent identifiers for samples, resolved via the global handle system. Samples and heritage objects also support DOI assignment and DataCite-compatible metadata fields such as `types`, `titles`, `creators`, `publisher`, `publicationYear`, `subjects`, `fundingReferences`, and `rightsList`.

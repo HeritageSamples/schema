@@ -4,8 +4,10 @@ const {
     validateVocabularyConceptReferences,
 } = require('vocab');
 const { assignLabels, labelsFromTitles } = require('labels');
+const { enrichForIndexing } = require('enrich');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
+exports.objectForIndexing = objectForIndexing;
 
 const VOCABULARY_CONCEPT_RULES = [
     {
@@ -87,4 +89,9 @@ function cleanPrincipalIdentifier(content) {
     if (!identifier && !identifierType) {
         delete content.principalIdentifier;
     }
+}
+
+
+async function objectForIndexing(object, context) {
+    return enrichForIndexing(object, { cordra, type: 'HeritageObject' });
 }

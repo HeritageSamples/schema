@@ -1,8 +1,10 @@
 const cordra = require('cordra');
 const { validateVocabularyConceptReferences } = require('vocab');
 const { assignLabels, labelsFromOrganisationNames } = require('labels');
+const { enrichForIndexing } = require('enrich');
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
+exports.objectForIndexing = objectForIndexing;
 
 const VOCABULARY_CONCEPT_RULES = [
     { path: 'names[].lang', queryTerm: 'Common-language', label: 'Name language' },
@@ -37,4 +39,9 @@ async function beforeSchemaValidationLegacy(content, context) {
     });
 
     return content;
+}
+
+
+async function objectForIndexing(object, context) {
+    return enrichForIndexing(object, { cordra, type: 'Organisation' });
 }
