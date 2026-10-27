@@ -49,25 +49,25 @@
             "title": "GeoJSON Feature",
             "oneOf": [
                 {
-                    "$ref": "#/definitions/point"
+                    "$ref": "#/$defs/point"
                 },
                 {
-                    "$ref": "#/definitions/multiPoint"
+                    "$ref": "#/$defs/multiPoint"
                 },
                 {
-                    "$ref": "#/definitions/lineString"
+                    "$ref": "#/$defs/lineString"
                 },
                 {
-                    "$ref": "#/definitions/multiLineString"
+                    "$ref": "#/$defs/multiLineString"
                 },
                 {
-                    "$ref": "#/definitions/polygon"
+                    "$ref": "#/$defs/polygon"
                 },
                 {
-                    "$ref": "#/definitions/multiPolygon"
+                    "$ref": "#/$defs/multiPolygon"
                 },
                 {
-                    "$ref": "#/definitions/geometryCollection"
+                    "$ref": "#/$defs/geometryCollection"
                 }
             ]
         },
@@ -81,7 +81,7 @@
         "lineStringCoordinates": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/position"
+                "$ref": "#/$defs/position"
             },
             "minItems": 2
         },
@@ -90,7 +90,7 @@
             "items": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/$defs/position"
                 },
                 "minItems": 4
             }
@@ -104,7 +104,7 @@
                     "const": "Point"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/$defs/position"
                 },
                 "properties": {
                     "type": "object",
@@ -123,7 +123,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/$defs/position"
                     }
                 },
                 "properties": {
@@ -141,7 +141,7 @@
                     "const": "LineString"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/lineStringCoordinates"
+                    "$ref": "#/$defs/lineStringCoordinates"
                 },
                 "properties": {
                     "type": "object",
@@ -160,7 +160,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/lineStringCoordinates"
+                        "$ref": "#/$defs/lineStringCoordinates"
                     }
                 },
                 "properties": {
@@ -178,7 +178,7 @@
                     "const": "Polygon"
                 },
                 "coordinates": {
-                    "$ref": "#/definitions/polygonCoordinates"
+                    "$ref": "#/$defs/polygonCoordinates"
                 },
                 "properties": {
                     "type": "object",
@@ -197,7 +197,7 @@
                 "coordinates": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/polygonCoordinates"
+                        "$ref": "#/$defs/polygonCoordinates"
                     }
                 },
                 "properties": {
@@ -217,7 +217,7 @@
                 "geometries": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/geoJsonFeature"
+                        "$ref": "#/$defs/geoJsonFeature"
                     }
                 },
                 "properties": {

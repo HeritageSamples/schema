@@ -78,7 +78,7 @@
         "_labels": {
             "allOf": [
                 {
-                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/labels"
                 }
             ],
             "properties": {

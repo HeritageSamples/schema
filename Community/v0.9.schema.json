@@ -61,7 +61,7 @@
             "format": "uri"
         },
         "_labels": {
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/labels"
         }
     },
     "additionalProperties": false

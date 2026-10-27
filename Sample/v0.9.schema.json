@@ -280,7 +280,7 @@
             "options": {
                 "hidden": true
             },
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/geoJsonFeature"
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/geoJsonFeature"
         },
         "sizes": {
             "title": "Sizes",
@@ -670,7 +670,7 @@
             "uniqueItems": true
         },
         "_labels": {
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
+            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/labels"
         },
         "_sourceObject": {
             "title": "Source Object",
