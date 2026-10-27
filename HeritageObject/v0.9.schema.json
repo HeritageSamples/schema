@@ -185,7 +185,7 @@
         "geoLocations": {
             "title": "Geo Locations",
             "description": "For real-world geospatial locations only. GeoJSON geometry encoding the origin of the heritage object or fragment. Coordinates follow GeoJSON order [longitude, latitude] when the CRS is WGS84.",
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/geoJsonFeature"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/geoJsonFeature"
         },
         "sizes": {
             "title": "Sizes",
@@ -554,7 +554,7 @@
         "_labels": {
             "allOf": [
                 {
-                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/labels"
+                    "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/labels"
                 }
             ],
             "properties": {

@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://heritagesamples.org/schema/community/v0.9.schema.json",
+    "$id": "https://heritagesamples.org/schema/Community/v0.9",
     "title": "Community",
     "type": "object",
     "required": [
@@ -61,7 +61,7 @@
             "format": "uri"
         },
         "_labels": {
-            "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/$defs/labels"
+            "$ref": "https://heritagesamples.org/schema/Definitions#/$defs/labels"
         }
     },
     "additionalProperties": false
