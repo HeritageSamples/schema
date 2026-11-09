@@ -261,7 +261,6 @@ function labelsFromText(text) {
     return { default: value };
 }
 
-<<<<<<< HEAD
 function nameEntries(names, options = {}) {
     if (!Array.isArray(names)) {
         return [];
@@ -298,59 +297,6 @@ function labelsFromNames(names, options = {}) {
 
     const labels = { default: defaultTitle };
     addLanguageLabels(labels, entries);
-=======
-function composedPersonName(entry) {
-    if (!entry || typeof entry !== 'object') {
-        return '';
-    }
-    return [entry.firstName, entry.lastName]
-        .map(trimmedString)
-        .filter(Boolean)
-        .join(' ');
-}
-
-function labelsFromPersonNames(names) {
-    const entries = Array.isArray(names)
-        ? names.filter((entry) => composedPersonName(entry))
-        : [];
-    if (entries.length === 0) {
-        return undefined;
-    }
-
-    const labels = { default: composedPersonName(entries[0]) };
-    for (const entry of entries) {
-        const key = labelsLangKey(entry.lang);
-        const name = composedPersonName(entry);
-        if (key && name && !labels[key]) {
-            labels[key] = name;
-        }
-    }
-    return labels;
-}
-
-function labelsFromOrganisationNames(names, acronym) {
-    const entries = Array.isArray(names)
-        ? names.filter((entry) => entry && trimmedString(entry.name))
-        : [];
-    const acronymText = trimmedString(acronym);
-    if (entries.length === 0) {
-        return labelsFromText(acronymText);
-    }
-
-    let defaultLabel = trimmedString(entries[0].name);
-    if (acronymText) {
-        defaultLabel = `${defaultLabel} (${acronymText})`;
-    }
-
-    const labels = { default: defaultLabel };
-    for (const entry of entries) {
-        const key = labelsLangKey(entry.lang);
-        const name = trimmedString(entry.name);
-        if (key && name && !labels[key]) {
-            labels[key] = name;
-        }
-    }
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63
     return labels;
 }
 
@@ -424,12 +370,7 @@ module.exports = {
     bcp47FromLang,
     canonicalLanguageHandle,
     isPrimaryTitleType,
-<<<<<<< HEAD
     labelsFromNames,
-=======
-    labelsFromOrganisationNames,
-    labelsFromPersonNames,
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63
     labelsFromPrefLabels,
     labelsFromText,
     labelsFromTitles,

@@ -1,11 +1,7 @@
 const cordra = require('cordra');
 const schema = require('/cordra/schemas/Person.schema.json');
 const { validateVocabularyConceptReferences } = require('vocab');
-<<<<<<< HEAD
 const { assignLabels, labelsFromNames } = require('labels');
-=======
-const { assignLabels, labelsFromPersonNames } = require('labels');
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63
 
 exports.beforeSchemaValidation = beforeSchemaValidation;
 
@@ -30,15 +26,11 @@ async function beforeSchemaValidation(obj, context) {
 
 
 async function beforeSchemaValidationLegacy(content, context) {
-<<<<<<< HEAD
     content.$schema = schema.$id;
     migrateLegacyPerson(content);
     assignLabels(content, labelsFromNames(content.names, {
         fields: ['firstName', 'lastName'],
     }));
-=======
-    assignLabels(content, labelsFromPersonNames(content.names));
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63
 
     await validateVocabularyConceptReferences(content, VOCABULARY_CONCEPT_RULES, {
         cordra,
@@ -47,7 +39,6 @@ async function beforeSchemaValidationLegacy(content, context) {
 
     return content;
 }
-<<<<<<< HEAD
 
 
 function trimmed(value) {
@@ -135,5 +126,3 @@ function migrateLegacyPerson(content) {
     delete content._mainTitle;
     delete content._custodianNames;
 }
-=======
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63

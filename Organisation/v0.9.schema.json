@@ -52,26 +52,6 @@
                                     "filters": ["/queryTerms/_:\"Common-language\""]
                                 }
                             }
-<<<<<<< HEAD
-=======
-                        }
-                    }
-                }
-            }
-        },
-        "_labels": {
-            "allOf": [
-                {
-                    "$ref": "https://heritagesamples.org/schema/Definitions.schema.json#/definitions/labels"
-                }
-            ],
-            "properties": {
-                "default": {
-                    "cordra": {
-                        "preview": {
-                            "showInPreview": true,
-                            "isPrimary": true
->>>>>>> 04f95492efc447e3515dd58b50a0798b87b8fe63
                         }
                     }
                 }
