@@ -1,3 +1,5 @@
 requests>=2.28
 python-dotenv>=1.0
 packaging>=23.0
+# Used by delete.py / export.py / import.py
+cordra-client[doip] @ git+https://github.com/KIKIRPA/cordra-client.git@v0.3.2
