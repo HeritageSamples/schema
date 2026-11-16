@@ -9,6 +9,11 @@ Setup:
   cp .env_example .env   # edit values
   python upload-schemas.py --all -m 1          # dry run / diff
   python upload-schemas.py --schema Sample       # upload if newer
+
+Bootstrap (vocabularies whose language handles don't exist yet):
+  python upload-schemas.py -s Vocabulary -s VocabularyConcept -m4 --relax-lang-refs
+  ... import voc.json, upload-enums.py ...
+  python upload-schemas.py -s Vocabulary -s VocabularyConcept -m4   # restore strict
 """
 
 from __future__ import annotations
@@ -336,6 +341,7 @@ def process_type(
     config: Dict[str, str],
     cordra: Optional[libcordra2.Cordra],
     mode: int,
+    relax_lang: bool = False,
 ) -> bool:
     """Process one schema type. Returns True on success, False on failure."""
     schema_dir = base_path / type_name
@@ -432,6 +438,7 @@ def process_type(
             newest_local,
             identifier=identifier,
             type_dir_name=type_name,
+            relax_lang=relax_lang,
         )
         if not isinstance(do_obj, dict):
             print("  ! Failed to prepare DO object; skipping")
@@ -472,6 +479,7 @@ def process_type(
                     v,
                     identifier=identifier,
                     type_dir_name=type_name,
+                    relax_lang=relax_lang,
                 )
                 if not isinstance(do_obj, dict):
                     print(
@@ -534,6 +542,17 @@ def main() -> None:
             "3=upload-or-replace-latest, 4=reupload-entire-tree"
         ),
     )
+    parser.add_argument(
+        "--relax-lang-refs",
+        dest="relax_lang_refs",
+        action="store_true",
+        help=(
+            "Bootstrap only: upload with the handleReference removed from every "
+            "'lang' property, so vocabularies and language concepts can be created "
+            "before the language concepts they reference exist. Re-upload without "
+            "this flag afterwards to restore strict validation."
+        ),
+    )
     args = parser.parse_args()
 
     config = load_config()
@@ -566,11 +585,17 @@ def main() -> None:
 
     failures: List[str] = []
     for type_name in selected:
-        ok = process_type(type_name, base_path, config, cordra, mode)
+        ok = process_type(type_name, base_path, config, cordra, mode, relax_lang=args.relax_lang_refs)
         if not ok:
             failures.append(type_name)
 
     print("\nAll done!\n")
+    if args.relax_lang_refs and mode != 1:
+        print(
+            f"{YELLOW}WARNING: 'lang' references are NOT validated on the uploaded "
+            f"schema(s). Re-run without --relax-lang-refs when bootstrapping is done.{RESET}",
+            flush=True,
+        )
     if failures:
         print(f"Failed types: {', '.join(failures)}", flush=True)
         sys.exit(1)

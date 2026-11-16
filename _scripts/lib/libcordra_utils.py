@@ -122,6 +122,8 @@ _OPTIONAL_ENV = {
     "CORDRA_DOIP_PORT": "doip_port",
     "CORDRA_DOIP_SERVICE_ID": "service_id",
     "CORDRA_DEFAULT_BATCH_SIZE": "default_batch_size",
+    "CORDRA_HDL_PREFIX": "hdl_prefix",
+    "CORDRA_PUBLIC_WRITER_GROUP": "public_writer_group",
 }
 
 
@@ -162,6 +164,14 @@ def resolve_batch_size(config: dict, override: Optional[int] = None) -> int:
     if override is not None:
         return int(override)
     return int(config.get("default_batch_size") or DEFAULT_BATCH_SIZE)
+
+
+def resolve_hdl_prefix(config: dict) -> str:
+    """Return CORDRA_HDL_PREFIX without trailing '/'; raise CordraConfigError if unset."""
+    prefix = str(config.get("hdl_prefix") or "").strip().rstrip("/")
+    if not prefix:
+        raise CordraConfigError("Missing Cordra setting: CORDRA_HDL_PREFIX")
+    return prefix
 
 
 def _as_bool(value: Any) -> bool:

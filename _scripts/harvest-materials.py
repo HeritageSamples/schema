@@ -39,9 +39,10 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 import requests
-from dotenv import load_dotenv
+from cordra_client import Cordra, CordraConfigError
 
-from lib import libcordra2
+from lib import libcordra_utils
+from lib.libreporting import ConsoleReporter, HarvestAbort, emit_critical
 from lib.skos_lang import (
     alt_label_map_to_handles,
     build_concept_lexical_content,
@@ -51,8 +52,6 @@ from lib.skos_lang import (
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-
-DEFAULT_BATCH_SIZE = 250
 
 # -------------------------
 # Constants
@@ -268,11 +267,10 @@ def _default_vocabulary_handle(hdl_prefix: str) -> str:
 def _resolve_vocabulary_id(config: dict, cli_handle: Optional[str]) -> str:
     if cli_handle and cli_handle.strip():
         return cli_handle.strip()
-    hdl_prefix = config.get("hdl_prefix") or config.get("cordra", {}).get("hdl_prefix") or ""
-    return _default_vocabulary_handle(hdl_prefix)
+    return _default_vocabulary_handle(config.get("hdl_prefix") or "")
 
 
-def _ensure_vocabulary_exists(cordra: libcordra2.Cordra, vocabulary_id: str) -> None:
+def _ensure_vocabulary_exists(cordra: Cordra, vocabulary_id: str) -> None:
     if not cordra.exists(vocabulary_id):
         print(
             f"Vocabulary not found: {vocabulary_id}\n"
@@ -416,18 +414,6 @@ def _format_aat_enrichment_payload(obj: dict) -> Optional[dict]:
         "userMetadata": {},
         "acl": obj.get("acl"),
     }
-
-
-def _config_bool(value, default=False) -> bool:
-    if isinstance(value, bool):
-        return value
-    if value is None:
-        return default
-    return str(value).strip().lower() in ("1", "true", "yes", "y")
-
-
-def _connect_cordra(config: dict, protocol: str) -> libcordra2.Cordra:
-    return libcordra2.Cordra.from_config(config, protocol=protocol, error_mode="harvest")
 
 
 # -------------------------
@@ -1032,49 +1018,6 @@ def _write_batch_file(filename: str, digital_objects: list):
 # -------------------------
 # Main workflow
 # -------------------------
-def _load_config() -> dict:
-    load_dotenv(SCRIPT_DIR / ".env")
-    required = {
-        "CORDRA_REST_API_URL": "cordra_api_url",
-        "CORDRA_ADMIN_USERNAME": "cordra_username",
-        "CORDRA_ADMIN_PASSWORD": "cordra_password",
-        "CORDRA_HDL_PREFIX": "hdl_prefix",
-    }
-    config: Dict[str, str] = {}
-    missing: List[str] = []
-    for env_key, config_key in required.items():
-        value = os.environ.get(env_key, "").strip()
-        if not value:
-            missing.append(env_key)
-        else:
-            config[config_key] = value
-
-    if missing:
-        print(
-            "Missing required environment variables in _scripts/.env:\n  "
-            + "\n  ".join(missing),
-            flush=True,
-        )
-        print("Copy .env_example to .env and set the values.", flush=True)
-        raise SystemExit(1)
-
-    config["cordra_api_url"] = config["cordra_api_url"].rstrip("/")
-
-    optional = {
-        "CORDRA_DOIP_HOST": "cordra_doip_host",
-        "CORDRA_DOIP_PORT": "cordra_doip_port",
-        "CORDRA_DOIP_SERVICE_ID": "cordra_doip_service_id",
-        "CORDRA_DEFAULT_BATCH_SIZE": "default_batch_size",
-        "CORDRA_PUBLIC_WRITER_GROUP": "public_writer_group",
-    }
-    for env_key, config_key in optional.items():
-        value = os.environ.get(env_key, "").strip()
-        if value:
-            config[config_key] = value
-
-    return config
-
-
 def _select_ids(args, config, warnings) -> List[str]:
     timeout = int(args.timeout)
     if args.full:
@@ -1138,7 +1081,7 @@ def _fetch_and_format_batch_ids(
     progress_start_idx: Optional[int] = None,
     total_selected: Optional[int] = None,
 ) -> Tuple[List[dict], float, float]:
-    hdl_prefix = config.get("hdl_prefix") or config.get("cordra", {}).get("hdl_prefix") or "20.500.14037"
+    hdl_prefix = config["hdl_prefix"]
     digital_objects = []
     t_fetch = 0.0
     t_format = 0.0
@@ -1221,8 +1164,12 @@ def _objects_without_handle_refs(digital_objects: List[dict]) -> List[dict]:
     return phase_objects
 
 class _UploadContext:
-    def __init__(self, args, config):
-        self.cordra = _connect_cordra(config, args.protocol)
+    def __init__(self, args, config, reporter):
+        self.reporter = reporter
+        try:
+            self.cordra = Cordra(**libcordra_utils.cordra_kwargs(config, protocol=args.protocol))
+        except CordraConfigError as exc:
+            emit_critical(reporter, str(exc), category="cordra_connect")
 
 
 def _upload_digital_objects(
@@ -1240,7 +1187,12 @@ def _upload_digital_objects(
     if label:
         print(f"{label}: uploading {len(digital_objects)} object(s)...", flush=True)
     t0 = _now()
-    stats = upload_ctx.cordra.batch_upload_detailed(digital_objects, include_user_metadata=True).stats
+    stats = libcordra_utils.batch_upload_detailed(
+        upload_ctx.cordra,
+        digital_objects,
+        include_user_metadata=True,
+        reporter=upload_ctx.reporter,
+    ).stats
 
     run_stats["upserted"] += stats["upserted"]
     run_stats["conflicts"] += stats["conflicts"]
@@ -1259,7 +1211,7 @@ def _batch_output_path(output_path: str, phase: str, batch_no: int) -> str:
     return f"{root}_{phase}_p{batch_no}{ext}"
 
 
-def _process_concept_batches(ids: List[str], args, config, warnings, run_stats: dict) -> None:
+def _process_concept_batches(ids: List[str], args, config, warnings, run_stats: dict, reporter) -> None:
     selected_ids = set(ids)
     batch_size = args.batch_size
     session = AatHarvestSession()
@@ -1295,7 +1247,7 @@ def _process_concept_batches(ids: List[str], args, config, warnings, run_stats: 
                 )
         return
 
-    upload_ctx = _UploadContext(args, config)
+    upload_ctx = _UploadContext(args, config, reporter)
     _ensure_vocabulary_exists(upload_ctx.cordra, args.vocabulary_id)
 
     print("Phase 1: concepts without handle refs", flush=True)
@@ -1379,14 +1331,19 @@ def _process_concept_batches(ids: List[str], args, config, warnings, run_stats: 
             )
 
 
-def main(args):
+def main(args, config, reporter):
     global DEBUG
     DEBUG = bool(args.debug)
 
     start_time = time.time()
     warnings = _new_warning_tracker(sample_limit=args.warning_sample_limit)
-    config = _load_config()
-    args.batch_size = args.batch_size if args.batch_size is not None else int(config.get("default_batch_size") or DEFAULT_BATCH_SIZE)
+    try:
+        config["hdl_prefix"] = libcordra_utils.resolve_hdl_prefix(config)
+    except CordraConfigError as exc:
+        emit_critical(reporter, str(exc), category="config")
+    print(f"Handle prefix: {config['hdl_prefix']}", flush=True)
+    args.batch_size = libcordra_utils.resolve_batch_size(config, args.batch_size)
+    args.protocol = libcordra_utils.resolve_protocol(config, args.protocol)
     args.cache_on_disk = args.cache_on_disk or args.cache_dir
     try:
         args.vocabulary_id = _resolve_vocabulary_id(config, args.vocabulary)
@@ -1402,7 +1359,7 @@ def main(args):
         f"vocabulary={args.vocabulary_id}",
         flush=True,
     )
-    _process_concept_batches(ids, args, config, warnings, run_stats)
+    _process_concept_batches(ids, args, config, warnings, run_stats, reporter)
 
     print(f"Finished in {round((time.time() - start_time) / 60, 1)} minutes", flush=True)
     _print_final_summary(run_stats, warnings)
@@ -1441,7 +1398,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--cache-dir", default=None, help="Deprecated alias for --cache-on-disk.")
 
-    parser.add_argument("--protocol", choices=["doip", "rest"], default="rest", help="Cordra protocol (default: rest).")
+    parser.add_argument("--protocol", choices=["doip", "rest"], default=None, help="Cordra protocol (default: CORDRA_PROTOCOL from .env, else rest).")
     parser.add_argument(
         "--batch-size",
         type=int,
@@ -1463,4 +1420,12 @@ if __name__ == "__main__":
     parser.add_argument("--warning-sample-limit", type=int, default=WARNING_SAMPLE_LIMIT, help="Per warning category print limit. Default: unlimited.")
 
     parsed_args = parser.parse_args()
-    main(parsed_args)
+
+    config = libcordra_utils.load_env_config()
+    print(f"Cordra instance: {config['url']}", flush=True)
+
+    reporter = ConsoleReporter()
+    try:
+        main(parsed_args, config, reporter)
+    except HarvestAbort:
+        sys.exit(1)

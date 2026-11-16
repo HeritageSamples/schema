@@ -155,16 +155,52 @@ def build_do(
     return do_obj
 
 
+def relax_lang_refs(node: Any) -> int:
+    """
+    Remove ``cordra.type.handleReference`` from every property named ``lang``.
+
+    Used to bootstrap vocabularies whose language handles point at
+    VocabularyConcepts that do not exist yet (e.g. voc.hsr.en-english
+    references itself). Mutates ``node`` in place; returns the number of
+    references removed.
+    """
+    removed = 0
+    if isinstance(node, dict):
+        props = node.get("properties")
+        if isinstance(props, dict):
+            lang = props.get("lang")
+            if isinstance(lang, dict):
+                cordra_cfg = lang.get("cordra")
+                type_cfg = cordra_cfg.get("type") if isinstance(cordra_cfg, dict) else None
+                if isinstance(type_cfg, dict) and "handleReference" in type_cfg:
+                    del type_cfg["handleReference"]
+                    removed += 1
+                    if not type_cfg:
+                        del cordra_cfg["type"]
+                    if not cordra_cfg:
+                        del lang["cordra"]
+        for value in node.values():
+            removed += relax_lang_refs(value)
+    elif isinstance(node, list):
+        for value in node:
+            removed += relax_lang_refs(value)
+    return removed
+
+
 def prepare_do_for_version(
     schema_dir: str | Path,
     version_info: Dict[str, Any],
     *,
     identifier: str,
     type_dir_name: str,
+    relax_lang: bool = False,
 ) -> Optional[Dict[str, Any]]:
     schema_json = read_json_safely(version_info["schema_path"])
     if not isinstance(schema_json, dict):
         return None
+    if relax_lang:
+        removed = relax_lang_refs(schema_json)
+        print(f"  - relaxed {removed} lang handleReference(s) (bootstrap)")
     javascript = read_javascript(version_info.get("js_path"))
     return build_do(
         schema_json,
